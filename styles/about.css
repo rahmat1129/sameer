@@ -1,0 +1,160 @@
+.aboutMeSection {
+  height: 100vh;
+  background-color: rgb(33, 33, 33);
+  position: relative;
+  z-index: 2;
+  padding: 0 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+.aboutMeSection > div {
+  margin: auto;
+  /* animation: 1s ease-out 0s 1 fadeIn; */
+}
+
+.aboutMeSectionInner {
+  max-width: 1300px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.aboutSectionHeading {
+  font-family: Exo, Bold Italic;
+  width: fit-content;
+  color: #21f7c0;
+  font-size: 50px;
+  /* padding: 50px 20px 20px 0px; */
+  border-bottom: 5px solid #21f7c0;
+  text-align: left;
+}
+a{
+  text-decoration: none;
+}
+
+.aboutInfoContainer {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1300px;
+  margin: 0 auto;
+  color: white;
+  align-items: center;
+}
+
+.aboutMeInfo {
+  width: 50%;
+  padding-top: 20px;
+  font-size: 19px;
+}
+.ProfileList > li{
+  padding: 3px;
+  
+}
+.ProfileList > li > a{
+  text-decoration: none;
+  color: white;
+}
+.ProfileList > li >a:hover{
+  color: #21f7c0;
+  transition: .4s;
+}
+.aboutImgCont {
+  width: 50%;
+  border-radius: 50%;
+  overflow: hidden;
+  padding: 10px;
+  display: flex;
+  /* width: fit-content; */
+}
+
+.aboutImg {
+  padding: 15px;
+  border: #21f7c0 dotted 5px;
+  border-radius: 50%;
+  width: 400px;
+  height: auto;
+  margin: auto;
+}
+
+.skillBTN {
+  margin-top: 30px;
+}
+
+.fade-in-element {
+  animation: fade-in 1s;
+}
+
+.flexrev{
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+@media(max-width:400px){
+  .hidediv > *{
+    display: none;
+  }
+
+}
+
+@media (max-width: 900px) {
+  .aboutMeSection {
+    min-height: 100vh;
+    height: fit-content;
+    padding: 10px 0;
+  }
+  .aboutMeSectionInner {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+  .aboutSectionHeading {
+    font-size: 30px;
+    font-weight: 300;
+    border-bottom: 3px solid #21f7c0;
+  }
+  .aboutInfoContainer {
+    /* flex-direction: column-reverse; */
+    align-items: center;
+  }
+  .aboutMeSectionIndiv{
+    width: 90%;
+    margin: auto;
+  }
+  .aboutMeInfo {
+    width: 100%;
+    font-size: 15px;
+    padding: 0;
+  }
+  .aboutMeInfo > h1 {
+    font-size: 25px;
+    margin: 0;
+    margin-bottom: 10px;
+  }
+  .aboutImgCont {
+    width: fit-content;
+    margin: 15px;
+  }
+  .aboutImg {
+    width: 65%;
+    height: auto;
+    padding: 5px;
+    border: #21f7c0 solid 2px;
+  }
+  .skillBTN {
+    margin-top: 20px;
+  }
+
+  .hidebtns {
+    display: none;
+  }
+}
+
+@media (max-width: 650px) {
+  .aboutInfoContainer {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+  .aboutMeSectionInner {
+    width: 100%;
+    margin-bottom: 0px;
+  }
+}

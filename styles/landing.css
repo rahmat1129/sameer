@@ -1,0 +1,177 @@
+/* ---- reset ---- */
+body {
+  margin: 0;
+  font: normal 75% Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+}
+canvas {
+  display: block;
+  vertical-align: bottom;
+  overflow-x: hidden;
+}
+/* ---- particles.js container ---- */
+#particles-js {
+  width: 100%;
+  
+  padding: 0 !important;
+  height: 100%;
+  background-color: #2f2f2f;
+  background-color: #000000;
+  overflow-x: hidden;
+}
+
+.particles-js-canvas-el {
+  position: fixed;
+  top: 0;
+  z-index: 1 !important;
+}
+*::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+* {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+/* langing page inner CSS */
+
+.landingPageContainer {
+  height: 100vh;
+  
+  flex-direction: column;
+  text-align: center;
+  justify-content: space-evenly;
+  color: white;
+  font-size: 100px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 600;
+  position: relative;
+  z-index: 5 !important;
+  animation: 1s ease-out 0s 1 fadeIn;
+  overflow-x: hidden;
+}
+
+.LandingSkills {
+  /* padding-top: 20px; */
+  font-size: 40px;
+}
+
+.nerdy-pen {
+  text-align: center;
+  width: 50%;
+  margin: auto;
+  padding: 20px;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+    transform: translatey(100px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+    transform: translatey(0px);
+  }
+}
+
+.bottomTray {
+  width: fit-content;
+  margin: 0 auto;
+  position: absolute;
+  bottom: 50px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.glassTray {
+  margin: auto;
+  font-size: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 12px 15px;
+  background: rgba(207, 207, 207, 0.35);
+  border-radius: 10px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10.7px);
+  -webkit-backdrop-filter: blur(10.7px);
+  border: 1px solid rgba(207, 207, 207, 0.32);
+  transition-duration: 0.5s;
+}
+.glassTray {
+  text-decoration: none;
+  color: #21f7c0;
+}
+.glassTray:hover {
+  background-color: #21f7c0;
+  color: black;
+  transition-duration: 0.5s;
+}
+a {
+  text-decoration: none;
+}
+
+@keyframes change {
+  0% {
+  }
+  100% {
+  }
+}
+
+@media (max-width: 900px) {
+  .landingPageContainer {
+    font-size: 43px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 700;
+  }
+
+  .landingPageContainer > div {
+    /* width: 90%;
+    margin: auto; */
+  }
+
+  .LandingSkills {
+    font-size: 13px;
+  }
+
+  .nerdy-pen {
+    width: 90%;
+  }
+  .glassTray {
+    font-size: 13px;
+    font-weight: 600;
+    padding: 8px;
+  }
+
+  .bottomTray {
+    position: absolute;
+    bottom: 20%;
+    display: flex;
+    width: 100%;
+    margin: auto;
+  }
+  .bottomTray1 {
+    position: absolute;
+    bottom: 15%;
+    display: flex;
+    width: 100%;
+    margin: auto;
+  }
+}
+
+.snapper{
+  /* overflow-y: auto; */
+  scroll-snap-type: y mandatory;
+}
+
+.snapper >  div{
+  scroll-snap-align: start;
+}
+
+@media (max-width: 900px) {
+  .snapper{
+    scroll-snap-type: none;
+  }
+}
