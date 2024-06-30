@@ -2,6 +2,11 @@
 <html>
 
 <head>
+  <script>
+    var viewport = document.querySelector('meta[name="viewport"]');
+    viewport.content = 'width=1024, user-scalable=no';
+    document.body.classList.add('desktop-mode');
+  </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title></title>
@@ -31,6 +36,7 @@
             background-color: #fff;
             border: 1px solid #ddd;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+         container: flex;
         }
        .form-control {
             width: 100%;
