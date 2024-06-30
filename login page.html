@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        /* CSS code */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+       .container {
+            max-width: 300px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+       .form-control {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+        }
+       .btn {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+       .btn:hover {
+            background-color: #3e8e41;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Login</h2>
+        <form id="login-form">
+            <input type="text" id="username" class="form-control" placeholder="Username">
+            <input type="password" id="password" class="form-control" placeholder="Password">
+            <button class="btn" id="login-btn">Login</button>
+        </form>
+        <div id="error-msg"></div>
+    </div>
+
+    <script>
+        // JavaScript code
+        const loginForm = document.getElementById('login-form');
+        const loginBtn = document.getElementById('login-btn');
+        const errorMsg = document.getElementById('error-msg');
+
+        loginBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            if (username === 'Sameer1129' && password === 'Rahmat@1129') {
+                window.location.href = 'https://sameer1.vercel.app';
+            } else if (username === 'babar786' && password === 'babar@123') {
+                window.location.href = 'https://babarali28.github.io/babar';
+            } else {
+                errorMsg.textContent = 'Invalid username or password';
+            }
+        });
+    </script>
+</body>
+</html>
