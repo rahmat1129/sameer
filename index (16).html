@@ -1,0 +1,471 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Note Taking App</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"></link>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+     <link rel="manifest" href="manifest.json">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto p-4">
+        <header class="flex justify-between items-center py-4">
+            <h1 class="text-3xl font-bold text-gray-800">Advanced Note Taking App</h1>
+            <div class="flex space-x-4">
+                <button id="addNoteBtn" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+                    <i class="fas fa-plus"></i> Add Note
+                </button>
+                <button id="githubSettingsBtn" class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600">
+                    <i class="fab fa-github"></i> GitHub Settings
+                </button>
+                
+
+            </div>
+        </header>
+        <main>
+            <div id="notesContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <!-- Notes will be dynamically added here -->
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal for adding/editing notes -->
+    <div id="noteModal" class="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center hidden">
+        <div class="bg-white p-6 rounded shadow-lg w-full max-w-lg">
+            <h2 id="modalTitle" class="text-2xl font-bold mb-4">Add Note</h2>
+            <input type="text" id="noteTitle" class="w-full p-2 border border-gray-300 rounded mb-4" placeholder="Note Title">
+            <textarea id="noteContent" class="w-full p-2 border border-gray-300 rounded mb-4" rows="10" placeholder="Note Content"></textarea>
+            <input type="file" id="noteImage" class="w-full p-2 border border-gray-300 rounded mb-4">
+            <input type="password" id="notePassword" class="w-full p-2 border border-gray-300 rounded mb-4" placeholder="Password (optional)">
+            <div class="flex justify-end">
+                <button id="saveNoteBtn" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 mr-2">Save</button>
+                <button id="cancelNoteBtn" class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for entering password -->
+    <div id="passwordModal" class="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center hidden">
+        <div class="bg-white p-6 rounded shadow-lg w-full max-w-lg">
+            <h2 class="text-2xl font-bold mb-4">Enter Password</h2>
+            <input type="password" id="enterPassword" class="w-full p-2 border border-gray-300 rounded mb-4" placeholder="Password">
+            <div class="flex justify-end">
+                <button id="submitPasswordBtn" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 mr-2">Submit</button>
+                <button id="cancelPasswordBtn" class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for GitHub upload -->
+    <div id="githubModal" class="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center hidden">
+        <div class="bg-white p-6 rounded shadow-lg w-full max-w-lg">
+            <h2 class="text-2xl font-bold mb-4">Upload to GitHub</h2>
+            <input type="text" id="githubUsername" class="w-full p-2 border border-gray-300 rounded mb-4" placeholder="GitHub Username">
+            <input type="text" id="githubRepo" class="w-full p-2 border border-gray-300 rounded mb-4" placeholder="Repository Name">
+            <input type="password" id="githubToken" class="w-full p-2 border border-gray-300 rounded mb-4" placeholder="GitHub API Token">
+            <div class="flex justify-end">
+                <button id="uploadToGithubBtn" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 mr-2">Upload</button>
+                <button id="cancelGithubBtn" class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for GitHub settings -->
+    <div id="githubSettingsModal" class="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center hidden">
+        <div class="bg-white p-6 rounded shadow-lg w-full max-w-lg">
+            <h2 class="text-2xl font-bold mb-4">GitHub Settings</h2>
+            <input type="text" id="settingsGithubUsername" class="w-full p-2 border border-gray-300 rounded mb-4" placeholder="GitHub Username">
+            <input type="text" id="settingsGithubRepo" class="w-full p-2 border border-gray-300 rounded mb-4" placeholder="Repository Name">
+            <input type="password" id="settingsGithubToken" class="w-full p-2 border border-gray-300 rounded mb-4" placeholder="GitHub API Token">
+            <div class="flex justify-end">
+                <button id="saveGithubSettingsBtn" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 mr-2">Save</button>
+                <button id="cancelGithubSettingsBtn" class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const notesContainer = document.getElementById('notesContainer');
+        const addNoteBtn = document.getElementById('addNoteBtn');
+        const noteModal = document.getElementById('noteModal');
+        const modalTitle = document.getElementById('modalTitle');
+        const noteTitle = document.getElementById('noteTitle');
+        const noteContent = document.getElementById('noteContent');
+        const noteImage = document.getElementById('noteImage');
+        const notePassword = document.getElementById('notePassword');
+        const saveNoteBtn = document.getElementById('saveNoteBtn');
+        const cancelNoteBtn = document.getElementById('cancelNoteBtn');
+        const passwordModal = document.getElementById('passwordModal');
+        const enterPassword = document.getElementById('enterPassword');
+        const submitPasswordBtn = document.getElementById('submitPasswordBtn');
+        const cancelPasswordBtn = document.getElementById('cancelPasswordBtn');
+        const githubModal = document.getElementById('githubModal');
+        const githubUsername = document.getElementById('githubUsername');
+        const githubRepo = document.getElementById('githubRepo');
+        const githubToken = document.getElementById('githubToken');
+        const uploadToGithubBtn = document.getElementById('uploadToGithubBtn');
+        const cancelGithubBtn = document.getElementById('cancelGithubBtn');
+        const githubSettingsBtn = document.getElementById('githubSettingsBtn');
+        const githubSettingsModal = document.getElementById('githubSettingsModal');
+        const settingsGithubUsername = document.getElementById('settingsGithubUsername');
+        const settingsGithubRepo = document.getElementById('settingsGithubRepo');
+        const settingsGithubToken = document.getElementById('settingsGithubToken');
+        const saveGithubSettingsBtn = document.getElementById('saveGithubSettingsBtn');
+        const cancelGithubSettingsBtn = document.getElementById('cancelGithubSettingsBtn');
+        let editIndex = null;
+        let currentNoteIndex = null;
+
+        // Load notes from local storage
+        const loadNotes = () => {
+            const notes = JSON.parse(localStorage.getItem('notes')) || [];
+            notesContainer.innerHTML = '';
+            notes.forEach((note, index) => {
+                const noteElement = createNoteElement(note.title, note.content, note.image, note.password, index);
+                notesContainer.appendChild(noteElement);
+            });
+        };
+
+        // Save notes to local storage
+        const saveNotes = (notes) => {
+            localStorage.setItem('notes', JSON.stringify(notes));
+        };
+
+        // Create a note element
+        const createNoteElement = (title, content, image, password, index) => {
+            const noteElement = document.createElement('div');
+            noteElement.className = 'bg-white p-4 rounded shadow';
+            noteElement.innerHTML = `
+                <h2 class="text-xl font-semibold text-gray-800 truncate">${title}</h2>
+                ${password ? '<p class="text-gray-600 mt-2">This note is password protected.</p>' : `<pre class="text-gray-600 mt-2 whitespace-pre-wrap overflow-auto max-h-40">${content}</pre>`}
+                ${image && !password ? `<img src="${image}" alt="User uploaded image" class="mt-2 max-h-40">` : ''}
+                <div class="flex justify-end mt-4">
+                    <button class="text-blue-500 hover:text-blue-600 mr-2" onclick="unlockNoteForEdit(${index})">
+                        <i class="fas fa-edit"></i> Edit
+                    </button>
+                    <button class="text-red-500 hover:text-red-600" onclick="unlockNoteForDelete(${index})">
+                        <i class="fas fa-trash"></i> Delete
+                    </button>
+                    <button class="text-green-500 hover:text-green-600 ml-2" onclick="unlockNoteForDownload(${index})">
+                        <i class="fas fa-download"></i> Download
+                    </button>
+                    <button class="text-yellow-500 hover:text-yellow-600 ml-2" onclick="unlockNoteForRun(${index})">
+                        <i class="fas fa-play"></i> Run
+                    </button>
+                    <button class="text-purple-500 hover:text-purple-600 ml-2" onclick="unlockNoteForAnalyze(${index})">
+                        <i class="fas fa-chart-bar"></i> Analyze
+                    </button>
+                    ${password ? `<button class="text-gray-500 hover:text-gray-600 ml-2" onclick="unlockNote(${index})">
+                        <i class="fas fa-lock"></i> Unlock
+                    </button>` : `<button class="text-gray-500 hover:text-gray-600 ml-2" onclick="lockNoteOption(${index})">
+                        <i class="fas fa-lock-open"></i> Lock
+                    </button>`}
+                    <button class="text-black hover:text-gray-600 ml-2" onclick="openGithubModal(${index})">
+                        <i class="fab fa-github"></i> Upload
+                    </button>
+                </div>
+            `;
+            return noteElement;
+        };
+
+        // Add a new note
+        addNoteBtn.addEventListener('click', () => {
+            editIndex = null;
+            modalTitle.textContent = 'Add Note';
+            noteTitle.value = '';
+            noteContent.value = '';
+            noteImage.value = '';
+            notePassword.value = '';
+            noteModal.classList.remove('hidden');
+        });
+
+        // Save note
+        saveNoteBtn.addEventListener('click', () => {
+            const title = noteTitle.value;
+            const content = noteContent.value;
+            const image = noteImage.files[0] ? URL.createObjectURL(noteImage.files[0]) : null;
+            const password = notePassword.value;
+            if (title && content) {
+                const notes = JSON.parse(localStorage.getItem('notes')) || [];
+                if (editIndex !== null) {
+                    notes[editIndex] = { title, content, image, password };
+                } else {
+                    notes.push({ title, content, image, password });
+                }
+                saveNotes(notes);
+                loadNotes();
+                noteModal.classList.add('hidden');
+            }
+        });
+
+        // Cancel note
+        cancelNoteBtn.addEventListener('click', () => {
+            noteModal.classList.add('hidden');
+        });
+
+        // Edit a note
+        window.unlockNoteForEdit = (index) => {
+            const notes = JSON.parse(localStorage.getItem('notes')) || [];
+            const note = notes[index];
+            if (note.password) {
+                currentNoteIndex = index;
+                passwordModal.classList.remove('hidden');
+                passwordModal.setAttribute('data-action', 'edit');
+            } else {
+                editNoteWithoutUnlock(index);
+            }
+        };
+
+        const editNoteWithoutUnlock = (index) => {
+            const notes = JSON.parse(localStorage.getItem('notes')) || [];
+            const note = notes[index];
+            editIndex = index;
+            modalTitle.textContent = 'Edit Note';
+            noteTitle.value = note.title;
+            noteContent.value = note.content;
+            noteImage.value = '';
+            notePassword.value = note.password || '';
+            noteModal.classList.remove('hidden');
+        };
+
+        // Delete a note
+        window.unlockNoteForDelete = (index) => {
+            const notes = JSON.parse(localStorage.getItem('notes')) || [];
+            const note = notes[index];
+            if (note.password) {
+                currentNoteIndex = index;
+                passwordModal.classList.remove('hidden');
+                passwordModal.setAttribute('data-action', 'delete');
+            } else {
+                deleteNoteWithoutUnlock(index);
+            }
+        };
+
+        const deleteNoteWithoutUnlock = (index) => {
+            const notes = JSON.parse(localStorage.getItem('notes')) || [];
+            notes.splice(index, 1);
+            saveNotes(notes);
+            loadNotes();
+        };
+
+        // Download a note
+        window.unlockNoteForDownload = (index) => {
+            const notes = JSON.parse(localStorage.getItem('notes')) || [];
+            const note = notes[index];
+            if (note.password) {
+                currentNoteIndex = index;
+                passwordModal.classList.remove('hidden');
+                passwordModal.setAttribute('data-action', 'download');
+            } else {
+                downloadNoteWithoutUnlock(index);
+            }
+        };
+
+        const downloadNoteWithoutUnlock = (index) => {
+            const notes = JSON.parse(localStorage.getItem('notes')) || [];
+            const note = notes[index];
+            const blob = new Blob([note.content], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `${note.title}.txt`;
+            a.click();
+            URL.revokeObjectURL(url);
+        };
+
+        // Run a note
+        window.unlockNoteForRun = (index) => {
+            const notes = JSON.parse(localStorage.getItem('notes')) || [];
+            const note = notes[index];
+            if (note.password) {
+                currentNoteIndex = index;
+                passwordModal.classList.remove('hidden');
+                passwordModal.setAttribute('data-action', 'run');
+            } else {
+                runNoteWithoutUnlock(index);
+            }
+        };
+
+        const runNoteWithoutUnlock = (index) => {
+            const notes = JSON.parse(localStorage.getItem('notes')) || [];
+            const note = notes[index];
+            const newWindow = window.open();
+            newWindow.document.write(note.content);
+            newWindow.document.close();
+        };
+
+        // Analyze a note
+        window.unlockNoteForAnalyze = (index) => {
+            const notes = JSON.parse(localStorage.getItem('notes')) || [];
+            const note = notes[index];
+            if (note.password) {
+                currentNoteIndex = index;
+                passwordModal.classList.remove('hidden');
+                passwordModal.setAttribute('data-action', 'analyze');
+            } else {
+                analyzeNoteWithoutUnlock(index);
+            }
+        };
+
+        const analyzeNoteWithoutUnlock = (index) => {
+            const notes = JSON.parse(localStorage.getItem('notes')) || [];
+            const note = notes[index];
+            const wordCount = note.content.split(/\s+/).length;
+            const wordFrequency = {};
+            note.content.split(/\s+/).forEach(word => {
+                wordFrequency[word] = (wordFrequency[word] || 0) + 1;
+            });
+            alert(`Word Count: ${wordCount}\nWord Frequency: ${JSON.stringify(wordFrequency, null, 2)}`);
+        };
+
+        // Unlock note for viewing/editing
+        window.unlockNote = (index) => {
+            currentNoteIndex = index;
+            passwordModal.classList.remove('hidden');
+            passwordModal.setAttribute('data-action', 'unlock');
+        };
+
+        // Lock note
+        window.lockNoteOption = (index) => {
+            const notes = JSON.parse(localStorage.getItem('notes')) || [];
+            const note = notes[index];
+            note.password = prompt('Enter a password to lock this note:');
+            saveNotes(notes);
+            loadNotes();
+        };
+
+        // Submit password
+        submitPasswordBtn.addEventListener('click', () => {
+            const notes = JSON.parse(localStorage.getItem('notes')) || [];
+            const note = notes[currentNoteIndex];
+            if (enterPassword.value === note.password) {
+                note.password = null;
+                saveNotes(notes);
+                loadNotes();
+                passwordModal.classList.add('hidden');
+
+                const action = passwordModal.getAttribute('data-action');
+                switch (action) {
+                    case 'edit':
+                        editNoteWithoutUnlock(currentNoteIndex);
+                        break;
+                    case 'delete':
+                        deleteNoteWithoutUnlock(currentNoteIndex);
+                        break;
+                    case 'download':
+                        downloadNoteWithoutUnlock(currentNoteIndex);
+                        break;
+                    case 'run':
+                        runNoteWithoutUnlock(currentNoteIndex);
+                        break;
+                    case 'analyze':
+                        analyzeNoteWithoutUnlock(currentNoteIndex);
+                        break;
+                    default:
+                        break;
+                }
+            } else {
+                alert('Incorrect password');
+            }
+        });
+
+        // Cancel password
+        cancelPasswordBtn.addEventListener('click', () => {
+            passwordModal.classList.add('hidden');
+        });
+
+        // Open GitHub modal
+        window.openGithubModal = (index) => {
+            currentNoteIndex = index;
+            const settings = JSON.parse(localStorage.getItem('githubSettings')) || {};
+            githubUsername.value = settings.username || '';
+            githubRepo.value = settings.repo || '';
+            githubToken.value = settings.token || '';
+            githubModal.classList.remove('hidden');
+        };
+
+        // Upload to GitHub
+        uploadToGithubBtn.addEventListener('click', async () => {
+            const username = githubUsername.value;
+            const repo = githubRepo.value;
+            const token = githubToken.value;
+            const notes = JSON.parse(localStorage.getItem('notes')) || [];
+            const note = notes[currentNoteIndex];
+
+            if (username && repo && token) {
+                const content = btoa(note.content); // Base64 encode the content
+                const path = `${note.title.replace(/\s+/g, '_')}.txt`;
+
+                try {
+                    const response = await fetch(`https://api.github.com/repos/${username}/${repo}/contents/${path}`, {
+                        method: 'PUT',
+                        headers: {
+                            'Authorization': `token ${token}`,
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            message: `Add note: ${note.title}`,
+                            content: content
+                        })
+                    });
+
+                    if (response.ok) {
+                        alert('Note uploaded to GitHub successfully!');
+                        githubModal.classList.add('hidden');
+                    } else {
+                        const errorData = await response.json();
+                        alert(`Error: ${errorData.message}`);
+                    }
+                } catch (error) {
+                    alert(`Error: ${error.message}`);
+                }
+            } else {
+                alert('Please fill in all GitHub details.');
+            }
+        });
+
+        // Cancel GitHub upload
+        cancelGithubBtn.addEventListener('click', () => {
+            githubModal.classList.add('hidden');
+        });
+
+        // Open GitHub settings modal
+        githubSettingsBtn.addEventListener('click', () => {
+            const settings = JSON.parse(localStorage.getItem('githubSettings')) || {};
+            settingsGithubUsername.value = settings.username || '';
+            settingsGithubRepo.value = settings.repo || '';
+            settingsGithubToken.value = settings.token || '';
+            githubSettingsModal.classList.remove('hidden');
+        });
+
+        // Save GitHub settings
+        saveGithubSettingsBtn.addEventListener('click', () => {
+            const settings = {
+                username: settingsGithubUsername.value,
+                repo: settingsGithubRepo.value,
+                token: settingsGithubToken.value
+            };
+            localStorage.setItem('githubSettings', JSON.stringify(settings));
+            githubSettingsModal.classList.add('hidden');
+        });
+
+        // Cancel GitHub settings
+        cancelGithubSettingsBtn.addEventListener('click', () => {
+            githubSettingsModal.classList.add('hidden');
+        });
+
+        // Initial load
+        loadNotes();
+    });
+</script>
+    <script src="script.js"></script>
+    <script src="app.js"></script>
+    <script src="desk.js"></script>
+</body>
+</html>
