@@ -1,541 +1,1002 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="hi">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
     <title>Sameer website developer</title>
-    <link rel="stylesheet" href="styles/landing.css">
-    <link rel="stylesheet" href="styles/animation.css">
-    <link rel="stylesheet" href="styles/about.css">
-    <link rel="stylesheet" href="styles/skills.css">
-    <link rel="stylesheet" href="styles/timeline.css">
-    <link rel="stylesheet" href="styles/connect.css">
-    <link rel="stylesheet" href="styles/projects/projects.css">
-    <link rel="stylesheet" href="styles.css">
-    
-    <link rel="icon" type="image/jpg" href="favicon.jpg">
-    <link rel="shortcut icon" href="favicon.jpg">
-    
+    <meta name="description" content="school1129, बिहार के स्कूलों को डिजिटल बनाएं हमारे एडवांस्ड, निःशुल्क स्कूल मैनेजमेंट ERP सॉफ्टवेयर से। पाएं AI सपोर्ट, स्किल कॉम्पिटिशन, कम्युनिटी और कस्टम डेवलपमेंट।">
+    <meta name="keywords" content="school, Free School ERP Bihar, School Management System Bihar, Digital School Bihar, School Software Free, Bihar Education, School Community Bihar, AI School Support, Custom School App, Online Fees Payment, Student Management">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Tiro+Devanagari+Hindi:wght@400&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <style>
-        html {
-            scroll-behavior: smooth;
-            scrollbar-width: none;
-            /* Firefox */
+        /* --- Global Styles & Resets --- */
+        :root {
+            --primary-color: #0056b3; /* Deep Blue */
+            --secondary-color: #007bff; /* Bright Blue */
+            --accent-color: #ffc107; /* Yellow Accent */
+            --success-color: #28a745;
+            --danger-color: #dc3545;
+            --light-bg: #f8f9fa;
+            --white-bg: #ffffff;
+            --dark-text: #343a40;
+            --light-text: #ffffff;
+            --grey-text: #6c757d;
+            --border-color: #dee2e6;
+            --navbar-height: 70px;
+            --font-primary: 'Poppins', sans-serif;
+            --font-hindi: 'Tiro Devanagari Hindi', serif;
+            --box-shadow-light: 0 5px 15px rgba(0, 0, 0, 0.08);
+            --box-shadow-medium: 0 8px 25px rgba(0, 0, 0, 0.1);
         }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; font-size: 16px; }
+        body {
+            font-family: var(--font-primary);
+            color: var(--dark-text);
+            line-height: 1.7;
+            background-color: var(--light-bg);
+            overflow-x: hidden;
+            position: relative; /* For preloader */
+        }
+
+        /* --- Preloader --- */
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--white-bg);
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
+            opacity: 1;
+            visibility: visible;
+        }
+        #preloader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid var(--border-color);
+            border-top-color: var(--secondary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        h1, h2, h3, h4, h5, h6 { font-family: var(--font-primary); font-weight: 600; margin-bottom: 1rem; color: var(--primary-color); }
+        h1 { font-size: 2.8rem; line-height: 1.2; }
+        h2 { font-size: 2.2rem; }
+        h3 { font-size: 1.8rem; }
+        p { margin-bottom: 1rem; color: var(--grey-text); font-size: 1rem; }
+        .hindi-text { font-family: var(--font-hindi); font-size: 1.1rem; }
+        a { color: var(--secondary-color); text-decoration: none; transition: color 0.3s ease; }
+        a:hover { color: var(--primary-color); }
+        .container { width: 90%; max-width: 1200px; margin: 0 auto; padding: 0 15px; }
+        section { padding: 80px 0; overflow: hidden; position: relative; }
+        section:nth-of-type(even) { background-color: var(--white-bg); }
+        img { max-width: 100%; height: auto; display: block; border-radius: 8px; }
+        .btn { display: inline-block; padding: 12px 30px; font-size: 1rem; font-weight: 600; text-align: center; border: none; border-radius: 50px; cursor: pointer; transition: all 0.3s ease; text-transform: uppercase; letter-spacing: 0.5px; position: relative; overflow: hidden; z-index: 1; }
+        .btn .spinner-icon { display: none; margin-left: 8px; font-size: 0.9em; animation: spin 1s linear infinite; }
+        .btn.loading .btn-text { opacity: 0.7; }
+        .btn.loading .spinner-icon { display: inline-block; }
+        .btn-primary { background-color: var(--secondary-color); color: var(--light-text); box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3); }
+        .btn-primary:hover { background-color: var(--primary-color); transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0, 86, 179, 0.4); }
+        .btn-secondary { background-color: transparent; color: var(--secondary-color); border: 2px solid var(--secondary-color); }
+        .btn-secondary:hover { background-color: var(--secondary-color); color: var(--light-text); }
+        .section-title { text-align: center; margin-bottom: 60px; position: relative; }
+        .section-title h2 { font-size: 2.5rem; margin-bottom: 10px; color: var(--primary-color); }
+        .section-title p { font-size: 1.1rem; color: var(--grey-text); max-width: 700px; margin: 0 auto; }
+        .section-title::after { content: ''; display: block; width: 70px; height: 4px; background: linear-gradient(90deg, var(--secondary-color), var(--primary-color)); margin: 20px auto 0; border-radius: 2px; }
+
+        /* --- Animations --- */
+        .animate-on-scroll { opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+        .animate-on-scroll.visible { opacity: 1; transform: translateY(0); }
+
+        /* --- Header & Navigation --- */
+        #main-header { background-color: rgba(255, 255, 255, 0.95); box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); position: fixed; width: 100%; top: 0; left: 0; z-index: 1000; height: var(--navbar-height); transition: background-color 0.3s ease, box-shadow 0.3s ease; }
+        #main-header.scrolled { background-color: var(--white-bg); box-shadow: var(--box-shadow-medium); }
+        #main-header .container { display: flex; justify-content: space-between; align-items: center; height: 100%; }
+        #main-header .logo { font-size: 1.8rem; font-weight: 700; color: var(--primary-color); display: flex; align-items: center; }
+        #main-header .logo i { color: var(--secondary-color); margin-right: 8px; font-size: 1.6rem; }
+        #main-nav ul { list-style: none; display: flex; }
+        #main-nav ul li { margin-left: 30px; }
+        #main-nav ul li a { color: var(--dark-text); font-weight: 600; font-size: 0.95rem; padding-bottom: 5px; position: relative; text-transform: uppercase; transition: color 0.3s ease; }
+        #main-nav ul li a::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 2px; background-color: var(--secondary-color); transition: width 0.3s ease; }
+        #main-nav ul li a:hover::after, #main-nav ul li a.active::after { width: 100%; }
+        #main-nav ul li a:hover, #main-nav ul li a.active { color: var(--primary-color); }
+        #mobile-menu-toggle { display: none; font-size: 1.8rem; color: var(--primary-color); cursor: pointer; background: none; border: none; z-index: 1001; }
+
+        /* --- Hero Section --- */
+        #hero { background: linear-gradient(rgba(0, 86, 179, 0.75), rgba(0, 123, 255, 0.75)), url('https://via.placeholder.com/1920x1080.png?text=Bihar+School+Campus+V2') no-repeat center center/cover; color: var(--light-text); height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; position: relative; padding-top: var(--navbar-height); }
+        #hero::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.1); z-index: 1; }
+        #hero .hero-content { max-width: 850px; z-index: 2; animation: fadeInUp 1s ease-out; }
+        #hero h1 { font-size: 3.5rem; margin-bottom: 1.5rem; color: var(--light-text); font-weight: 700; text-shadow: 2px 2px 8px rgba(0,0,0,0.4); }
+        #hero h1 .highlight { color: var(--accent-color); }
+        #hero p { font-size: 1.3rem; margin-bottom: 2.5rem; color: rgba(255, 255, 255, 0.95); font-weight: 300; }
+        #hero .cta-buttons .btn { margin: 0 10px; padding: 15px 35px; font-size: 1.1rem; }
+        #hero .btn-accent { background-color: var(--accent-color); color: var(--dark-text); box-shadow: 0 4px 15px rgba(255, 193, 7, 0.4); }
+        #hero .btn-accent:hover { background-color: #e0a800; transform: translateY(-3px); box-shadow: 0 6px 20px rgba(224, 168, 0, 0.5); }
+
+        /* --- About / Mission Section --- */
+        #about .about-content { display: flex; align-items: center; gap: 60px; }
+        #about .about-text { flex: 1.1; }
+        #about .about-image { flex: 0.9; text-align: center; }
+        #about .about-image img { max-width: 480px; box-shadow: var(--box-shadow-medium); transform: perspective(1000px) rotateY(-5deg); transition: transform 0.5s ease; }
+         #about .about-image:hover img { transform: perspective(1000px) rotateY(0deg); }
+        #about .about-text h3 { color: var(--primary-color); margin-bottom: 15px; font-size: 1.6rem; }
+
+        /* --- How It Works Section --- */
+        #how-it-works { background-color: var(--white-bg); }
+        .process-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-top: 40px; }
+        .step-card { text-align: center; padding: 30px 20px; border: 1px solid var(--border-color); border-radius: 10px; background-color: var(--white-bg); transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .step-card:hover { transform: translateY(-8px); box-shadow: var(--box-shadow-medium); }
+        .step-card .step-number { display: inline-block; width: 50px; height: 50px; line-height: 50px; border-radius: 50%; background: linear-gradient(135deg, var(--secondary-color), var(--primary-color)); color: var(--light-text); font-size: 1.5rem; font-weight: 700; margin-bottom: 20px; }
+        .step-card h4 { font-size: 1.3rem; color: var(--primary-color); margin-bottom: 10px; }
+        .step-card p { font-size: 0.95rem; color: var(--grey-text); }
+
+        /* --- Features Section --- */
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+        .feature-card { background-color: var(--white-bg); padding: 35px 30px; border-radius: 10px; text-align: center; box-shadow: var(--box-shadow-light); transition: transform 0.3s ease, box-shadow 0.3s ease; border-left: 4px solid var(--secondary-color); }
+        .feature-card:hover { transform: translateY(-10px); box-shadow: var(--box-shadow-medium); border-left-color: var(--primary-color); }
+        .feature-card .icon { font-size: 3rem; margin-bottom: 20px; display: inline-block; background: linear-gradient(135deg, var(--secondary-color), var(--primary-color)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .feature-card h3 { font-size: 1.4rem; margin-bottom: 15px; color: var(--primary-color); }
+        .feature-card p { font-size: 0.95rem; color: var(--grey-text); }
+
+        /* --- Statistics/Impact Section --- */
+        #stats { background: linear-gradient(rgba(0, 86, 179, 0.85), rgba(0, 123, 255, 0.85)), url('https://via.placeholder.com/1920x400.png?text=Abstract+Background') no-repeat center center/cover; color: var(--light-text); padding: 60px 0; text-align: center; }
+        #stats h2 { color: var(--light-text); margin-bottom: 40px; }
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; }
+        .stat-item { background: rgba(255, 255, 255, 0.1); padding: 30px 20px; border-radius: 10px; border: 1px solid rgba(255, 255, 255, 0.2); transition: background-color 0.3s ease; }
+        .stat-item:hover { background: rgba(255, 255, 255, 0.2); }
+        .stat-item .stat-icon { font-size: 2.5rem; color: var(--accent-color); margin-bottom: 15px; }
+        .stat-item .stat-number { font-size: 2.8rem; font-weight: 700; color: var(--light-text); display: block; margin-bottom: 5px; }
+        .stat-item .stat-label { font-size: 1rem; color: rgba(255, 255, 255, 0.8); text-transform: uppercase; letter-spacing: 1px; }
+
+        /* --- Services Section --- */
+        #services { background-color: var(--white-bg); }
+        .service-item { display: flex; align-items: flex-start; gap: 30px; margin-bottom: 40px; padding: 30px; background: var(--white-bg); border-radius: 10px; box-shadow: var(--box-shadow-light); transition: transform 0.3s ease, box-shadow 0.3s ease; border-left: 5px solid var(--secondary-color); }
+        .service-item:hover { transform: translateX(5px); box-shadow: var(--box-shadow-medium); }
+        .service-icon { font-size: 2.5rem; color: var(--secondary-color); flex-shrink: 0; width: 60px; text-align: center; margin-top: 5px; }
+        .service-content h3 { margin-top: 0; margin-bottom: 10px; color: var(--primary-color); font-size: 1.5rem;}
+        .service-content p { margin-bottom: 0; color: var(--grey-text); font-size: 0.95rem;}
+
+        /* --- Testimonials Section --- */
+        #testimonials { background-color: var(--light-bg); }
+        .testimonial-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .testimonial-card { background-color: var(--white-bg); padding: 30px; border-radius: 10px; box-shadow: var(--box-shadow-light); position: relative; border-top: 4px solid var(--accent-color); transition: transform 0.3s ease; }
+        .testimonial-card:hover { transform: translateY(-5px); }
+        .testimonial-card .quote-icon { position: absolute; top: -15px; left: 20px; font-size: 2.5rem; color: var(--accent-color); opacity: 0.2; }
+        .testimonial-card p.testimonial-text { font-style: italic; color: var(--grey-text); margin-bottom: 20px; padding-top: 15px; }
+        .testimonial-author { display: flex; align-items: center; }
+        .testimonial-author img { width: 50px; height: 50px; border-radius: 50%; margin-right: 15px; object-fit: cover; }
+        .testimonial-author h4 { font-size: 1.1rem; margin-bottom: 0; color: var(--primary-color); }
+        .testimonial-author span { font-size: 0.9rem; color: var(--grey-text); }
+
+        /* --- Competitions & Community Section --- */
+        #community { background-color: var(--white-bg); }
+        .community-content { display: flex; align-items: center; gap: 50px; }
+        .community-text { flex: 1.2; }
+        .community-image { flex: 0.8; text-align: center; }
+        .community-image img { max-width: 400px; border-radius: 50%; box-shadow: 0 0 30px rgba(0, 123, 255, 0.3); transition: transform 0.5s ease; }
+        .community-image:hover img { transform: scale(1.05); }
+        .community-text h3 { font-size: 1.6rem; margin-bottom: 15px; }
+        .community-text ul { list-style: none; padding-left: 0; margin-top: 20px; }
+        .community-text ul li { margin-bottom: 15px; position: relative; padding-left: 35px; color: var(--grey-text); font-size: 1rem; }
+        .community-text ul li::before { content: '\f00c'; font-family: 'Font Awesome 6 Free'; font-weight: 900; position: absolute; left: 0; top: 4px; color: var(--success-color); font-size: 1.2rem; background-color: #e9f7ec; width: 24px; height: 24px; border-radius: 50%; text-align: center; line-height: 24px; }
+
+        /* --- FAQ Section --- */
+        #faq { background-color: var(--light-bg); }
+        .faq-accordion { max-width: 800px; margin: 0 auto; }
+        .faq-item { background-color: var(--white-bg); margin-bottom: 15px; border-radius: 8px; box-shadow: var(--box-shadow-light); overflow: hidden; }
+        .faq-question { display: flex; justify-content: space-between; align-items: center; padding: 18px 25px; cursor: pointer; background-color: var(--white-bg); border-bottom: 1px solid var(--border-color); transition: background-color 0.3s ease;}
+        .faq-question:hover { background-color: #f1f1f1; }
+        .faq-item.active .faq-question { background-color: #e7f1ff; border-bottom-color: transparent;}
+        .faq-question h4 { margin-bottom: 0; font-size: 1.1rem; font-weight: 600; color: var(--primary-color); }
+        .faq-question .icon { font-size: 1.2rem; color: var(--secondary-color); transition: transform 0.3s ease; }
+        .faq-item.active .faq-question .icon { transform: rotate(180deg); }
+        .faq-answer { padding: 0 25px; max-height: 0; overflow: hidden; transition: max-height 0.5s ease-out, padding 0.5s ease-out; background-color: var(--white-bg);}
+        .faq-item.active .faq-answer { max-height: 300px; /* Adjust as needed */ padding: 20px 25px; border-top: 1px solid var(--border-color);}
+        .faq-answer p { color: var(--grey-text); font-size: 0.95rem; margin-bottom: 0; }
+
+        /* --- Call to Action Section --- */
+        #cta { background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); color: var(--light-text); text-align: center; padding: 70px 0; }
+        #cta h2 { color: var(--light-text); font-size: 2.5rem; margin-bottom: 15px; font-weight: 700; }
+        #cta p { font-size: 1.2rem; margin-bottom: 30px; max-width: 700px; margin-left: auto; margin-right: auto; color: rgba(255, 255, 255, 0.95); font-weight: 300; }
+        #cta .btn { background-color: var(--light-text); color: var(--primary-color); font-weight: 700; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
+        #cta .btn:hover { background-color: var(--accent-color); color: var(--dark-text); transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,0,0,0.3); }
+
+        /* --- Contact Section --- */
+        #contact { background-color: var(--white-bg); padding-bottom: 40px; /* Reduce bottom padding */ }
+        .contact-container { display: flex; gap: 40px; flex-wrap: wrap; }
+        .contact-info { flex: 1; min-width: 280px; }
+        .contact-form-section { flex: 1.5; min-width: 300px; }
+        .contact-info h3, .contact-form-section h3 { margin-bottom: 20px; color: var(--primary-color); font-size: 1.6rem;}
+        .contact-info p { margin-bottom: 25px; line-height: 1.8; color: var(--grey-text); }
+        .contact-info .info-item { display: flex; align-items: center; margin-bottom: 20px; color: var(--dark-text); }
+        .contact-info .info-item i { font-size: 1.4rem; color: var(--secondary-color); margin-right: 15px; width: 30px; text-align: center; }
+        .contact-info .social-links a { color: var(--grey-text); font-size: 1.5rem; margin-right: 15px; transition: color 0.3s ease; }
+        .contact-info .social-links a:hover { color: var(--secondary-color); }
+
+        #registration-form { display: grid; grid-template-columns: 1fr; gap: 20px; }
+         @media (min-width: 768px) {
+             #registration-form.two-columns { grid-template-columns: 1fr 1fr; }
+             #registration-form.two-columns .full-width { grid-column: 1 / -1; }
+         }
+        .form-group { position: relative; }
+        .form-group label { display: block; margin-bottom: 6px; font-weight: 600; color: var(--dark-text); font-size: 0.9rem; }
+        .form-group input, .form-group textarea { width: 100%; padding: 12px 15px; border: 1px solid var(--border-color); border-radius: 5px; font-size: 1rem; font-family: var(--font-primary); transition: border-color 0.3s ease, box-shadow 0.3s ease; background-color: #fff; }
+        .form-group input:focus, .form-group textarea:focus { outline: none; border-color: var(--secondary-color); box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.15); }
+        .form-group textarea { min-height: 120px; resize: vertical; }
+        #form-feedback { margin-top: 15px; padding: 12px 15px; border-radius: 5px; font-size: 0.95rem; text-align: center; display: none; /* Hidden by default */ }
+        #form-feedback.success { background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        #form-feedback.error { background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+
+        /* --- Footer --- */
+        #main-footer { background-color: var(--dark-text); color: rgba(255, 255, 255, 0.7); padding: 60px 0 30px; text-align: center; border-top: 5px solid var(--secondary-color);}
+        .footer-content { margin-bottom: 30px; }
+        .footer-content .logo { font-size: 2rem; font-weight: 700; color: var(--light-text); margin-bottom: 15px; display: inline-block; }
+        .footer-content .logo i { color: var(--secondary-color); margin-right: 10px; }
+        .footer-content p { color: rgba(255, 255, 255, 0.7); max-width: 600px; margin: 0 auto 25px; font-size: 0.95rem; }
+        .footer-social-links a { color: rgba(255, 255, 255, 0.7); font-size: 1.6rem; margin: 0 12px; transition: color 0.3s ease, transform 0.3s ease; display: inline-block; }
+        .footer-social-links a:hover { color: var(--secondary-color); transform: translateY(-3px); }
+        .footer-bottom { border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 25px; margin-top: 30px; font-size: 0.9rem; }
+        .footer-bottom a { color: var(--accent-color); }
+        .footer-bottom a:hover { color: var(--light-text); }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 992px) {
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 2rem; }
+            #hero h1 { font-size: 3rem; }
+            #hero p { font-size: 1.1rem; }
+            .about-content, .community-content { flex-direction: column; text-align: center; gap: 30px;}
+            .about-image, .community-image { margin-top: 30px; order: -1;} /* Image first */
+            .community-content { flex-direction: column-reverse;} /* Image first */
+            .community-text ul li { padding-left: 30px; text-align: left;}
+            .community-text ul li::before { left: 0px; }
+            .testimonial-grid { grid-template-columns: 1fr; } /* Single column testimonials */
+            .stats-grid { grid-template-columns: repeat(2, 1fr); } /* 2 columns stats */
+        }
+
+        @media (max-width: 768px) {
+            html { font-size: 15px; }
+            #main-nav ul { display: none; flex-direction: column; position: absolute; top: var(--navbar-height); left: 0; width: 100%; background-color: white; box-shadow: 0 10px 20px rgba(0,0,0,0.1); padding: 15px 0; animation: slideDown 0.3s ease-out; }
+            #main-nav ul.active { display: flex; }
+            #main-nav ul li { margin: 10px 25px; text-align: center; }
+            #main-nav ul li a { padding: 12px 0; display: block; }
+            #main-nav ul li a::after { left: 50%; transform: translateX(-50%); }
+            #mobile-menu-toggle { display: block; }
+            @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+
+            #hero { min-height: 85vh; padding: 120px 0 60px; }
+            #hero h1 { font-size: 2.6rem; }
+            #hero p { font-size: 1.1rem; margin-bottom: 2rem;}
+            #hero .cta-buttons { display: flex; flex-direction: column; gap: 15px; align-items: center;}
+            #hero .cta-buttons .btn { width: 80%; max-width: 300px; }
+
+            section { padding: 60px 0; }
+            .section-title h2 { font-size: 2.1rem; }
+            .features-grid, .process-steps { grid-template-columns: 1fr; }
+            .service-item { flex-direction: column; align-items: center; text-align: center; gap: 15px; }
+            .service-icon { margin-bottom: 10px; }
+            .contact-container { flex-direction: column; gap: 30px;}
+            .contact-info, .contact-form-section { width: 100%; }
+            .faq-question { padding: 15px 20px; }
+             .faq-question h4 { font-size: 1rem;}
+             .faq-answer { padding: 0 20px;}
+             .faq-item.active .faq-answer { padding: 15px 20px;}
+             .stats-grid { grid-template-columns: 1fr; } /* Single column stats */
+        }
+
+        @media (max-width: 576px) {
+            .container { width: 95%; }
+            h1 { font-size: 2.2rem; }
+            #hero h1 { font-size: 2.4rem; }
+            #main-header .logo { font-size: 1.5rem; }
+            .btn { padding: 10px 25px; font-size: 0.9rem; }
+            #hero .cta-buttons .btn { padding: 12px 30px; font-size: 1rem;}
+            .about-image img { max-width: 300px; }
+            .community-image img { max-width: 250px; }
+            .contact-form-section button { width: 100%; }
+            .section-title h2 { font-size: 1.9rem;}
+             .stat-item .stat-number { font-size: 2.4rem; }
+             .footer-content p { font-size: 0.9rem;}
+             .footer-social-links a { font-size: 1.4rem; margin: 0 8px;}
+        }
+
+        /* --- Keyframe Animations --- */
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes popUp { 0% { transform: scale(0.8); opacity: 0; } 70% { transform: scale(1.05); opacity: 1; } 100% { transform: scale(1); opacity: 1; } }
+        @keyframes zoomIn { from { opacity: 0; transform: scale(0.8); } to { opacity: 1; transform: scale(1); } }
+
     </style>
 </head>
-
 <body>
-    <div class="snapper">
 
-        <!-- LANDING SECTION -->
-        <div id="particles-js">
-            <!-- particles.js container -->
-            <div class="landingPageContainer">
-                <div>
-                    <span style="color: #21F7C0;">Sameer website developer</span> frome Muzaffarpur 
-                    <div class="LandingSkills">
-                        <section class="nerdy-pen">
-                            <h1 class="nerdy-pen__text">
-                                <span class="txt-rotate">|</span>
-                                <span class="txt-rotate" data-period="1000"
-                                    data-rotate='[ "A Web Developer", "A Linux User", "A Programmer", "Problem Solver" ]'>
-                                </span>
-                                <span class="txt-rotate">|</span>
-                            </h1>
-                        </section>
-                    </div>
-                </div>
-                <div class="bottomTray">
-                    <a href="#2">
-                        <div class="glassTray">
-                            About Me
-                        </div>
-                    </a>
-                    <a href="profile.html">
-                        <div class="glassTray">
-                            my profile 
-                        </div>
-                    </a>
-                    <a href="login page.html">
-                        <div class="glassTray">
-                            login 
-                        </div>
-                    </a>
-                    <a href="message.html">
-                        <div class="glassTray">
-                            contact me
-                        </div>
-                    </a>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Header -->
+    <header id="main-header">
+        <div class="container">
+            <a href="#hero" class="logo">
+                <i class="fas fa-graduation-cap"></i> School1129 ERP Bihar
+            </a>
+            <nav id="main-nav">
+                <button id="mobile-menu-toggle" aria-label="Menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <ul>
+                    <li><a href="#hero" class="active hindi-text">होम</a></li>
+                    <li><a href="#about" class="hindi-text">मिशन</a></li>
+                    <li><a href="#how-it-works" class="hindi-text">कैसे काम करता है</a></li>
+                    <li><a href="#features" class="hindi-text">फीचर्स</a></li>
+                    <li><a href="#services" class="hindi-text">सेवाएं</a></li>
+                    <li><a href="#testimonials" class="hindi-text">प्रशंसापत्र</a></li>
+                    <li><a href="#community" class="hindi-text">कम्युनिटी</a></li>
+                     <li><a href="#faq" class="hindi-text">FAQ</a></li>
+                    <li><a href="#contact" class="hindi-text">संपर्क</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="hero">
+            <div class="hero-content">
+                <h1 class="hindi-text"><span class="highlight">बिहार के स्कूलों</span> को बनाएं आधुनिक - हमारे <span class="highlight">निःशुल्क एवं शक्तिशाली ERP</span> सॉफ्टवेयर के साथ!</h1>
+                <p class="hindi-text">एक संपूर्ण स्कूल मैनेजमेंट समाधान: एडवांस्ड फीचर्स, AI कस्टमर सपोर्ट, स्किल कॉम्पिटिशन, कम्युनिटी बिल्डिंग और भी बहुत कुछ।</p>
+                <div class="cta-buttons">
+                    <a href="/admin.html" class="btn btn-accent hindi-text">निःशुल्क पंजीकरण करें</a>
+                    <a href="#features" class="btn btn-secondary hindi-text">फीचर्स देखें</a>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <div id="2" class="aboutMeSection">
-            <div class="aboutMeSectionIndiv">
-                <div class="hidden aboutMeSectionInner">
-                    <div class="aboutSectionHeading">About Me</div>
+        <!-- About / Mission Section -->
+        <section id="about" class="animate-on-scroll">
+            <div class="container">
+                 <div class="section-title">
+                     <h2 class="hindi-text">हमारा मिशन: हर स्कूल डिजिटल, हर छात्र सफल</h2>
+                     <p class="hindi-text">हमारा दृढ़ विश्वास है कि टेक्नोलॉजी बिहार के हर कोने में शिक्षा की गुणवत्ता को बेहतर बना सकती है। हम स्कूलों को सशक्त बनाने और भविष्य के लिए तैयार करने हेतु प्रतिबद्ध हैं।</p>
+                 </div>
+                <div class="about-content">
+                    <div class="about-text">
+                        <h3 class="hindi-text">सिर्फ एक सॉफ्टवेयर नहीं, एक सम्पूर्ण समाधान</h3>
+                        <p class="hindi-text">
+                            School ERP Bihar केवल एक निःशुल्क सॉफ्टवेयर नहीं है, यह बिहार की शिक्षा प्रणाली में सकारात्मक बदलाव लाने का एक आंदोलन है। हम स्कूलों को प्रशासनिक कार्यों से मुक्त करके शिक्षकों को शिक्षण पर अधिक ध्यान केंद्रित करने में मदद करते हैं, जिससे छात्रों का समग्र विकास हो सके।
+                        </p>
+                         <p class="hindi-text">
+                            हमारा यूजर-फ्रेंडली इंटरफ़ेस, व्यापक फीचर्स और समर्पित सपोर्ट सिस्टम यह सुनिश्चित करता है कि कोई भी स्कूल, चाहे वह कितना भी छोटा या दूर क्यों न हो, आसानी से डिजिटल बन सके।
+                        </p>
+                        <a href="#how-it-works" class="btn btn-primary hindi-text" style="margin-top: 15px;">जानें कैसे शुरू करें</a>
+                    </div>
+                    <div class="about-image">
+                        <img src="https://via.placeholder.com/480x380.png?text=Empowering+Bihar+Schools" alt="Digital Education in Bihar - Empowering Schools">
+                    </div>
                 </div>
-                <div class="aboutInfoContainer">
-                    <div class="hidden2 aboutMeInfo">
-                        <h1>
-                            I'm  web developer and Linux user
-                        </h1>
-                        <!-- introduction of a web developer -->
-                        <p>
-                            I am a  web developer and Linux user. I am a <b style="color:#21f7c0">I am a html CSS and JavaScript php website developer</b>
-                            with a passion for learning and problem solving. I have a strong background in
-                            Computer Science and I am currently in my final year .
+            </div>
+        </section>
+
+        <!-- How It Works Section -->
+        <section id="how-it-works" class="animate-on-scroll">
+            <div class="container">
+                <div class="section-title">
+                    <h2 class="hindi-text">शुरू करना है बेहद आसान!</h2>
+                    <p class="hindi-text">केवल 3 सरल चरणों में अपने स्कूल को हमारे निःशुल्क ERP से जोड़ें।</p>
+                </div>
+                <div class="process-steps">
+                    <div class="step-card animate-on-scroll" style="transition-delay: 0.1s;">
+                        <div class="step-number">1</div>
+                        <h4 class="hindi-text">पंजीकरण करें</h4>
+                        <p class="hindi-text">नीचे दिए गए संपर्क फ़ॉर्म को भरें या हमसे सीधे संपर्क करें। यह बिल्कुल मुफ़्त है!</p>
+                    </div>
+                    <div class="step-card animate-on-scroll" style="transition-delay: 0.2s;">
+                        <div class="step-number">2</div>
+                        <h4 class="hindi-text">सेटअप और ट्रेनिंग</h4>
+                        <p class="hindi-text">हमारी टीम आपके स्कूल के लिए ERP सेटअप करेगी और आपके स्टाफ को पूरी ट्रेनिंग देगी।</p>
+                    </div>
+                    <div class="step-card animate-on-scroll" style="transition-delay: 0.3s;">
+                        <div class="step-number">3</div>
+                        <h4 class="hindi-text">डिजिटल बनें</h4>
+                        <p class="hindi-text">अब आप तैयार हैं! अपने स्कूल के कार्यों को डिजिटल रूप से प्रबंधित करें और अंतर देखें।</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ERP Features Section -->
+        <section id="features">
+            <div class="container">
+                <div class="section-title">
+                    <h2 class="hindi-text">ERP सॉफ्टवेयर की मुख्य विशेषताएं</h2>
+                    <p class="hindi-text">आपके स्कूल प्रबंधन को आसान, कुशल और प्रभावी बनाने के लिए डिज़ाइन किए गए शक्तिशाली मॉड्यूल्स।</p>
+                </div>
+                <div class="features-grid">
+                    <div class="feature-card animate-on-scroll"><div class="icon"><i class="fas fa-user-graduate"></i></div><h3 class="hindi-text">छात्र प्रबंधन</h3><p class="hindi-text">एडमिशन से लेकर एलुमनी तक, छात्र रिकॉर्ड, प्रोफाइल, और प्रगति ट्रैक करें।</p></div>
+                    <div class="feature-card animate-on-scroll" style="transition-delay: 0.1s;"><div class="icon"><i class="fas fa-chalkboard-teacher"></i></div><h3 class="hindi-text">शिक्षक एवं स्टाफ</h3><p class="hindi-text">स्टाफ प्रोफाइल, सैलरी, लीव मैनेजमेंट और परफॉरमेंस ट्रैकिंग।</p></div>
+                    <div class="feature-card animate-on-scroll" style="transition-delay: 0.2s;"><div class="icon"><i class="fas fa-calendar-alt"></i></div><h3 class="hindi-text">एकेडमिक मैनेजमेंट</h3><p class="hindi-text">क्लासेस, सेक्शंस, सब्जेक्ट्स, टाइमटेबल और सिलेबस प्रबंधन।</p></div>
+                    <div class="feature-card animate-on-scroll" style="transition-delay: 0.3s;"><div class="icon"><i class="fas fa-money-check-alt"></i></div><h3 class="hindi-text">फीस प्रबंधन</h3><p class="hindi-text">ऑनलाइन/ऑफलाइन फीस कलेक्शन, ड्यू रिमाइंडर, डिस्काउंट और रिपोर्टिंग।</p></div>
+                    <div class="feature-card animate-on-scroll" style="transition-delay: 0.4s;"><div class="icon"><i class="fas fa-clipboard-list"></i></div><h3 class="hindi-text">परीक्षा एवं परिणाम</h3><p class="hindi-text">एग्जाम शेड्यूल, मार्क्स एंट्री, ग्रेडिंग सिस्टम और ऑनलाइन रिपोर्ट कार्ड।</p></div>
+                    <div class="feature-card animate-on-scroll" style="transition-delay: 0.5s;"><div class="icon"><i class="fas fa-user-check"></i></div><h3 class="hindi-text">उपस्थिति (Attendance)</h3><p class="hindi-text">डिजिटल अटेंडेंस (मैनुअल/बायोमेट्रिक), SMS अलर्ट्स और रिपोर्ट्स।</p></div>
+                    <div class="feature-card animate-on-scroll" style="transition-delay: 0.6s;"><div class="icon"><i class="fas fa-comments"></i></div><h3 class="hindi-text">संचार (Communication)</h3><p class="hindi-text">SMS, ईमेल, ऐप नोटिफिकेशन द्वारा पेरेंट्स, टीचर्स और स्टूडेंट्स से संवाद।</p></div>
+                    <div class="feature-card animate-on-scroll" style="transition-delay: 0.7s;"><div class="icon"><i class="fas fa-bus-alt"></i></div><h3 class="hindi-text">परिवहन (Transport)</h3><p class="hindi-text">रूट मैनेजमेंट, व्हीकल ट्रैकिंग, ट्रांसपोर्ट फीस और अलर्ट्स।</p></div>
+                    <div class="feature-card animate-on-scroll" style="transition-delay: 0.8s;"><div class="icon"><i class="fas fa-book"></i></div><h3 class="hindi-text">लाइब्रेरी मैनेजमेंट</h3><p class="hindi-text">किताबें मैनेज करें, इशू/रिटर्न ट्रैक करें और फाइन कैलकुलेट करें।</p></div>
+                     <div class="feature-card animate-on-scroll" style="transition-delay: 0.9s;"><div class="icon"><i class="fas fa-chart-pie"></i></div><h3 class="hindi-text">रिपोर्ट्स और एनालिटिक्स</h3><p class="hindi-text">विभिन्न मॉड्यूल्स की विस्तृत रिपोर्ट्स और स्कूल प्रदर्शन का विश्लेषण।</p></div>
+                     <div class="feature-card animate-on-scroll" style="transition-delay: 1.0s;"><div class="icon"><i class="fas fa-mobile-alt"></i></div><h3 class="hindi-text">मोबाइल ऐप</h3><p class="hindi-text">पेरेंट्स, टीचर्स और मैनेजमेंट के लिए समर्पित मोबाइल ऐप्स।</p></div>
+                      <div class="feature-card animate-on-scroll" style="transition-delay: 1.1s;"><div class="icon"><i class="fas fa-shield-alt"></i></div><h3 class="hindi-text">सुरक्षा और बैकअप</h3><p class="hindi-text">डेटा सुरक्षा, रोल-आधारित एक्सेस और नियमित ऑटोमैटिक बैकअप।</p></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Statistics/Impact Section -->
+        <section id="stats" class="animate-on-scroll">
+            <div class="container">
+                <h2 class="hindi-text">बिहार में हमारा प्रभाव (जल्द आ रहा है!)</h2>
+                <div class="stats-grid">
+                    <div class="stat-item animate-on-scroll" style="transition-delay: 0.1s;">
+                        <div class="stat-icon"><i class="fas fa-school"></i></div>
+                        <span class="stat-number" data-target="46">0</span> 46
+                        <span class="stat-label hindi-text">स्कूल जुड़े</span>
+                    </div>
+                    <div class="stat-item animate-on-scroll" style="transition-delay: 0.2s;">
+                         <div class="stat-icon"><i class="fas fa-users"></i></div>
+                        <span class="stat-number" data-target="8947">0</span> 8947
+                        <span class="stat-label hindi-text">छात्र लाभान्वित</span>
+                    </div>
+                    <div class="stat-item animate-on-scroll" style="transition-delay: 0.3s;">
+                         <div class="stat-icon"><i class="fas fa-hourglass-half"></i></div>
+                        <span class="stat-number" data-target="2100">0</span> 2100
+                        <span class="stat-label hindi-text">घंटों की बचत</span>
+                    </div>
+                     <div class="stat-item animate-on-scroll" style="transition-delay: 0.4s;">
+                         <div class="stat-icon"><i class="fas fa-trophy"></i></div>
+                        <span class="stat-number" data-target="13">0</span> 13
+                        <span class="stat-label hindi-text">कॉम्पिटिशन आयोजित</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Additional Services Section -->
+        <section id="services" class="animate-on-scroll">
+            <div class="container">
+                 <div class="section-title">
+                     <h2 class="hindi-text">हमारी अतिरिक्त सेवाएं</h2>
+                     <p class="hindi-text">हम सिर्फ ERP सॉफ्टवेयर ही नहीं, बल्कि आपकी डिजिटल यात्रा को सफल बनाने के लिए और भी बहुत कुछ प्रदान करते हैं।</p>
+                 </div>
+                 <div class="services-container">
+                    <div class="service-item animate-on-scroll" style="transition-delay: 0.1s;">
+                        <div class="service-icon"><i class="fas fa-drafting-compass"></i></div>
+                        <div class="service-content">
+                            <h3 class="hindi-text">कस्टम ऐप और वेबसाइट डेवलपमेंट</h3>
+                            <p class="hindi-text">स्कूल की विशेष ज़रूरतों और ब्रांडिंग के अनुरूप कस्टम-निर्मित मोबाइल ऐप्स और आकर्षक वेबसाइट्स।</p>
+                        </div>
+                    </div>
+                    <div class="service-item animate-on-scroll" style="transition-delay: 0.2s;">
+                         <div class="service-icon"><i class="fas fa-robot"></i> <i class="fas fa-headset"></i></div>
+                         <div class="service-content">
+                             <h3 class="hindi-text">AI पावर्ड + मानव सपोर्ट</h3>
+                             <p class="hindi-text">त्वरित समाधान के लिए AI चैटबॉट और जटिल समस्याओं के लिए हमारी विशेषज्ञ सपोर्ट टीम - हमेशा आपकी सेवा में।</p>
+                        </div>
+                    </div>
+                     <div class="service-item animate-on-scroll" style="transition-delay: 0.3s;">
+                         <div class="service-icon"><i class="fas fa-book-open"></i></div>
+                         <div class="service-content">
+                             <h3 class="hindi-text">कम्प्लीट डॉक्यूमेंटेशन और ट्रेनिंग</h3>
+                             <p class="hindi-text">विस्तृत यूज़र मैन्युअल, वीडियो ट्यूटोरियल, और नियमित ऑनलाइन/ऑफलाइन ट्रेनिंग सेशन ताकि आप सॉफ्टवेयर का पूरा लाभ उठा सकें।</p>
+                        </div>
+                    </div>
+                    <div class="service-item animate-on-scroll" style="transition-delay: 0.4s;">
+                         <div class="service-icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                         <div class="service-content">
+                             <h3 class="hindi-text">डेटा माइग्रेशन सहायता</h3>
+                             <p class="hindi-text">आपके मौजूदा सिस्टम से हमारे ERP में डेटा को सुरक्षित और आसानी से माइग्रेट करने में हम आपकी मदद करेंगे।</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+         <!-- Testimonials Section -->
+        <section id="testimonials" class="animate-on-scroll">
+            <div class="container">
+                <div class="section-title">
+                    <h2 class="hindi-text">हमारे सहयोगी स्कूलों की राय</h2>
+                    <p class="hindi-text">जानें बिहार के अन्य स्कूल हमारे निःशुल्क ERP सॉफ्टवेयर के बारे में क्या कहते हैं।</p>
+                </div>
+                <div class="testimonial-grid">
+                    <!-- Testimonial 1 -->
+                    <div class="testimonial-card animate-on-scroll" style="transition-delay: 0.1s;">
+                        <i class="fas fa-quote-left quote-icon"></i>
+                        <p class="testimonial-text hindi-text">"यह ERP हमारे स्कूल के लिए वरदान साबित हुआ है! फीस कलेक्शन और रिपोर्टिंग का काम बहुत आसान हो गया है। टीम का सपोर्ट भी बेहतरीन है।"</p>
+                        <div class="testimonial-author">
+                            <img src="https://via.placeholder.com/50x50.png?text=P" alt="Principal">
+                            <div>
+                                <h4 class="hindi-text">श्री. रमेश कुमार</h4>
+                                <span class="hindi-text">प्रिंसिपल, [स्कूल का नाम], पटना</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Testimonial 2 -->
+                    <div class="testimonial-card animate-on-scroll" style="transition-delay: 0.2s;">
+                         <i class="fas fa-quote-left quote-icon"></i>
+                        <p class="testimonial-text hindi-text">"पहले टाइमटेबल बनाने में घंटों लगते थे, अब मिनटों में हो जाता है। छात्र और अभिभावक भी ऑनलाइन रिजल्ट और अटेंडेंस देखकर खुश हैं। धन्यवाद!"</p>
+                        <div class="testimonial-author">
+                             <img src="https://via.placeholder.com/50x50.png?text=T" alt="Teacher">
+                             <div>
+                                <h4 class="hindi-text">श्रीमती. अनीता सिंह</h4>
+                                <span class="hindi-text">शिक्षक, [स्कूल का नाम], मुजफ्फरपुर</span>
+                             </div>
+                        </div>
+                    </div>
+                     <!-- Testimonial 3 (Optional) -->
+                    <div class="testimonial-card animate-on-scroll" style="transition-delay: 0.3s;">
+                         <i class="fas fa-quote-left quote-icon"></i>
+                        <p class="testimonial-text hindi-text">"निःशुल्क होने के बावजूद, इस सॉफ्टवेयर में फीचर्स की कोई कमी नहीं है। कस्टम ऐप बनवाने की सुविधा भी बहुत अच्छी है।"</p>
+                        <div class="testimonial-author">
+                             <img src="https://via.placeholder.com/50x50.png?text=M" alt="Management">
+                             <div>
+                                <h4 class="hindi-text">श्री. विकास वर्मा</h4>
+                                <span class="hindi-text">मैनेजमेंट, [स्कूल का नाम], गया</span>
+                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Competitions & Community Section -->
+        <section id="community" class="animate-on-scroll">
+            <div class="container">
+                 <div class="section-title">
+                     <h2 class="hindi-text">स्किल कॉम्पिटिशन और स्कूल कम्युनिटी</h2>
+                     <p class="hindi-text">हम सिर्फ सॉफ्टवेयर नहीं, बल्कि बिहार के स्कूलों का एक बढ़ता हुआ, सहयोगी नेटवर्क बना रहे हैं।</p>
+                 </div>
+                <div class="community-content">
+                     <div class="community-image">
+                        <img src="https://via.placeholder.com/400x400.png?text=Bihar+Schools+United" alt="Bihar School Community Network">
+                    </div>
+                    <div class="community-text">
+                        <h3 class="hindi-text">ज्ञान, प्रतिभा और सहयोग का संगम</h3>
+                        <p class="hindi-text">
+                           हम मानते हैं कि सीखना क्लासरूम तक ही सीमित नहीं रहना चाहिए। हम नियमित रूप से विभिन्न अंतर-विद्यालय कौशल प्रतियोगिताएं (जैसे - विज्ञान प्रदर्शनी, वाद-विवाद, कला, खेल-कूद, कोडिंग चैलेंज) आयोजित करते हैं, जिससे छात्रों को अपनी प्रतिभा दिखाने और एक-दूसरे से सीखने का अवसर मिलता है।
                         </p>
-                        <p>
-                            Apart from Web Developement , I also have interests in Competitive Programming and Data structures . Also, I am a Linux User with good knowledge of photography and I am a good listener.
-                        </p>
-                        <h3 style="color:#21f7c0">My Coding Profiles</h3>
-                        <ul class="ProfileList">
-                            <li><a href="https://www.codechef.com/users/the_mrx18" target="label">Codechef</a></li>
-                            <li><a href="https://github.com/sameer  18" target="label">Github</a></li>
-                            <li><a href="https://auth.geeksforgeeks.org/user/sameer  18/practice/" target="label">GeeksForGeeks</a></li>
-                            <li><a href="https://leetcode.com/sameer  18/" target="label">LeetCode</a></li>
+                        <h3 class="hindi-text">हमारी कम्युनिटी के लाभ:</h3>
+                        <ul>
+                            <li class="hindi-text">शिक्षकों और प्रधानाचार्यों के लिए नेटवर्किंग और अनुभव साझा करने का मंच।</li>
+                            <li class="hindi-text">नवीनतम शैक्षिक तकनीकों और पद्धतियों पर कार्यशालाएं और वेबिनार।</li>
+                            <li class="hindi-text">छात्रों के लिए राज्य-स्तरीय प्रतियोगिताओं में भाग लेने का अवसर।</li>
+                            <li class="hindi-text">शिक्षा में सुधार के लिए सामूहिक विचार-विमर्श और पहल।</li>
                         </ul>
-                        
-
+                        <a href="#contact" class="btn btn-secondary hindi-text" style="margin-top: 20px;">कम्युनिटी का हिस्सा बनें</a>
                     </div>
-                    <div class="aboutImgCont  hidden3">
-                        <img class="aboutImg" src="./assets/me.png" alt="" />
-                    </div>
-
-                </div>
-                <div class=" hidden4 aboutMeSectionInner skillBTN">
-                    <a href="#3">
-                        <button class="hidebtns glassTray">
-                            My Skills
-                        </button>
-                    </a>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <div id="3" class="SkillSection">
-            <div class="SkillSectionIndiv">
-                <div class="skillSectionInner">
-                    <div class="hidden skillSectionHeading">My Skills</div>
+        <!-- FAQ Section -->
+        <section id="faq" class="animate-on-scroll">
+            <div class="container">
+                <div class="section-title">
+                    <h2 class="hindi-text">अक्सर पूछे जाने वाले प्रश्न (FAQ)</h2>
+                    <p class="hindi-text">आपके मन में उठने वाले सामान्य प्रश्नों के उत्तर यहां पाएं।</p>
                 </div>
-                <div class="skillInfoContainer flexrev">
-                    <div class="hidden3 skillInfo">
-                        <h1>
-                            Programming Languages
-                        </h1>
-                        <div class="skillIcons">
-                            <div class="skillbox"><img class="SkillIcon" src="./assets//skills/c.png" alt="wait" />
-                                <div class="SkillName">C </div>
-                            </div>
-                            <div class="skillbox"><img class="SkillIcon" src="./assets//skills/c++.png" alt="wait" />
-                                <div class="SkillName">C++</div>
-                            </div>
+                <div class="faq-accordion">
+                    <!-- FAQ Item 1 -->
+                    <div class="faq-item animate-on-scroll" style="transition-delay: 0.1s;">
+                        <div class="faq-question">
+                            <h4 class="hindi-text">क्या यह ERP सॉफ्टवेयर सचमुच निःशुल्क है? कोई छिपी हुई लागत तो नहीं?</h4>
+                            <i class="fas fa-chevron-down icon"></i>
                         </div>
-                        <h1>
-                            Web Technologies
-                        </h1>
-                        <div class="skillIcons">
-                            <div class="skillbox"><img class="SkillIcon" src="./assets//skills/html.png" alt="wait" />
-                                <div class="SkillName">HTML </div>
-                            </div>
-                            <div class="skillbox"><img class="SkillIcon" src="./assets//skills/css.png" alt="wait" />
-                                <div class="SkillName">CSS </div>
-                            </div>
-                            <div class="skillbox"><img class="SkillIcon" src="./assets//skills/js.png" alt="wait" />
-                                <div class="SkillName">JS </div>
-                            </div>
-                            <div class="skillbox"><img class="SkillIcon" src="./assets//skills/sass.png" alt="wait" />
-                                <div class="SkillName">SASS </div>
-                            </div>
-                        </div>
-                        <h1>
-                            Frameworks
-                        </h1>
-                        <div class="skillIcons">
-                            <div class="skillbox"><img class="SkillIcon" src="./assets//skills/React.png" alt="wait" />
-                                <div class="SkillName">REACT </div>
-                            </div>
-                            <div class="skillbox"><img class="SkillIcon" src="./assets//skills/express.png"
-                                    alt="wait" />
-                                <div class="SkillName">EXPRESS </div>
-                            </div>
-                            <div class="skillbox"><img class="SkillIcon" src="./assets//skills/node.png" alt="wait" />
-                                <div class="SkillName">NODE </div>
-                            </div>
-                            <div class="skillbox"><img class="SkillIcon" src="./assets//skills/next.png" alt="wait" />
-                                <div class="SkillName">NEXT </div>
-                            </div>
-                        </div>
-                        <h1>
-                            Databases
-                        </h1>
-                        <div class="skillIcons">
-                            <div class="skillbox"><img class="SkillIcon" src="./assets//skills/mongo.png" alt="wait" />
-                                <div class="SkillName">MONGO DB</div>
-                            </div>
-                            <div class="skillbox"><img class="SkillIcon" src="./assets//skills/firebase.png"
-                                    alt="wait" />
-                                <div class="SkillName">FIREBASE</div>
-                            </div>
+                        <div class="faq-answer">
+                            <p class="hindi-text">हाँ, हमारा कोर ERP सॉफ्टवेयर बिहार के स्कूलों के लिए पूरी तरह से निःशुल्क है। इसमें कोई सेटअप शुल्क या छिपी हुई लागत नहीं है। हमारा लक्ष्य टेक्नोलॉजी को सभी के लिए सुलभ बनाना है। वैकल्पिक कस्टम सेवाएं (जैसे कस्टम ऐप) अतिरिक्त शुल्क पर उपलब्ध हैं, लेकिन कोर ERP हमेशा मुफ़्त रहेगा।</p>
                         </div>
                     </div>
-                    <div class="skillImgCont">
-                        <img class="skillStaticImage" src="./assets/skill4.png" alt="" />
-                        <div>
-                            <img class="hidden2 skillMovImage" src="./assets/thunder2.png" alt="" />
+                     <!-- FAQ Item 2 -->
+                    <div class="faq-item animate-on-scroll" style="transition-delay: 0.2s;">
+                        <div class="faq-question">
+                            <h4 class="hindi-text">सॉफ्टवेयर का उपयोग करने के लिए क्या तकनीकी ज्ञान आवश्यक है?</h4>
+                            <i class="fas fa-chevron-down icon"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p class="hindi-text">नहीं, हमने सॉफ्टवेयर को बहुत ही यूजर-फ्रेंडली बनाया है। बेसिक कंप्यूटर ज्ञान रखने वाला कोई भी व्यक्ति इसे आसानी से इस्तेमाल कर सकता है। हम सेटअप से लेकर उपयोग तक पूरी ट्रेनिंग और सपोर्ट भी प्रदान करते हैं।</p>
                         </div>
                     </div>
-
-                </div>
-                <div class=" hidden4 expBTN">
-                    <a href="#4">
-                        <button class="hidebtns glassTray">
-                            My Experience
-                        </button>
-                    </a>
+                     <!-- FAQ Item 3 -->
+                    <div class="faq-item animate-on-scroll" style="transition-delay: 0.3s;">
+                        <div class="faq-question">
+                            <h4 class="hindi-text">हमारे स्कूल का डेटा कितना सुरक्षित रहेगा?</h4>
+                            <i class="fas fa-chevron-down icon"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p class="hindi-text">डेटा सुरक्षा हमारी सर्वोच्च प्राथमिकता है। हम उद्योग-मानक सुरक्षा उपायों, एन्क्रिप्शन और नियमित बैकअप का उपयोग करते हैं। आपका डेटा सुरक्षित क्लाउड सर्वर पर संग्रहीत होता है और केवल अधिकृत उपयोगकर्ता ही इसे एक्सेस कर सकते हैं।</p>
+                        </div>
+                    </div>
+                     <!-- FAQ Item 4 -->
+                    <div class="faq-item animate-on-scroll" style="transition-delay: 0.4s;">
+                        <div class="faq-question">
+                            <h4 class="hindi-text">क्या आप हमारे मौजूदा डेटा को इस ERP में ट्रांसफर करने में मदद करेंगे?</h4>
+                            <i class="fas fa-chevron-down icon"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p class="hindi-text">हाँ, हम आपकी ज़रूरतों के आधार पर आपके मौजूदा डेटा (जैसे एक्सेल शीट या अन्य सॉफ्टवेयर से) को हमारे ERP में माइग्रेट करने में सहायता प्रदान करते हैं। इसके लिए हमारी टीम आपसे संपर्क करेगी।</p>
+                        </div>
+                    </div>
+                     <!-- FAQ Item 5 -->
+                    <div class="faq-item animate-on-scroll" style="transition-delay: 0.5s;">
+                        <div class="faq-question">
+                            <h4 class="hindi-text">सपोर्ट कैसे मिलेगा? क्या यह भी मुफ़्त है?</h4>
+                            <i class="fas fa-chevron-down icon"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p class="hindi-text">हाँ, हमारे निःशुल्क ERP उपयोगकर्ताओं के लिए ईमेल, फ़ोन और AI चैटबॉट के माध्यम से बेसिक सपोर्ट पूरी तरह से मुफ़्त है। हम विस्तृत डॉक्यूमेंटेशन और वीडियो ट्यूटोरियल भी प्रदान करते हैं। समर्पित या ऑन-साइट सपोर्ट के लिए अतिरिक्त प्लान उपलब्ध हो सकते हैं।</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <div id="4" class=" timelineSection">
-            <div class="timelineSectionIndiv">
-                <div class="hidden skillSectionInner ">
-                    <div class="skillSectionHeading">My Experience</div>
+        <!-- Call to Action Section -->
+        <section id="cta" class="animate-on-scroll">
+            <div class="container">
+                <h2 class="hindi-text">बिहार की डिजिटल शिक्षा क्रांति में शामिल हों!</h2>
+                <p class="hindi-text">अपने स्कूल को दें टेक्नोलॉजी की शक्ति। आज ही हमारे निःशुल्क, आधुनिक और सुरक्षित School ERP के लिए रजिस्टर करें!</p>
+                <a href="#contact" class="btn btn-lg btn-accent hindi-text">अभी निःशुल्क रजिस्टर करें!</a>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <div class="container">
+                <div class="section-title">
+                    <h2 class="hindi-text">संपर्क करें और रजिस्टर करें</h2>
+                    <p class="hindi-text">हमारे निःशुल्क ERP में रुचि दिखाने या कोई प्रश्न पूछने के लिए नीचे दिया गया फ़ॉर्म भरें। हमारी टीम जल्द ही आपसे संपर्क करेगी।</p>
                 </div>
-                <div class="skillInfoContainer timelineSectionInner">
-                    <div class="hidden2 skillInfo expInfo">
-                        <div class="timeline">
-                            <ul>
-                                <li onmouseenter="f1()" onmouseleave="f0()">
-                                    <span>February 2021 - May 2021</span>
-                                    <div class="content">
-                                        <h3>Vysion Technology</h3>
-                                        <p>
-                                            Contributed in developing web pages for the company's product pages and
-                                            improving the UI of the existing pages using React JS and Saas
-                                        </p>
-                                    </div>
-                                </li>
-                                <li onmouseenter="f2()" onmouseleave="f0()">
-                                    <span>July 2021 - November 2021</span>
-                                    <div class="content">
-                                        <h3>Ideoholics</h3>
-                                        <p>
-                                            Contributed in developing software to manage the Supply chain and Delivery
-                                            network offered by the organization , also mentored and guided the interns
-                                            in the same team .
-                                        </p>
-                                    </div>
-                                </li>
-                                <li onmouseenter="f3()" onmouseleave="f0()">
-                                    <span>June 2022 - August 2022</span>
-                                    <div class="content">
-                                        <h3>Northern Trust Corporation  </h3>
-                                        <p>
-                                            Will updates soon :)
-                                        </p>
-                                    </div>
-                                </li>
-
-                            </ul>
+                <div class="contact-container">
+                    <div class="contact-info animate-on-scroll">
+                        <h3>संपर्क सूत्र</h3>
+                        <p class="hindi-text">हम आपकी सहायता के लिए तत्पर हैं। आप हमसे इन माध्यमों से भी जुड़ सकते हैं:</p>
+                        <div class="info-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span class="hindi-text"> पटना गांधी मैदान, बिहार, भारत</span> 
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-phone-alt"></i>
+                            <a href="tel:+919241981083" class="hindi-text">+91 9241981083</a>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-envelope"></i>
+                            <a href="mailto:mdrahmatali01119@gmail.com" class="hindi-text">mdrahmatali01119@gmail.com</a>
+                        </div>
+                         <div class="info-item">
+                            <i class="fas fa-headset"></i>
+                            <span class="hindi-text">AI सपोर्ट चैट (वेबसाइट पर जल्द उपलब्ध)</span>
+                        </div>
+                        <h4 class="hindi-text" style="margin-top: 30px; margin-bottom: 15px; color: var(--primary-color);">हमसे जुड़ें:</h4>
+                        <div class="social-links">
+                            <a href="#" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                            <a href="#" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                             <a href="#" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
                         </div>
                     </div>
-                    <div class="hidden3 skillImgCont timelineImgCont">
-                        <img class="timelineImage" id="CompanyImg" src="./assets/experience/exp.png" alt="eere" />
-                    </div>
-
-                </div>
-                <div class=" hidden4 prBTN">
-                    <a href="#5">
-                        <button class="hidebtns glassTray">
-                            My Projects
-                        </button>
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <div id="5" class=" timelineSection">
-            <div class="timelineSectionIndiv">
-                <div class="hidden skillSectionInner">
-                    <div class="skillSectionHeading">My Projects</div>
-                </div>
-                <div class="skillInfoContainer flexrev">
-                    <div class="hidden2 projectInfo">
-                        <link
-                            href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto:wght@300&display=swap"
-                            rel="stylesheet">
-
-                        <div class="container">
-                            <div class="card">
-                                <figure class="card__thumb">
-                                    <img src="./assets/projects/chirps.png" alt="Picture by Kyle Cottrell"
-                                        class="card__image">
-                                    <figcaption class="card__caption">
-                                        <h2 class="card__title">Chirps - A Social Media App</h2>
-                                        <p class="card__snippet">A social media platform where you can share  your photos and thoughts , like and comment on others posts and view others profiles . Integrated third party signup / sign-in and used  Firebase and React JS.</p>
-                                        <a href="https://chirps-8f6be.web.app/" target="label" class="card__button">Link</a>
-                                    </figcaption>
-                                </figure>
+                    <div class="contact-form-section animate-on-scroll">
+                        <h3>निःशुल्क पंजीकरण फ़ॉर्म</h3>
+                      
+                        <div id="form-feedback"></div>
+                        <form id="registration-form" class="two-columns">
+                             <div class="form-group">
+                                <label for="schoolName" class="hindi-text">स्कूल का नाम <span style="color: red;">*</span></label>
+                                <input type="text" id="schoolName" name="schoolName" required>
                             </div>
-
-                            <div class="card">
-                                <figure class="card__thumb">
-                                    <img src="./assets/projects/colllegeconnect.png" alt="Picture by Nathan Dumlao"
-                                        class="card__image">
-                                    <figcaption class="card__caption">
-                                        <h2 class="card__title">CollegeConnect - Find your spaces in college</h2>
-                                        <p class="card__snippet">Online platform for juniors and seniors to connect for mentor ship and guidance which has been hampered by online mode of education 
-                                        </p>
-                                        <a href="https://github.com/sameer  18/CollegeConnect#readme" target="label" class="card__button">Link</a>
-                                    </figcaption>
-                                </figure>
+                            <div class="form-group">
+                                <label for="contactPerson" class="hindi-text">संपर्क व्यक्ति का नाम <span style="color: red;">*</span></label>
+                                <input type="text" id="contactPerson" name="contactPerson" required>
                             </div>
-
-                            <div class="card">
-                                <figure class="card__thumb">
-                                    <img src="./assets/projects/coderem.png" alt="Picture by Daniel Lincoln"
-                                        class="card__image">
-                                    <figcaption class="card__caption">
-                                        <h2 class="card__title">CodeRem - Onestop place for cp contests reminder</h2>
-                                        <p class="card__snippet">App that fetches the details of upcoming and ongoing Competitive Programming contests so that programmers can keep track of all contests without checking different pages individually .</p>
-                                        <a href="https://coderem-508f2.web.app/" target="label" class="card__button">Link</a>
-                                    </figcaption>
-                                </figure>
+                             <div class="form-group">
+                                <label for="email" class="hindi-text">ईमेल एड्रेस <span style="color: red;">*</span></label>
+                                <input type="email" id="email" name="email" required>
                             </div>
-
-                            <div class="card">
-                                <figure class="card__thumb">
-                                    <img src="./assets/projects/messmate.png" alt="Picture by Daniel Lincoln"
-                                        class="card__image">
-                                    <figcaption class="card__caption">
-                                        <h2 class="card__title">MessMate - better mess management</h2>
-                                        <p class="card__snippet">App to manage food cooked in college mess and get list of students who wont have meal to minimize food wastage . Participated in Google Solution Challlenge under topic efficient food consumption and minimum wastage with this project ,using MERN Stack </p>
-                                        <a href="https://github.com/sameer  18/MessMate#readme" target="label" class="card__button">Link</a>
-                                    </figcaption>
-                                </figure>
+                             <div class="form-group">
+                                <label for="phone" class="hindi-text">फ़ोन नंबर <span style="color: red;">*</span></label>
+                                <input type="tel" id="phone" name="phone" required pattern="[6-9][0-9]{9}" title="Please enter a valid 10-digit Indian mobile number">
                             </div>
-                        </div>
-                    </div>
-                    <!-- <div class="hidden3"> -->
-                    <!-- <img class="timelineImage" src="./assets/experience/exp.png" alt="" /> -->
-                    <!-- </div> -->
-
-                </div>
-                <div class=" hidden3 prBTN">
-                    <a href="#6">
-                        <button class="hidebtns glassTray">
-                            Contact Me
-                        </button>
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <div id="6" class=" contactSection">
-            <div class="contactIndiv">
-                <div class="hidden connectSectionInner">
-                    <div class="connectSectionHeading">Let's Connect</div>
-                </div>
-                <div class="connectboxContainer">
-                    <div class="hidden2 ContactBox">
-                        <input class="ContactInputContainer" placeholder="Leave Your thoughts" type="text" />
-                        <div class="prBTN">
-                            <a href="#5">
-                                <button class="glassTray">
-                                    Send
+                            <div class="form-group full-width">
+                                <label for="message" class="hindi-text">आपका संदेश या प्रश्न (वैकल्पिक)</label>
+                                <textarea id="message" name="message" rows="4"></textarea>
+                            </div>
+                            <div class="form-group full-width">
+                                <button type="submit" id="submit-button" class="btn btn-primary hindi-text">
+                                    <span class="btn-text">रजिस्टर करें</span>
+                                    <i class="fas fa-spinner spinner-icon"></i>
                                 </button>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="hidden3 skillImgCont connectImgCont">
-                        <img class="timelineImage connectImage" src="./assets/connect.png" alt="" />
-                    </div>
+                            </div>
+                        </form>
 
-                </div>
-                <div class=" hidden4 footerTray">
-                    <!-- <a href="#5">
-                    <button class="glassTray">
-                        My Projects
-                    </button>
-                </a> -->
-                  <div class="social-icons">
-  <a href="#" title="facebook">
-    <i class="fa fa-facebook-square" aria-hidden="true"></i>
-  </a>
-  <a href="#" title="twitter">
-    <i class="fa fa-twitter-square" aria-hidden="true"></i>
-  </a>
-  <a href="#" title="instagram">
-    <i class="fa fa-instagram" aria-hidden="true"></i>
-  </a>
-  <a href="#" title="youtube">
-    <i class="fa fa-youtube-square" aria-hidden="true"></i>
-  </a>
-  <a href="#" title="linkedin">
-    <i class="fa fa-linkedin-square" aria-hidden="true"></i>
-  </a>
-  <a href="#" title="pinterest">
-    <i class="fa fa-pinterest-p" aria-hidden="true"></i>
-  </a>
-  <a href="#" title="camera">
-    <i class="fa fa-camera-retro" aria-hidden="true"></i>
-  </a>
-</div>
                     </div>
-
                 </div>
             </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer id="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <a href="#hero" class="logo">
+                     <i class="fas fa-graduation-cap"></i> School ERP Bihar
+                 </a>
+                 <p class="hindi-text">बिहार के स्कूलों को आधुनिक तकनीक से जोड़कर शिक्षा को बेहतर बनाने के लिए हमारा समर्पण।</p>
+                <div class="footer-social-links">
+                     <a href="#" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                     <a href="#" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                     <a href="#" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                     <a href="#" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                     <a href="#" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                 </div>
+            </div>
+            <div class="footer-bottom hindi-text">
+                &copy; <span id="currentYear"></span> School ERP Bihar. सर्वाधिकार सुरक्षित | डिज़ाइन एवं विकसित <a href="#" target="_blank">DEGITAL EDUCATION SYSTEM</a> 
+                 | <a href="#privacy">गोपनीयता नीति</a> | <a href="#terms">सेवा की शर्तें</a>
+            </div>
         </div>
-    </div>
-    <div class="social-menu">
-        <ul>
-            <li><a href="https://github.com/sanketbodke" target="blank"><i class="fab fa-github"></i></i></a></li>
-            <li><a href="https://www.instagram.com/imsanketbodke/" target="blank"><i class="fab fa-instagram"></i></a></li>
-            <li><a href="https://www.linkedin.com/in/sanket-bodake-995b5b205/" target="blank"><i class="fab fa-linkedin-in"></i></a></li>
-            <li><a href="https://codepen.io/sanketbodke"><i class="fab fa-codepen" target="blank"></i></a></li>
-        </ul>
-    </div>
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script> <!-- stats.js lib -->
-    <script src="http://threejs.org/examples/js/libs/stats.min.js"></script>
-    <script src="./particle.js"></script>
-    <script src="./text.js"></script>
+    </footer>
+
     <script>
-        // window.onscroll = function () { myFunction() };
-        function myFunction() {
-            var elements;
-            var elements2;
-            var elements3;
-            var elements4;
-            var windowHeight;
+        // --- Configuration ---
+        // !! IMPORTANT: Replace this URL with your deployed Google Apps Script Web App URL !!
+        const googleAppsScriptUrl = 'https://script.google.com/macros/s/AKfycby4H7pjWBrQLTI0VnSnIVLu-4g_XgA9F1nKE0-X0_SwDWW5SpXyTgykFYI0qIfOeP5PJg/exec';
 
-            function init() {
-                elements = document.querySelectorAll('.hidden');
-                elements2 = document.querySelectorAll('.hidden2');
-                elements3 = document.querySelectorAll('.hidden3');
-                elements4 = document.querySelectorAll('.hidden4');
-                windowHeight = window.innerHeight;
-            }
+        // --- Preloader ---
+        const preloader = document.getElementById('preloader');
+        window.addEventListener('load', () => {
+            preloader.classList.add('hidden');
+            // Ensure content becomes visible after preloader hides
+             document.body.style.visibility = 'visible';
+             document.body.style.opacity = '1';
+        });
+         // Hide body initially to prevent flash of unstyled content
+        document.body.style.visibility = 'hidden';
+        document.body.style.opacity = '0';
+        document.body.style.transition = 'opacity 0.5s ease-in-out';
 
-            function checkPosition() {
-                for (var i = 0; i < elements.length; i++) {
-                    var element1 = elements[i];
-                    var element2 = elements2[i];
-                    var element3 = elements3[i];
-                    var element4 = elements4[i];
-
-                    var positionFromTop = elements[i].getBoundingClientRect().top;
-                    var positionFromTop2 = elements2[i].getBoundingClientRect().top;
-
-                    if (positionFromTop - windowHeight <= 0) {
-                        element1.classList.add('fade-in-element');
-                        element1.classList.remove('hidden');
-                    }
-                    if (positionFromTop2 - windowHeight <= 0) {
-                        element2.classList.add('fade-in-element2');
-                        element2.classList.remove('hidden2');
-                        element3.classList.add('fade-in-element3');
-                        element3.classList.remove('hidden3');
-                        element4.classList.add('fade-in-element4');
-                        element4.classList.remove('hidden4');
-                    }
+        // --- Simple Scroll Animations ---
+        const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
+        const observerCallback = (entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    // Optional: Unobserve after animation fires once
+                    // observer.unobserve(entry.target);
                 }
+                // Optional: Remove class to re-animate on scroll up
+                // else { entry.target.classList.remove('visible'); }
+            });
+        };
+        const scrollObserver = new IntersectionObserver(observerCallback, observerOptions);
+        const elementsToAnimate = document.querySelectorAll('.animate-on-scroll');
+        elementsToAnimate.forEach(el => scrollObserver.observe(el));
+
+        // --- Navbar Scroll Effect & Active Link Highlighting ---
+        const header = document.getElementById('main-header');
+        const navLinks = document.querySelectorAll('#main-nav ul li a');
+        const sections = document.querySelectorAll('section[id]'); // Use sections with IDs
+        const navbarHeight = header.offsetHeight;
+
+        window.addEventListener('scroll', () => {
+            // Navbar style change
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
             }
 
-            function checkPosition2() {
-                for (var i = 0; i < elements4.length; i++) {
-                    var positionFromTop4 = elements4[i].getBoundingClientRect().top;
-
-                    if (positionFromTo4 - windowHeight <= 0) {
-
-                    }
+            // Active link highlighting
+            let currentSectionId = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - navbarHeight - 60; // Adjusted offset
+                if (window.scrollY >= sectionTop) {
+                    currentSectionId = section.getAttribute('id');
                 }
+            });
+
+             // Special case for top of page (Hero)
+             if (window.scrollY < sections[0].offsetTop - navbarHeight - 60) {
+                 currentSectionId = 'hero';
+             }
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                // Check if the link's href matches the current section ID
+                 if (link.getAttribute('href') === `#${currentSectionId}`) {
+                     link.classList.add('active');
+                 }
+            });
+        });
+
+        // --- Mobile Menu Toggle ---
+        const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+        const mainNavUl = document.querySelector('#main-nav ul');
+        const menuIcon = mobileMenuToggle.querySelector('i');
+
+        mobileMenuToggle.addEventListener('click', () => {
+            mainNavUl.classList.toggle('active');
+            if (mainNavUl.classList.contains('active')) {
+                menuIcon.classList.remove('fa-bars');
+                menuIcon.classList.add('fa-times');
+            } else {
+                menuIcon.classList.remove('fa-times');
+                menuIcon.classList.add('fa-bars');
+            }
+        });
+
+        // Close mobile menu when a link is clicked
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (mainNavUl.classList.contains('active')) {
+                    mainNavUl.classList.remove('active');
+                    menuIcon.classList.remove('fa-times');
+                    menuIcon.classList.add('fa-bars');
+                }
+            });
+        });
+
+        // --- FAQ Accordion ---
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            question.addEventListener('click', () => {
+                const isActive = item.classList.contains('active');
+                // Close all other items
+                // faqItems.forEach(otherItem => otherItem.classList.remove('active'));
+                // Toggle current item
+                if (!isActive) {
+                    item.classList.add('active');
+                } else {
+                     item.classList.remove('active');
+                }
+                 // Optional: Close others when one opens
+                 faqItems.forEach(otherItem => {
+                     if (otherItem !== item) {
+                         otherItem.classList.remove('active');
+                     }
+                 });
+            });
+        });
+
+        // --- Animated Number Counters ---
+        const statNumbers = document.querySelectorAll('.stat-number');
+        const counterObserverOptions = { threshold: 0.5 }; // Trigger when 50% visible
+        let countersAnimated = false; // Flag to ensure animation runs only once
+
+        const counterObserverCallback = (entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !countersAnimated) {
+                    statNumbers.forEach(counter => {
+                        const target = +counter.getAttribute('data-target');
+                        counter.innerText = '0'; // Start from 0
+
+                        const updateCounter = () => {
+                            const current = +counter.innerText;
+                            const increment = target / 150; // Adjust speed (lower number = faster)
+
+                            if (current < target) {
+                                counter.innerText = `${Math.ceil(current + increment)}`;
+                                setTimeout(updateCounter, 15); // Adjust timing
+                            } else {
+                                counter.innerText = target; // Ensure exact target value
+                            }
+                        };
+                        updateCounter();
+                    });
+                    countersAnimated = true; // Set flag after animation starts
+                    // Optional: Stop observing after animation
+                    // entries.forEach(e => observer.unobserve(e.target));
+                }
+            });
+        };
+
+        const counterObserver = new IntersectionObserver(counterObserverCallback, counterObserverOptions);
+        // Observe the container of the stats section
+        const statsSection = document.getElementById('stats');
+        if (statsSection) {
+            counterObserver.observe(statsSection);
+        }
+
+
+        // --- Contact Form Submission to Google Apps Script ---
+        const form = document.getElementById('registration-form');
+        const submitButton = document.getElementById('submit-button');
+        const formFeedback = document.getElementById('form-feedback');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault(); // Prevent default browser submission
+
+            // Basic check if URL is set
+            if (!googleAppsScriptUrl || googleAppsScriptUrl === 'YOUR_WEB_APP_URL_HERE') {
+                showFeedback('error', 'Configuration error: Google Apps Script URL is not set in the script.');
+                return;
             }
 
-            window.addEventListener('scroll', checkPosition);
-            window.addEventListener('scroll', checkPosition2);
-            window.addEventListener('resize', init);
+            // Show loading state
+            submitButton.classList.add('loading');
+            submitButton.disabled = true;
+            formFeedback.style.display = 'none'; // Hide previous messages
 
-            init();
-            checkPosition();
-        }
-        myFunction()
+            const formData = new FormData(form);
 
-        function f0(){
-            const tImg = document.getElementById("CompanyImg")
-            // tImg.
-            console.log(tImg.src)
-            tImg.src = "./assets/experience/exp.png"
-            tImg.classList.toggle("mystyle1");
-            tImg.classList.add("mystyle2")
+            try {
+                const response = await fetch(googleAppsScriptUrl, {
+                    method: 'POST',
+                    body: formData,
+                    // Google Apps Script doPost works best with default 'fetch' content type when using FormData
+                    // mode: 'no-cors' // Use this ONLY if you face CORS issues and cannot configure GAS properly, but you won't get a response back. Prefer proper deployment.
+                });
 
+                // Check if response is OK (status 200-299)
+                if (!response.ok) {
+                    // Try to get error details if available (might not work with 'no-cors')
+                    let errorMsg = `HTTP error! Status: ${response.status}`;
+                    try {
+                         const errorData = await response.json();
+                         errorMsg = errorData.message || JSON.stringify(errorData);
+                    } catch (parseError) {
+                        // If response is not JSON or empty
+                        errorMsg += ` - ${response.statusText}`;
+                    }
+                     throw new Error(errorMsg);
+                }
+
+                const result = await response.json(); // Parse the JSON response from Apps Script
+
+                if (result.status === 'success') {
+                    showFeedback('success', result.message || 'Registration successful! Confirmation email sent.');
+                    form.reset(); // Clear the form
+                } else {
+                    // Handle errors reported by the Apps Script itself
+                    throw new Error(result.message || 'An unknown error occurred during submission.');
+                }
+
+            } catch (error) {
+                console.error('Form Submission Error:', error);
+                showFeedback('error', `Submission failed: ${error.message}. Please try again later or contact support.`);
+            } finally {
+                // Hide loading state regardless of success or error
+                submitButton.classList.remove('loading');
+                submitButton.disabled = false;
+            }
+        });
+
+        function showFeedback(type, message) {
+            formFeedback.className = ''; // Reset classes
+            formFeedback.classList.add(type); // Add 'success' or 'error' class
+            formFeedback.textContent = message;
+            formFeedback.style.display = 'block'; // Make it visible
         }
 
-        function f1(){
-            const tImg = document.getElementById("CompanyImg")
-            // tImg.
-            console.log(tImg.src)
-            tImg.src = "./assets/experience/vysion.jpg"
-            tImg.classList.toggle("mystyle2");
-            tImg.classList.toggle("mystyle1");
-            tImg.classList.add("mystyle1");
-
-        }
-        
-        function f2(){
-            const tImg = document.getElementById("CompanyImg")
-            // tImg.
-            console.log(tImg.src)
-            tImg.src = "./assets/experience/ideoholics.png"
-            tImg.classList.toggle("mystyle2");
-            tImg.classList.toggle("mystyle1");
-            tImg.classList.add("mystyle1");
-        }
-        
-        function f3(){
-            const tImg = document.getElementById("CompanyImg")
-            // tImg.
-            console.log(tImg.src)
-            tImg.src = "./assets/experience/nt.jpg"
-            tImg.classList.toggle("mystyle1");
-            tImg.classList.toggle("mystyle2");
-            tImg.classList.add("mystyle1");
-        }
+        // --- Update Footer Year ---
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
 
     </script>
-</body>
 
-</html>
-
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Social Media Icons</title>
-    <link rel="stylesheet" href="./social-media-icons.css">
-    <script src="https://kit.fontawesome.com/66aa7c98b3.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <footer>
-    
-  
-    <div class="social-menu">
-        <ul>
-            <li><a href="https://github.com/rahmat1129" target="blank"><i class="fab fa-github"></i></i></a></li>
-            <li><a href="https://www.instagram.com/@sameer._1129/" target="blank"><i class="fab fa-instagram"></i></a></li>
-            <li><a href="https://www.linkedin.com/in/sameer1129/" target="blank"><i class="fab fa-linkedin-in"></i></a></li>
-            <li><a href="https://wa.me/+919241981083"><i class="fab fa-whatsapp" target="blank"></i></a></li>
-        </ul>
-    </div>
-    <
-      
-    </footer>
 </body>
 </html>
