@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Admin Tool - Classes & Subjects</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body { background-color: #f8f9fa; font-family: sans-serif; }
+        .container { max-width: 1140px; margin-top: 2rem; }
+        .card { margin-bottom: 1.5rem; box-shadow: 0 2px 8px rgba(0,0,0,0.1); border: none; }
+        .card-header { background-color: #007bff; color: white; font-weight: bold; }
+        .table thead th { background-color: #e9ecef; }
+        .form-label { font-weight: 500; }
+        #loadingIndicator { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(255, 255, 255, 0.7); display: flex; justify-content: center; align-items: center; z-index: 9999; }
+        #alertArea { position: fixed; top: 1rem; right: 1rem; z-index: 1050; max-width: 90%; }
+        .list-group-item small { color: #6c757d; }
+        #loginSection { min-height: 70vh; display: flex; align-items: center; justify-content: center;}
+        #managementSections { display: none; /* Hidden until logged in and data loaded */ }
+        #schoolInfoDisplay { display: none; /* Hidden until logged in */ }
+    </style>
+</head>
+<body>
+
+    <!-- Loading Indicator -->
+    <div id="loadingIndicator" style="display: none;">
+        <div class="spinner-border text-primary" role="status"><span class="visually-hidden">Loading...</span></div>
+    </div>
+
+    <!-- Alert Area -->
+    <div id="alertArea"></div>
+
+    <div class="container">
+        <h1 class="mb-4 text-center text-primary"><i class="fas fa-cogs me-2"></i> School Management Tool</h1>
+
+        <!-- Login Section -->
+        <div id="loginSection">
+            <div class="col-md-6 col-lg-5">
+                 <div class="card shadow-sm">
+                    <div class="card-header"><i class="fas fa-sign-in-alt me-1"></i> Principal Login</div>
+                    <div class="card-body p-4">
+                         <form id="principalLoginFormMgmt">
+                            <div class="mb-3">
+                                <label for="principalMobileMgmt" class="form-label">Mobile Number</label>
+                                <input type="tel" class="form-control" id="principalMobileMgmt" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="principalPasswordMgmt" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="principalPasswordMgmt" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100">Login & Load Data</button>
+                        </form>
+                    </div>
+                 </div>
+            </div>
+        </div>
+
+        <!-- School Info Display (Shown after login) -->
+        <div id="schoolInfoDisplay" class="alert alert-info">
+            Managing School: <strong id="loggedInSchoolName"></strong>
+            <button id="logoutButtonMgmt" class="btn btn-sm btn-outline-secondary float-end"><i class="fas fa-sign-out-alt me-1"></i> Logout</button>
+        </div>
+
+        <!-- Management Sections (Shown after login and data load) -->
+        <div id="managementSections">
+            <div class="row">
+                <!-- Manage Classes -->
+                <div class="col-lg-6">
+                    <div class="card">
+                        <div class="card-header"><i class="fas fa-chalkboard me-2"></i> Manage Classes</div>
+                        <div class="card-body">
+                            <form id="addClassForm" class="mb-3 p-3 border rounded bg-light"> <h5 class="mb-3">Add New Class</h5> <div class="mb-2"> <label for="newClassName" class="form-label">Class Name*</label> <input type="text" class="form-control form-control-sm" id="newClassName" required> </div> <div class="mb-2"> <label for="newClassSection" class="form-label">Section (Optional)</label> <input type="text" class="form-control form-control-sm" id="newClassSection"> </div> <div class="mb-2"> <label for="classTeacherSelect" class="form-label">Class Teacher (Optional)</label> <select id="classTeacherSelect" class="form-select form-select-sm"> <option value="" selected>-- None --</option> </select> </div> <button type="submit" class="btn btn-sm btn-success"><i class="fas fa-plus me-1"></i> Add Class</button> </form>
+                            <h6>Existing Classes</h6> <ul id="classList" class="list-group list-group-flush"></ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- Manage Subjects -->
+                <div class="col-lg-6">
+                    <div class="card">
+                        <div class="card-header"><i class="fas fa-book me-2"></i> Manage Subjects</div>
+                        <div class="card-body">
+                            <form id="addSubjectForm" class="mb-3 p-3 border rounded bg-light"> <h5 class="mb-3">Add New Subject</h5> <div class="mb-2"> <label for="newSubjectName" class="form-label">Subject Name*</label> <input type="text" class="form-control form-control-sm" id="newSubjectName" required> </div> <button type="submit" class="btn btn-sm btn-success"><i class="fas fa-plus me-1"></i> Add Subject</button> </form>
+                             <h6>Existing Subjects</h6> <ul id="subjectList" class="list-group list-group-flush"></ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-4">
+                 <!-- Manage Assignments -->
+                <div class="col-12">
+                     <div class="card">
+                        <div class="card-header"><i class="fas fa-user-tag me-2"></i> Manage Teacher Assignments</div>
+                        <div class="card-body">
+                             <form id="assignTeacherForm" class="mb-3 p-3 border rounded bg-light"> <h5 class="mb-3">Assign Teacher to Subject in Class</h5> <div class="row"> <div class="col-md-4 mb-2"> <label for="assignClassSelect" class="form-label">Select Class*</label> <select id="assignClassSelect" class="form-select form-select-sm" required> <option value="" selected disabled>-- Select --</option> </select> </div> <div class="col-md-4 mb-2"> <label for="assignSubjectSelect" class="form-label">Select Subject*</label> <select id="assignSubjectSelect" class="form-select form-select-sm" required> <option value="" selected disabled>-- Select --</option> </select> </div> <div class="col-md-4 mb-2"> <label for="assignTeacherSelect" class="form-label">Select Teacher*</label> <select id="assignTeacherSelect" class="form-select form-select-sm" required> <option value="" selected disabled>-- Select --</option> </select> </div> </div> <button type="submit" class="btn btn-sm btn-success mt-2"><i class="fas fa-link me-1"></i> Assign Teacher</button> </form>
+                            <h6>Current Assignments</h6> <div class="table-responsive"> <table class="table table-sm table-striped table-hover"> <thead> <tr><th>Assignment ID</th><th>Class</th><th>Subject</th><th>Teacher</th><th>Actions</th></tr> </thead> <tbody id="assignmentList"></tbody> </table> </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- End Management Sections -->
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script>
+        // --- Configuration ---
+        // !!! IMPORTANT: Replace with the deployed URL for THIS Management Tool's Code.gs !!!
+        const MGMT_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbyZOsBlkvJD_CiZfj6EXhaoBQ7Dk7mIlRjKuJb3l2j0sjKH7dUBk13cOB0vTAFVn8qgfA/exec'; // PASTE URL HERE
+        const LOCAL_STORAGE_ID_KEY = 'mgmtToolSpreadsheetId';
+        const LOCAL_STORAGE_NAME_KEY = 'mgmtToolSchoolName';
+
+        // --- Global State ---
+        let schoolSpreadsheetId = null; // Set after successful login or from local storage
+        let loggedInSchoolName = null; // Set after successful login or from local storage
+        let currentClasses = [];
+        let currentSubjects = [];
+        let currentStaff = []; // Active staff only
+        let currentAssignments = [];
+
+        // --- DOM Elements ---
+        const loginSection = document.getElementById('loginSection');
+        const managementSections = document.getElementById('managementSections');
+        const schoolInfoDisplay = document.getElementById('schoolInfoDisplay');
+        const loggedInSchoolNameEl = document.getElementById('loggedInSchoolName');
+
+        // --- Utility Functions ---
+        function showLoading(show = true) { document.getElementById('loadingIndicator').style.display = show ? 'flex' : 'none'; }
+        function showAlert(message, type = 'info', duration = 4000) {
+             const alertArea = document.getElementById('alertArea');
+             const alertId = `alert-${Date.now()}`;
+             const alertHtml = `<div id="${alertId}" class="alert alert-${type} alert-dismissible fade show m-1" role="alert" style="min-width: 250px; max-width: 90%;"><i class="fas ${type === 'success' ? 'fa-check-circle' : type === 'danger' ? 'fa-exclamation-triangle' : 'fa-info-circle'} me-2"></i>${message}<button type="button" class="btn-close btn-sm" data-bs-dismiss="alert" aria-label="Close"></button></div>`;
+             alertArea.insertAdjacentHTML('beforeend', alertHtml);
+             // Auto-dismiss
+             const alertElement = document.getElementById(alertId);
+             if (alertElement) {
+                setTimeout(() => {
+                    const bsAlert = bootstrap.Alert.getOrCreateInstance(alertElement);
+                    if (bsAlert) {
+                        bsAlert.close();
+                    }
+                 }, duration);
+             }
+        }
+
+        // --- Backend Interaction ---
+        async function callMgmtBackendAPI(action, payload = {}) {
+             // Include spreadsheetId ONLY if it's set (i.e., after login for non-login actions)
+             const fullPayload = schoolSpreadsheetId ? { ...payload, spreadsheetId: schoolSpreadsheetId } : payload;
+
+             // For actions other than login, ensure spreadsheetId is set
+             if (action !== 'principalLoginMgmt' && !schoolSpreadsheetId) {
+                 showAlert("Session expired or not logged in. Please log in again.", "warning");
+                 handleLogout(); // Force logout if ID is missing for required actions
+                 return null;
+             }
+
+             showLoading(true);
+             console.log(`Calling Mgmt backend action: ${action}`, fullPayload); // Log the payload being sent
+             try {
+                 const response = await fetch(MGMT_WEB_APP_URL, { method: 'POST', cache: 'no-cache', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify({ action: action, payload: fullPayload }) });
+                 showLoading(false);
+                 if (!response.ok) {
+                    let errorMsg = `HTTP error! status: ${response.status}`;
+                    try {
+                        const errorData = await response.json();
+                        errorMsg = errorData.message || JSON.stringify(errorData);
+                    } catch(e){
+                        errorMsg = `${response.status} ${response.statusText}`;
+                    }
+                    console.error(`Mgmt API Error (${action}):`, errorMsg);
+                    showAlert(`Error (${action}): ${errorMsg}`, 'danger');
+                    // If error occurs for a non-login action and the ID might be invalid, force logout
+                    if (action !== 'principalLoginMgmt' && (response.status === 401 || response.status === 403 || response.status === 404)) {
+                        handleLogout();
+                    }
+                    return { success: false, message: errorMsg };
+                 }
+                 const result = await response.json();
+                 console.log(`Mgmt response for ${action}:`, result);
+                 if (result && result.success === false) {
+                    console.error(`Mgmt Backend failure (${action}):`, result.message);
+                    showAlert(result.message || `Operation failed: ${action}`, 'danger');
+                 }
+                 return result;
+             } catch (error) {
+                 showLoading(false);
+                 console.error(`Mgmt Network error (${action}):`, error);
+                 showAlert(`Network error (${action}): ${error.message}`, 'danger');
+                 return { success: false, message: `Network error: ${error.message}` };
+             }
+         }
+
+         // --- Automatic Login Check ---
+         function checkAutoLogin() {
+            const storedId = localStorage.getItem(LOCAL_STORAGE_ID_KEY);
+            const storedName = localStorage.getItem(LOCAL_STORAGE_NAME_KEY);
+
+            if (storedId && storedName) {
+                console.log("Found stored login info. Attempting automatic login.");
+                schoolSpreadsheetId = storedId;
+                loggedInSchoolName = storedName;
+
+                // Update UI immediately for better user experience
+                loginSection.style.display = 'none';
+                schoolInfoDisplay.style.display = 'block';
+                loggedInSchoolNameEl.textContent = loggedInSchoolName;
+                managementSections.style.display = 'none'; // Keep hidden until data loads
+
+                showAlert(`Welcome back, ${loggedInSchoolName}! Loading data...`, 'info', 2500);
+                loadInitialManagementData(); // Load data using stored ID
+            } else {
+                console.log("No stored login info found. Displaying login form.");
+                // Ensure correct initial state if no auto-login
+                loginSection.style.display = 'flex';
+                managementSections.style.display = 'none';
+                schoolInfoDisplay.style.display = 'none';
+            }
+        }
+
+        // --- Event Listeners ---
+        document.addEventListener('DOMContentLoaded', () => {
+            // Attempt automatic login first
+            checkAutoLogin();
+
+            // Setup event listeners regardless of auto-login outcome
+            document.getElementById('principalLoginFormMgmt').addEventListener('submit', handleLogin);
+            document.getElementById('logoutButtonMgmt').addEventListener('click', handleLogout);
+            document.getElementById('addClassForm').addEventListener('submit', handleAddClass);
+            document.getElementById('addSubjectForm').addEventListener('submit', handleAddSubject);
+            document.getElementById('assignTeacherForm').addEventListener('submit', handleAssignTeacher);
+
+            // Add event listener for dynamically created delete buttons (if implemented)
+            document.getElementById('assignmentList').addEventListener('click', (event) => {
+                if (event.target.closest('.delete-assignment-btn')) {
+                     // const assignmentId = event.target.closest('.delete-assignment-btn').dataset.assignmentId;
+                     // handleDeleteAssignment(assignmentId); // Add this function if needed
+                     showAlert("Delete functionality not implemented yet.", "warning");
+                }
+            });
+        });
+
+        // --- Login/Logout Handlers ---
+        async function handleLogin(event) {
+            event.preventDefault();
+            const mobile = document.getElementById('principalMobileMgmt').value.trim();
+            const password = document.getElementById('principalPasswordMgmt').value;
+            if (!mobile || !password) { showAlert("Mobile and Password are required.", "warning"); return; }
+
+            const result = await callMgmtBackendAPI('principalLoginMgmt', { mobile, password });
+
+            if (result && result.success) {
+                schoolSpreadsheetId = result.spreadsheetId;
+                loggedInSchoolName = result.schoolName;
+
+                // Store login info for automatic login next time
+                localStorage.setItem(LOCAL_STORAGE_ID_KEY, schoolSpreadsheetId);
+                localStorage.setItem(LOCAL_STORAGE_NAME_KEY, loggedInSchoolName);
+
+                showAlert(`Login successful for ${loggedInSchoolName}. Loading data...`, "success");
+                document.getElementById('principalLoginFormMgmt').reset();
+                loginSection.style.display = 'none'; // Hide login form
+                schoolInfoDisplay.style.display = 'block'; // Show school info bar
+                loggedInSchoolNameEl.textContent = loggedInSchoolName;
+                loadInitialManagementData(); // Load data AFTER successful login
+            }
+            // Error handled by callMgmtBackendAPI
+        }
+
+        function handleLogout() {
+            // Clear stored login info
+            localStorage.removeItem(LOCAL_STORAGE_ID_KEY);
+            localStorage.removeItem(LOCAL_STORAGE_NAME_KEY);
+
+            // Reset global state
+            schoolSpreadsheetId = null; loggedInSchoolName = null;
+            currentClasses = []; currentSubjects = []; currentStaff = []; currentAssignments = [];
+
+            // Reset UI
+            loginSection.style.display = 'flex'; // Show login form
+            managementSections.style.display = 'none'; // Hide management area
+            schoolInfoDisplay.style.display = 'none'; // Hide school info bar
+            loggedInSchoolNameEl.textContent = '';
+
+            // Clear lists and dropdowns
+            clearAllDataVisuals();
+
+            showAlert("You have been logged out.", "info");
+        }
+
+
+        // --- Data Loading and Rendering (Triggered after login or auto-login) ---
+        async function loadInitialManagementData() {
+             if (!schoolSpreadsheetId) {
+                 showAlert("Cannot load data. Session invalid.", "warning");
+                 handleLogout(); // Go back to login
+                 return;
+             }
+             managementSections.style.display = 'none'; // Hide while loading
+
+             const result = await callMgmtBackendAPI('getManagementData'); // spreadsheetId included automatically
+
+             if (result && result.success) {
+                 currentClasses = result.classes?.data || [];
+                 currentSubjects = result.subjects?.data || [];
+                 currentStaff = result.staff?.data || []; // Active staff
+                 currentAssignments = result.assignments?.data || [];
+
+                 populateDropdowns();
+                 renderLists();
+                 managementSections.style.display = 'block'; // Show sections now data is loaded
+                 showAlert("Management data loaded.", "success", 2000);
+             } else {
+                  // Specific error handling added in callMgmtBackendAPI for common auth errors
+                  if (result && result.message) {
+                       showAlert(`Failed to load management data: ${result.message}`, 'danger');
+                  } else {
+                       showAlert(`Failed to load management data. Please try logging out and back in.`, 'danger');
+                  }
+                  // Do not automatically logout here if the initial load fails after auto-login,
+                  // let the user decide or retry. callMgmtBackendAPI might force logout on severe errors.
+             }
+         }
+
+        // --- Add/Assign Handlers ---
+        async function handleAddClass(event) {
+             event.preventDefault();
+            const className = document.getElementById('newClassName').value.trim();
+            const section = document.getElementById('newClassSection').value.trim();
+            const classTeacherStaffId = document.getElementById('classTeacherSelect').value;
+            if (!className) { showAlert("Class Name is required.", "warning"); return; }
+            const result = await callMgmtBackendAPI('addClass', { classInfo: { className, section, classTeacherStaffId } });
+            if (result?.success && result.newClass) {
+                // Add or update if exists (though add should ideally only add)
+                const existingIndex = currentClasses.findIndex(c => c.ClassID === result.newClass.ClassID);
+                if (existingIndex > -1) currentClasses[existingIndex] = result.newClass;
+                else currentClasses.push(result.newClass);
+
+                renderClassList();
+                populateClassDropdown();
+                showAlert("Class added/updated.", "success", 2000);
+                event.target.reset();
+             }
+        }
+        async function handleAddSubject(event) {
+             event.preventDefault();
+            const subjectName = document.getElementById('newSubjectName').value.trim();
+            if (!subjectName) { showAlert("Subject Name is required.", "warning"); return; }
+            const result = await callMgmtBackendAPI('addSubject', { subjectInfo: { subjectName } });
+            if (result?.success && result.newSubject) {
+                const existingIndex = currentSubjects.findIndex(s => s.SubjectID === result.newSubject.SubjectID);
+                if (existingIndex > -1) currentSubjects[existingIndex] = result.newSubject;
+                else currentSubjects.push(result.newSubject);
+
+                renderSubjectList();
+                populateSubjectDropdown();
+                showAlert("Subject added.", "success", 2000);
+                event.target.reset();
+            }
+        }
+        async function handleAssignTeacher(event) {
+             event.preventDefault();
+            const classId = document.getElementById('assignClassSelect').value;
+            const subjectId = document.getElementById('assignSubjectSelect').value;
+            const staffId = document.getElementById('assignTeacherSelect').value;
+            if (!classId || !subjectId || !staffId) { showAlert("Select Class, Subject, and Teacher.", "warning"); return; }
+            const result = await callMgmtBackendAPI('assignTeacher', { assignmentInfo: { classId, subjectId, staffId } });
+            if (result?.success && result.newAssignment) {
+                 // Avoid duplicates if backend handles uniqueness check
+                const existingIndex = currentAssignments.findIndex(a => a.AssignmentID === result.newAssignment.AssignmentID);
+                 if (existingIndex > -1) currentAssignments[existingIndex] = result.newAssignment;
+                 else currentAssignments.push(result.newAssignment);
+
+                renderAssignmentList();
+                showAlert("Teacher assigned.", "success", 2000);
+                event.target.reset(); // Reset the specific form
+                // Clear selections after successful assignment
+                document.getElementById('assignClassSelect').selectedIndex = 0;
+                document.getElementById('assignSubjectSelect').selectedIndex = 0;
+                document.getElementById('assignTeacherSelect').selectedIndex = 0;
+             }
+        }
+
+        // --- Rendering / UI Update Functions ---
+        function populateDropdowns() {
+             populateClassDropdown();
+             populateSubjectDropdown();
+             populateTeacherDropdown();
+        }
+        function renderLists() {
+             renderClassList();
+             renderSubjectList();
+             renderAssignmentList();
+        }
+        function clearAllDataVisuals() { // Clears only the display, not the state variables
+             document.getElementById('classList').innerHTML = '';
+             document.getElementById('subjectList').innerHTML = '';
+             document.getElementById('assignmentList').innerHTML = '';
+             document.getElementById('assignClassSelect').innerHTML = '<option value="" selected disabled>-- Select --</option>';
+             document.getElementById('assignSubjectSelect').innerHTML = '<option value="" selected disabled>-- Select --</option>';
+             document.getElementById('assignTeacherSelect').innerHTML = '<option value="" selected disabled>-- Select --</option>';
+             document.getElementById('classTeacherSelect').innerHTML = '<option value="">-- None --</option>';
+        }
+        function populateClassDropdown() {
+             const select = document.getElementById('assignClassSelect');
+             const currentVal = select.value; // Preserve selection if possible
+             select.innerHTML = '<option value="" selected disabled>-- Select --</option>';
+             currentClasses.sort((a, b) => (a.ClassName + (a.Section || '')).localeCompare(b.ClassName + (b.Section || '')))
+                           .forEach(cls => {
+                                select.innerHTML += `<option value="${cls.ClassID}">${cls.ClassName} ${cls.Section || ''}</option>`;
+                            });
+            select.value = currentVal; // Try to restore selection
+        }
+        function populateSubjectDropdown() {
+             const select = document.getElementById('assignSubjectSelect');
+             const currentVal = select.value;
+             select.innerHTML = '<option value="" selected disabled>-- Select --</option>';
+             currentSubjects.sort((a, b) => a.SubjectName.localeCompare(b.SubjectName))
+                            .forEach(sub => {
+                                select.innerHTML += `<option value="${sub.SubjectID}">${sub.SubjectName}</option>`;
+                            });
+            select.value = currentVal;
+        }
+        function populateTeacherDropdown() {
+            const selects = [document.getElementById('classTeacherSelect'), document.getElementById('assignTeacherSelect')];
+            selects.forEach(select => {
+                if (!select) return;
+                const currentVal = select.value;
+                const isClassTeacherSelect = select.id === 'classTeacherSelect';
+                select.innerHTML = isClassTeacherSelect ? '<option value="">-- None --</option>' : '<option value="" selected disabled>-- Select --</option>';
+                currentStaff.sort((a, b) => a.Name.localeCompare(b.Name))
+                            .forEach(staff => {
+                                select.innerHTML += `<option value="${staff.StaffID}">${staff.Name} (ID: ${staff.StaffID ? staff.StaffID.substring(0,6) : 'N/A'}...)</option>`;
+                            });
+                // Restore selection only if it wasn't the default placeholder
+                if (currentVal && (isClassTeacherSelect || currentVal !== "")) {
+                     select.value = currentVal;
+                }
+            });
+        }
+        function renderClassList() {
+             const listUl = document.getElementById('classList');
+             listUl.innerHTML = '';
+             if (currentClasses.length === 0) {
+                 listUl.innerHTML = '<li class="list-group-item text-center text-muted">No classes defined yet.</li>';
+                 return;
+             }
+             // Create a map for quick lookup
+             const staffMap = currentStaff.reduce((map, s) => { map[s.StaffID] = s.Name; return map; }, {});
+
+             currentClasses.sort((a, b) => (a.ClassName + (a.Section || '')).localeCompare(b.ClassName + (b.Section || '')))
+                           .forEach(cls => {
+                                const teacherName = staffMap[cls.ClassTeacherStaffID] || '<em class="text-muted">None Assigned</em>';
+                                const safeClassID = cls.ClassID ? cls.ClassID.substring(0,8) : 'N/A';
+                                listUl.innerHTML += `
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <strong>${cls.ClassName} ${cls.Section || ''}</strong><br>
+                                            <small>Teacher: ${teacherName}</small>
+                                        </div>
+                                        <small class="text-muted" title="Class ID: ${cls.ClassID}">ID: ${safeClassID}...</small>
+                                    </li>`;
+                           });
+        }
+        function renderSubjectList() {
+             const listUl = document.getElementById('subjectList');
+             listUl.innerHTML = '';
+             if (currentSubjects.length === 0) {
+                 listUl.innerHTML = '<li class="list-group-item text-center text-muted">No subjects defined yet.</li>';
+                 return;
+             }
+             currentSubjects.sort((a, b) => a.SubjectName.localeCompare(b.SubjectName))
+                            .forEach(sub => {
+                                const safeSubjectID = sub.SubjectID ? sub.SubjectID.substring(0,8) : 'N/A';
+                                listUl.innerHTML += `
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        ${sub.SubjectName}
+                                        <small class="text-muted" title="Subject ID: ${sub.SubjectID}">ID: ${safeSubjectID}...</small>
+                                    </li>`;
+                            });
+        }
+        function renderAssignmentList() {
+              const listBody = document.getElementById('assignmentList');
+              listBody.innerHTML = '';
+              if (currentAssignments.length === 0) {
+                  listBody.innerHTML = '<tr><td colspan="5" class="text-center text-muted">No teacher assignments yet.</td></tr>';
+                  return;
+              }
+              // Create maps for efficient lookup
+              const classMap = currentClasses.reduce((map, c) => { map[c.ClassID] = `${c.ClassName} ${c.Section || ''}`; return map; }, {});
+              const subjectMap = currentSubjects.reduce((map, s) => { map[s.SubjectID] = s.SubjectName; return map; }, {});
+              const staffMap = currentStaff.reduce((map, s) => { map[s.StaffID] = s.Name; return map; }, {});
+
+              // Sort assignments for consistent display (e.g., by class, then subject)
+              currentAssignments.sort((a, b) => {
+                  const classA = classMap[a.ClassID] || '';
+                  const classB = classMap[b.ClassID] || '';
+                  const subjectA = subjectMap[a.SubjectID] || '';
+                  const subjectB = subjectMap[b.SubjectID] || '';
+                  if (classA !== classB) return classA.localeCompare(classB);
+                  return subjectA.localeCompare(subjectB);
+              }).forEach(a => {
+                    const className = classMap[a.ClassID] || `<em class="text-danger">Unknown Class (${a.ClassID ? a.ClassID.substring(0,6) : 'N/A'}...)</em>`;
+                    const subjectName = subjectMap[a.SubjectID] || `<em class="text-danger">Unknown Subject (${a.SubjectID ? a.SubjectID.substring(0,6) : 'N/A'}...)</em>`;
+                    const teacherName = staffMap[a.StaffID] || `<em class="text-danger">Unknown Staff (${a.StaffID ? a.StaffID.substring(0,6) : 'N/A'}...)</em>`;
+                    const safeAssignmentID = a.AssignmentID ? a.AssignmentID.substring(0, 8) : 'N/A';
+                    // Delete button included but functionality requires backend implementation
+                    const actions = `<button class="btn btn-xs btn-outline-danger delete-assignment-btn" data-assignment-id="${a.AssignmentID}" title="Delete Assignment (Requires Implementation)"><i class="fas fa-trash-alt fa-xs"></i></button>`;
+
+                    listBody.innerHTML += `
+                        <tr>
+                            <td title="Assignment ID: ${a.AssignmentID}">${safeAssignmentID}...</td>
+                            <td>${className}</td>
+                            <td>${subjectName}</td>
+                            <td>${teacherName}</td>
+                            <td>${actions}</td>
+                        </tr>`;
+              });
+        }
+
+    </script>
+
+</body>
+</html>
