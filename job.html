@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ERP एजेंट जॉब एप्लीकेशन - [Aapki Company Ka Naam]</title>
+    <style>
+        :root {
+            --primary-color: #007bff; /* Primary theme color */
+            --secondary-color: #6c757d; /* Secondary theme color */
+            --success-color: #28a745; /* Success messages */
+            --danger-color: #dc3545; /* Error messages */
+            --light-color: #f8f9fa; /* Light background */
+            --dark-color: #343a40; /* Dark text */
+            --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: #eef2f7; /* Light grayish blue background */
+            color: var(--dark-color);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 30px 40px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            width: 100%;
+            max-width: 800px;
+            margin-top: 20px;
+            animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 20px;
+        }
+
+        header h1 {
+            color: var(--primary-color);
+            margin-bottom: 5px;
+            font-size: 2.5em;
+        }
+
+        header p {
+            color: var(--secondary-color);
+            font-size: 1.1em;
+        }
+
+        .language-selector {
+            text-align: right;
+            margin-bottom: 15px;
+        }
+
+        .language-selector label {
+            margin-right: 5px;
+            font-weight: bold;
+        }
+
+        .language-selector select {
+            padding: 8px;
+            border-radius: var(--border-radius);
+            border: 1px solid #ccc;
+            background-color: var(--light-color);
+        }
+
+        .job-description, .form-instructions {
+            background-color: var(--light-color);
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: var(--border-radius);
+            border-left: 5px solid var(--primary-color);
+            animation: slideInLeft 0.7s ease-out;
+        }
+
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .job-description h2, .form-instructions h2 {
+            color: var(--primary-color);
+            margin-top: 0;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            animation: fadeInUp 0.5s ease-out forwards;
+            opacity: 0; /* Start hidden for animation */
+        }
+
+        /* Staggered animation for form groups */
+        .form-group:nth-child(1) { animation-delay: 0.1s; }
+        .form-group:nth-child(2) { animation-delay: 0.2s; }
+        .form-group:nth-child(3) { animation-delay: 0.3s; }
+        /* Add more for more fields if needed */
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="number"],
+        select,
+        textarea {
+            width: calc(100% - 22px); /* Account for padding and border */
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: var(--border-radius);
+            font-size: 1em;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="tel"]:focus,
+        input[type="number"]:focus,
+        select:focus,
+        textarea:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+            outline: none;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .checkbox-group label {
+            font-weight: normal;
+            margin-left: 5px;
+        }
+        .checkbox-group input[type="checkbox"] {
+            margin-right: 5px;
+            transform: scale(1.2);
+        }
+
+        .btn {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-size: 1.1em;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            background-color: #0056b3; /* Darker shade of primary */
+            transform: translateY(-2px);
+        }
+
+        .btn:disabled {
+            background-color: var(--secondary-color);
+            cursor: not-allowed;
+        }
+
+        #message {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: var(--border-radius);
+            text-align: center;
+            font-weight: bold;
+            display: none; /* Hidden initially */
+            animation: fadeInMessage 0.5s;
+        }
+        @keyframes fadeInMessage {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        #message.success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        #message.error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        .loader {
+            border: 5px solid #f3f3f3; /* Light grey */
+            border-top: 5px solid var(--primary-color); /* Blue */
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            display: none; /* Hidden initially */
+            margin: 10px auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            header h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 data-translate="pageTitle">ERP एजेंट - जॉब एप्लीकेशन</h1>
+            <p data-translate="pageSubtitle">[Aapki Company Ka Naam] ke School Management ERP Software ke liye Marketing Agents ki Bharti</p>
+        </header>
+
+        <div class="language-selector">
+            <label for="language" data-translate="selectLanguageLabel">भाषा चुनें:</label>
+            <select id="language" onchange="changeLanguage(this.value)">
+                <option value="hi">हिन्दी</option>
+                <option value="en">English</option>
+            </select>
+        </div>
+
+        <section class="job-description">
+            <h2 data-translate="jobDescTitle">जॉब के बारे में (About the Job)</h2>
+            <p data-translate="jobDescP1">हम अपने School Management System ERP Software के लिए उत्साहित और मेहनती मार्केटिंग एजेंट्स की तलाश में हैं। आपका मुख्य काम होगा विभिन्न स्कूलों में जाकर हमारे ERP सॉफ्टवेयर का प्रदर्शन करना और उन्हें इसे मुफ्त में अपनाने के लिए प्रेरित करना।</p>
+            <p data-translate="jobDescP2"><strong>यह ERP सॉफ्टवेयर स्कूलों के लिए पूरी तरह से मुफ़्त है</strong> और इसमें कई उपयोगी विशेषताएं हैं जो स्कूल प्रबंधन को आसान बनाती हैं। इसके मुफ्त और उपयोगी होने के कारण, स्कूलों द्वारा इसे अपनाने की संभावना बहुत अधिक है।</p>
+            <strong data-translate="jobDescP3">इस भूमिका में सफलता पूर्वक काम करने पर जॉब मिलने की संभावना 90% तक है।</strong>
+            <h3 data-translate="responsibilitiesTitle">मुख्य जिम्मेदारियां (Key Responsibilities):</h3>
+            <ul>
+                <li data-translate="resp1">निर्धारित क्षेत्र में स्कूलों की पहचान करना और उनसे संपर्क स्थापित करना।</li>
+                <li data-translate="resp2">स्कूल प्रबंधन/प्रिंसिपल को ERP सॉफ्टवेयर की विशेषताओं और लाभों के बारे में बताना।</li>
+                <li data-translate="resp3">सॉफ्टवेयर का लाइव डेमो देना।</li>
+                <li data-translate="resp4">स्कूलों को सॉफ्टवेयर मुफ्त में इंस्टॉल करवाने और उपयोग शुरू करवाने में सहायता करना।</li>
+                <li data-translate="resp5">कंपनी को नियमित रूप से अपनी प्रगति की रिपोर्ट देना।</li>
+            </ul>
+            <h3 data-translate="qualificationsTitle">आवश्यक योग्यताएं (Required Qualifications):</h3>
+            <ul>
+                <li data-translate="qual1">उत्कृष्ट संचार और प्रस्तुति कौशल (Communication and Presentation Skills)।</li>
+                <li data-translate="qual2">लोगों को प्रेरित करने की क्षमता।</li>
+                <li data-translate="qual3">कंप्यूटर और इंटरनेट का बुनियादी ज्ञान।</li>
+                <li data-translate="qual4">12वीं पास या स्नातक (किसी भी विषय में)।</li>
+                <li data-translate="qual5">खुद का स्मार्टफोन और दोपहिया वाहन (यात्रा के लिए फायदेमंद, अनिवार्य नहीं)।</li>
+            </ul>
+        </section>
+
+        <section class="form-instructions">
+            <h2 data-translate="formInstructionsTitle">आवेदन पत्र भरने का तरीका (How to Fill the Application Form):</h2>
+            <ol>
+                <li data-translate="instr1">नीचे दिए गए सभी फ़ील्ड्स को ध्यानपूर्वक और सही-सही भरें।</li>
+                <li data-translate="instr2">जिन फ़ील्ड्स पर '*' (तारांकन) लगा है, वे अनिवार्य हैं।</li>
+                <li data-translate="instr3">अपनी संपर्क जानकारी (ईमेल और फ़ोन नंबर) दोबारा जांच लें ताकि हम आपसे संपर्क कर सकें।</li>
+                <li data-translate="instr4">फॉर्म जमा करने के बाद, आपको अपनी स्क्रीन पर एक पुष्टिकरण संदेश दिखाई देगा और आपके ईमेल पर भी एक सूचना भेजी जाएगी।</li>
+                <li data-translate="instr5">शॉर्टलिस्ट किए गए उम्मीदवारों से हमारी टीम जल्द ही इंटरव्यू के लिए संपर्क करेगी।</li>
+            </ol>
+        </section>
+
+        <form id="jobApplicationForm">
+            <h2 style="text-align: center; color: var(--primary-color);" data-translate="applicationFormTitle">आवेदन पत्र (Application Form)</h2>
+
+            <div class="form-group">
+                <label for="fullName" data-translate="fullNameLabel">पूरा नाम (Full Name) <span class="required">*</span>:</label>
+                <input type="text" id="fullName" name="fullName" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email" data-translate="emailLabel">ईमेल (Email) <span class="required">*</span>:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="phoneNumber" data-translate="phoneLabel">फ़ोन नंबर (Phone Number) <span class="required">*</span>:</label>
+                <input type="tel" id="phoneNumber" name="phoneNumber" pattern="[0-9]{10}" placeholder="उदा. 9876543210" required>
+            </div>
+
+            <div class="form-group">
+                <label for="address" data-translate="addressLabel">वर्तमान पता (Current Address) <span class="required">*</span>:</label>
+                <textarea id="address" name="address" rows="3" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="city" data-translate="cityLabel">शहर (City) <span class="required">*</span>:</label>
+                <input type="text" id="city" name="city" required>
+            </div>
+
+            <div class="form-group">
+                <label for="state" data-translate="stateLabel">राज्य (State) <span class="required">*</span>:</label>
+                <input type="text" id="state" name="state" required>
+            </div>
+
+            <div class="form-group">
+                <label for="pincode" data-translate="pincodeLabel">पिनकोड (Pincode) <span class="required">*</span>:</label>
+                <input type="text" id="pincode" name="pincode" pattern="[0-9]{6}" placeholder="उदा. 110001" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="highestQualification" data-translate="qualificationLabel">उच्चतम शिक्षा (Highest Qualification) <span class="required">*</span>:</label>
+                <input type="text" id="highestQualification" name="highestQualification" placeholder="उदा. B.Com, 12th Pass" required>
+            </div>
+
+            <div class="form-group">
+                <label for="experienceYears" data-translate="experienceLabel">कुल कार्य अनुभव (वर्षों में) (Total Work Experience in Years):</label>
+                <input type="number" id="experienceYears" name="experienceYears" min="0" placeholder="अगर कोई हो तो">
+            </div>
+
+            <div class="form-group">
+                <label for="previousWork" data-translate="previousWorkLabel">पिछला काम/कंपनी का विवरण (Previous Work/Company Details, if any):</label>
+                <textarea id="previousWork" name="previousWork" rows="3" placeholder="संक्षेप में बताएं"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="whySuitable" data-translate="whySuitableLabel">आप इस भूमिका के लिए खुद को उपयुक्त क्यों मानते हैं? (Why do you consider yourself suitable for this role?) <span class="required">*</span>:</label>
+                <textarea id="whySuitable" name="whySuitable" rows="4" required placeholder="अपने कौशल और इस जॉब के प्रति अपनी रुचि के बारे में बताएं"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="preferredLocation" data-translate="preferredLocationLabel">पसंदीदा कार्यक्षेत्र/शहर (Preferred Work Location/City) <span class="required">*</span>:</label>
+                <input type="text" id="preferredLocation" name="preferredLocation" placeholder="उदा. दिल्ली, जयपुर (एक या अधिक)" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="howHeard" data-translate="howHeardLabel">आपको हमारे बारे में कैसे पता चला? (How did you hear about us?) <span class="required">*</span>:</label>
+                <select id="howHeard" name="howHeard" required>
+                    <option value="" data-translate="selectOption">-- चुनें --</option>
+                    <option value="Social Media" data-translate="socialMediaOption">सोशल मीडिया (Social Media)</option>
+                    <option value="Friend/Colleague" data-translate="friendOption">मित्र/सहकर्मी (Friend/Colleague)</option>
+                    <option value="Job Portal" data-translate="jobPortalOption">जॉब पोर्टल (Job Portal)</option>
+                    <option value="Advertisement" data-translate="advertisementOption">विज्ञापन (Advertisement)</option>
+                    <option value="Other" data-translate="otherOption">अन्य (Other)</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label data-translate="languageProficiencyLabel">भाषा ज्ञान (Language Proficiency) <span class="required">*</span>:</label>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="langHindi" name="languageProficiency" value="Hindi">
+                    <label for="langHindi" data-translate="hindiLang">हिन्दी (Hindi)</label>
+                </div>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="langEnglish" name="languageProficiency" value="English">
+                    <label for="langEnglish" data-translate="englishLang">अंग्रेजी (English)</label>
+                </div>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="langOther" name="languageProficiency" value="Other">
+                    <label for="langOther" data-translate="otherLang">अन्य (Other)</label> 
+                    <input type="text" id="otherLanguageText" name="otherLanguageText" placeholder="यदि अन्य, तो लिखें" style="width:auto; margin-left:10px; display:none;">
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <div class="checkbox-group">
+                    <input type="checkbox" id="terms" name="terms" required>
+                    <label for="terms" data-translate="agreeTermsLabel">मैं पुष्टि करता/करती हूं कि मेरे द्वारा दी गई सभी जानकारी सत्य है और मैं कंपनी की चयन प्रक्रिया के लिए सहमत हूं। (I confirm that all information provided by me is true and I agree to the company's selection process.) <span class="required">*</span></label>
+                </div>
+            </div>
+
+            <button type="submit" id="submitBtn" class="btn" data-translate="submitBtnText">आवेदन जमा करें (Submit Application)</button>
+            <div class="loader" id="loader"></div>
+        </form>
+
+        <div id="message"></div>
+    </div>
+
+    <script>
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwwpFqSCyAqWN3ZvWW1iPqswvgMWmVGkn01xcLyDjgin5RxmtHlJeCCfiSM0bKpz1wA/exec"; // Aapka Web App URL yahan daalein
+        const form = document.getElementById('jobApplicationForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const loader = document.getElementById('loader');
+        const messageDiv = document.getElementById('message');
+        const langOtherCheckbox = document.getElementById('langOther');
+        const otherLanguageText = document.getElementById('otherLanguageText');
+
+        const translations = {
+            hi: {
+                pageTitle: "ERP एजेंट - जॉब एप्लीकेशन",
+                pageSubtitle: "[Aapki Company Ka Naam] के School Management ERP Software के लिए Marketing Agents की Bharti",
+                selectLanguageLabel: "भाषा चुनें:",
+                jobDescTitle: "जॉब के बारे में (About the Job)",
+                jobDescP1: "हम अपने School Management System ERP Software के लिए उत्साहित और मेहनती मार्केटिंग एजेंट्स की तलाश में हैं। आपका मुख्य काम होगा विभिन्न स्कूलों में जाकर हमारे ERP सॉफ्टवेयर का प्रदर्शन करना और उन्हें इसे मुफ्त में अपनाने के लिए प्रेरित करना।",
+                jobDescP2: "<strong>यह ERP सॉफ्टवेयर स्कूलों के लिए पूरी तरह से मुफ़्त है</strong> और इसमें कई उपयोगी विशेषताएं हैं जो स्कूल प्रबंधन को आसान बनाती हैं। इसके मुफ्त और उपयोगी होने के कारण, स्कूलों द्वारा इसे अपनाने की संभावना बहुत अधिक है।",
+                jobDescP3: "<strong>इस भूमिका में सफलता पूर्वक काम करने पर जॉब मिलने की संभावना 90% तक है।</strong>",
+                responsibilitiesTitle: "मुख्य जिम्मेदारियां (Key Responsibilities):",
+                resp1: "निर्धारित क्षेत्र में स्कूलों की पहचान करना और उनसे संपर्क स्थापित करना।",
+                resp2: "स्कूल प्रबंधन/प्रिंसिपल को ERP सॉफ्टवेयर की विशेषताओं और लाभों के बारे में बताना।",
+                resp3: "सॉफ्टवेयर का लाइव डेमो देना।",
+                resp4: "स्कूलों को सॉफ्टवेयर मुफ्त में इंस्टॉल करवाने और उपयोग शुरू करवाने में सहायता करना।",
+                resp5: "कंपनी को नियमित रूप से अपनी प्रगति की रिपोर्ट देना।",
+                qualificationsTitle: "आवश्यक योग्यताएं (Required Qualifications):",
+                qual1: "उत्कृष्ट संचार और प्रस्तुति कौशल (Communication and Presentation Skills)।",
+                qual2: "लोगों को प्रेरित करने की क्षमता।",
+                qual3: "कंप्यूटर और इंटरनेट का बुनियादी ज्ञान।",
+                qual4: "12वीं पास या स्नातक (किसी भी विषय में)।",
+                qual5: "खुद का स्मार्टफोन और दोपहिया वाहन (यात्रा के लिए फायदेमंद, अनिवार्य नहीं)।",
+                formInstructionsTitle: "आवेदन पत्र भरने का तरीका (How to Fill the Application Form):",
+                instr1: "नीचे दिए गए सभी फ़ील्ड्स को ध्यानपूर्वक और सही-सही भरें।",
+                instr2: "जिन फ़ील्ड्स पर '*' (तारांकन) लगा है, वे अनिवार्य हैं।",
+                instr3: "अपनी संपर्क जानकारी (ईमेल और फ़ोन नंबर) दोबारा जांच लें ताकि हम आपसे संपर्क कर सकें।",
+                instr4: "फॉर्म जमा करने के बाद, आपको अपनी स्क्रीन पर एक पुष्टिकरण संदेश दिखाई देगा और आपके ईमेल पर भी एक सूचना भेजी जाएगी।",
+                instr5: "शॉर्टलिस्ट किए गए उम्मीदवारों से हमारी टीम जल्द ही इंटरव्यू के लिए संपर्क करेगी।",
+                applicationFormTitle: "आवेदन पत्र (Application Form)",
+                fullNameLabel: "पूरा नाम (Full Name)",
+                emailLabel: "ईमेल (Email)",
+                phoneLabel: "फ़ोन नंबर (Phone Number)",
+                addressLabel: "वर्तमान पता (Current Address)",
+                cityLabel: "शहर (City)",
+                stateLabel: "राज्य (State)",
+                pincodeLabel: "पिनकोड (Pincode)",
+                qualificationLabel: "उच्चतम शिक्षा (Highest Qualification)",
+                experienceLabel: "कुल कार्य अनुभव (वर्षों में) (Total Work Experience in Years):",
+                previousWorkLabel: "पिछला काम/कंपनी का विवरण (Previous Work/Company Details, if any):",
+                whySuitableLabel: "आप इस भूमिका के लिए खुद को उपयुक्त क्यों मानते हैं? (Why do you consider yourself suitable for this role?)",
+                preferredLocationLabel: "पसंदीदा कार्यक्षेत्र/शहर (Preferred Work Location/City)",
+                howHeardLabel: "आपको हमारे बारे में कैसे पता चला? (How did you hear about us?)",
+                selectOption: "-- चुनें --",
+                socialMediaOption: "सोशल मीडिया (Social Media)",
+                friendOption: "मित्र/सहकर्मी (Friend/Colleague)",
+                jobPortalOption: "जॉब पोर्टल (Job Portal)",
+                advertisementOption: "विज्ञापन (Advertisement)",
+                otherOption: "अन्य (Other)",
+                languageProficiencyLabel: "भाषा ज्ञान (Language Proficiency)",
+                hindiLang: "हिन्दी (Hindi)",
+                englishLang: "अंग्रेजी (English)",
+                otherLang: "अन्य (Other)",
+                agreeTermsLabel: "मैं पुष्टि करता/करती हूं कि मेरे द्वारा दी गई सभी जानकारी सत्य है और मैं कंपनी की चयन प्रक्रिया के लिए सहमत हूं। (I confirm that all information provided by me is true and I agree to the company's selection process.)",
+                submitBtnText: "आवेदन जमा करें (Submit Application)",
+                successMessage: "आपका आवेदन सफलतापूर्वक जमा हो गया है! आपकी ईमेल पर एक पुष्टिकरण संदेश भेजा गया है। हम जल्द ही आपसे संपर्क करेंगे।",
+                errorMessage: "आवेदन जमा करने में त्रुटि हुई। कृपया पुनः प्रयास करें। यदि समस्या बनी रहती है, तो कृपया व्यवस्थापक से संपर्क करें।",
+                validationErrorLang: "कृपया कम से कम एक भाषा चुनें।"
+            },
+            en: {
+                pageTitle: "ERP Agent - Job Application",
+                pageSubtitle: "Hiring Marketing Agents for [Your Company Name]'s School Management ERP Software",
+                selectLanguageLabel: "Select Language:",
+                jobDescTitle: "About the Job",
+                jobDescP1: "We are looking for enthusiastic and hardworking Marketing Agents for our School Management System ERP Software. Your main task will be to visit various schools, demonstrate our ERP software, and motivate them to adopt it for free.",
+                jobDescP2: "<strong>This ERP software is completely free for schools</strong> and has many useful features that simplify school management. Due to it being free and useful, the chances of schools adopting it are very high.",
+                jobDescP3: "<strong>Successful performance in this role has up to a 90% chance of leading to a permanent job.</strong>",
+                responsibilitiesTitle: "Key Responsibilities:",
+                resp1: "Identify and establish contact with schools in the assigned area.",
+                resp2: "Explain the features and benefits of the ERP software to school management/principals.",
+                resp3: "Give live demos of the software.",
+                resp4: "Assist schools in installing the software for free and starting its usage.",
+                resp5: "Regularly report progress to the company.",
+                qualificationsTitle: "Required Qualifications:",
+                qual1: "Excellent communication and presentation skills.",
+                qual2: "Ability to motivate people.",
+                qual3: "Basic knowledge of computers and the internet.",
+                qual4: "12th pass or graduate (in any discipline).",
+                qual5: "Own smartphone and two-wheeler (beneficial for travel, not mandatory).",
+                formInstructionsTitle: "How to Fill the Application Form:",
+                instr1: "Fill all the fields below carefully and accurately.",
+                instr2: "Fields marked with '*' (asterisk) are mandatory.",
+                instr3: "Double-check your contact information (email and phone number) so we can contact you.",
+                instr4: "After submitting the form, you will see a confirmation message on your screen and an email notification will also be sent to your email.",
+                instr5: "Our team will soon contact shortlisted candidates for an interview.",
+                applicationFormTitle: "Application Form",
+                fullNameLabel: "Full Name",
+                emailLabel: "Email",
+                phoneLabel: "Phone Number",
+                addressLabel: "Current Address",
+                cityLabel: "City",
+                stateLabel: "State",
+                pincodeLabel: "Pincode",
+                qualificationLabel: "Highest Qualification",
+                experienceLabel: "Total Work Experience (in Years):",
+                previousWorkLabel: "Previous Work/Company Details (if any):",
+                whySuitableLabel: "Why do you consider yourself suitable for this role?",
+                preferredLocationLabel: "Preferred Work Location/City",
+                howHeardLabel: "How did you hear about us?",
+                selectOption: "-- Select --",
+                socialMediaOption: "Social Media",
+                friendOption: "Friend/Colleague",
+                jobPortalOption: "Job Portal",
+                advertisementOption: "Advertisement",
+                otherOption: "Other",
+                languageProficiencyLabel: "Language Proficiency",
+                hindiLang: "Hindi",
+                englishLang: "English",
+                otherLang: "Other",
+                agreeTermsLabel: "I confirm that all information provided by me is true and I agree to the company's selection process.",
+                submitBtnText: "Submit Application",
+                successMessage: "Your application has been submitted successfully! A confirmation message has been sent to your email. We will contact you soon.",
+                errorMessage: "There was an error submitting your application. Please try again. If the problem persists, please contact the administrator.",
+                validationErrorLang: "Please select at least one language."
+            }
+        };
+        
+        function changeLanguage(lang) {
+            document.documentElement.lang = lang;
+            const elements = document.querySelectorAll('[data-translate]');
+            elements.forEach(el => {
+                const key = el.getAttribute('data-translate');
+                if (translations[lang] && translations[lang][key]) {
+                    // For elements like strong inside P, we need to handle HTML content
+                    if (key === 'jobDescP2' || key === 'jobDescP3') {
+                        el.innerHTML = translations[lang][key];
+                    } else {
+                        el.textContent = translations[lang][key];
+                    }
+                }
+            });
+
+            // Update placeholders for inputs if needed (using IDs)
+            const placeholderTranslations = {
+                hi: {
+                    phoneNumber: "उदा. 9876543210",
+                    pincode: "उदा. 110001",
+                    highestQualification: "उदा. B.Com, 12th Pass",
+                    experienceYears: "अगर कोई हो तो",
+                    previousWork: "संक्षेप में बताएं",
+                    whySuitable: "अपने कौशल और इस जॉब के प्रति अपनी रुचि के बारे में बताएं",
+                    preferredLocation: "उदा. दिल्ली, जयपुर (एक या अधिक)",
+                    otherLanguageText: "यदि अन्य, तो लिखें"
+                },
+                en: {
+                    phoneNumber: "e.g. 9876543210",
+                    pincode: "e.g. 110001",
+                    highestQualification: "e.g. B.Com, 12th Pass",
+                    experienceYears: "If any",
+                    previousWork: "Briefly describe",
+                    whySuitable: "Describe your skills and interest in this job",
+                    preferredLocation: "e.g. Delhi, Jaipur (one or more)",
+                    otherLanguageText: "If other, please specify"
+                }
+            };
+
+            const currentPlaceholders = placeholderTranslations[lang];
+            for (const id in currentPlaceholders) {
+                const element = document.getElementById(id);
+                if (element) {
+                    element.placeholder = currentPlaceholders[id];
+                }
+            }
+        }
+
+        // Initialize with Hindi
+        changeLanguage('hi');
+
+
+        langOtherCheckbox.addEventListener('change', function() {
+            if (this.checked) {
+                otherLanguageText.style.display = 'inline-block';
+                otherLanguageText.required = true;
+            } else {
+                otherLanguageText.style.display = 'none';
+                otherLanguageText.required = false;
+                otherLanguageText.value = '';
+            }
+        });
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Language proficiency validation
+            const langCheckboxes = document.querySelectorAll('input[name="languageProficiency"]:checked');
+            if (langCheckboxes.length === 0) {
+                showMessage(translations[document.documentElement.lang || 'hi'].validationErrorLang, 'error');
+                document.querySelector('label[data-translate="languageProficiencyLabel"]').scrollIntoView({behavior: "smooth"});
+                return;
+            }
+
+            submitBtn.disabled = true;
+            loader.style.display = 'block';
+            messageDiv.style.display = 'none';
+
+            const formData = new FormData(form);
+            
+            // Collect language proficiency
+            let languages = [];
+            formData.getAll('languageProficiency').forEach(lang => {
+                if (lang === "Other" && formData.get('otherLanguageText')) {
+                    languages.push(`Other: ${formData.get('otherLanguageText')}`);
+                } else if (lang !== "Other") {
+                    languages.push(lang);
+                }
+            });
+            // Replace existing languageProficiency with the combined string
+            formData.delete('languageProficiency'); 
+            formData.append('languageProficiency', languages.join(', '));
+            formData.delete('otherLanguageText'); // Remove the separate otherLanguageText field
+
+            // Add current language of the form to data
+            formData.append('formLanguage', document.documentElement.lang || 'hi');
+
+            fetch(SCRIPT_URL, {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === "success") {
+                    showMessage(translations[document.documentElement.lang || 'hi'].successMessage, 'success');
+                    form.reset();
+                    otherLanguageText.style.display = 'none'; // Reset visibility of 'other language' text field
+                } else {
+                    showMessage(translations[document.documentElement.lang || 'hi'].errorMessage + (data.message ? ` (${data.message})` : ''), 'error');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                showMessage(translations[document.documentElement.lang || 'hi'].errorMessage, 'error');
+            })
+            .finally(() => {
+                submitBtn.disabled = false;
+                loader.style.display = 'none';
+            });
+        });
+
+        function showMessage(msg, type) {
+            messageDiv.textContent = msg;
+            messageDiv.className = type; // 'success' or 'error'
+            messageDiv.style.display = 'block';
+            messageDiv.scrollIntoView({behavior: "smooth"});
+        }
+
+         // Initial language setup
+         changeLanguage(document.getElementById('language').value);
+
+    </script>
+</body>
+</html>
