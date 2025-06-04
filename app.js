@@ -21,7 +21,7 @@ if (!GAS_URL) {
 
 // Serve index.html for the root route
 app.get('/', (req, res) => {
-  const indexPath = path.join(__dirname, 'index1.html');
+  const indexPath = path.join(__dirname, 'job.html');
   res.sendFile(indexPath, (err) => {
     if (err) {
       console.error("Error sending index.html:", err);
