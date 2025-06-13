@@ -1,17 +1,16 @@
 <!DOCTYPE html>
-<html lang="hi"> <!-- Default language -->
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-lang-key="page_title">Sameer Website Developer - Cyber Edition</title>
-    <meta name="description" data-lang-key="meta_description" content="school1129, बिहार के स्कूलों को डिजिटल बनाएं हमारे एडवांस्ड, निःशुल्क स्कूल मैनेजमेंट ERP सॉफ्टवेयर से। पाएं AI सपोर्ट, स्किल कॉम्पिटिशन, कम्युनिटी और कस्टम डेवलपमेंट।">
-    <meta name="keywords" data-lang-key="meta_keywords" content="school, Free School ERP Bihar, School Management System Bihar, Digital School Bihar, School Software Free, Bihar Education, School Community Bihar, AI School Support, Custom School App, Online Fees Payment, Student Management">
+    <title>sameer website developer </title>
+    <meta name="description" content="Digitize your school with our advanced, free School Management ERP software. Get AI support, custom development, and a powerful suite of management tools.">
+    <meta name="keywords" content="Digital ERP, Free School ERP, School Management System, Digital School, School Software Free, Education Technology, School Community, AI School Support, Custom School App, Online Fees Payment, Student Management">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Tiro+Devanagari+Hindi:wght@400&family=Orbitron:wght@400;500;700&family=Rajdhani:wght@400;500;700&family=Baloo+Paaji+2:wght@400;500;700&display=swap" rel="stylesheet">
-    <!-- Baloo Paaji 2 for Punjabi -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Orbitron:wght@400;500;700&family=Rajdhani:wght@400;500;700&display=swap" rel="stylesheet">
 
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -24,7 +23,7 @@
             --cyber-primary: #00f0ff;   /* Bright Cyan */
             --cyber-secondary: #f000ff; /* Bright Magenta */
             --cyber-accent: #00ff7f;    /* Bright Spring Green */
-            --cyber-text: #e0e5f0;      /* Light grey/off-white for text */
+            --cyber-text: #c5cde0;      /* MODIFIED: Less bright off-white for text */
             --cyber-text-dim: #808a9a;    /* Dimmer grey for less important text */
             --cyber-border: rgba(0, 240, 255, 0.3); /* Cyan border with alpha */
             --cyber-glow-primary: 0 0 8px var(--cyber-primary), 0 0 16px var(--cyber-primary), 0 0 24px var(--cyber-primary);
@@ -33,23 +32,11 @@
             --font-body: 'Poppins', sans-serif;
             --font-heading: 'Orbitron', sans-serif; /* Futuristic heading font */
             --font-subheading: 'Rajdhani', sans-serif;
-            --font-hindi: 'Tiro Devanagari Hindi', serif;
-            --font-punjabi: 'Baloo Paaji 2', cursive;
 
             --navbar-height: 75px;
             --transition-speed: 0.4s;
             --card-border-radius: 8px;
         }
-
-        /* Language-specific font application */
-        html[lang="hi"] body, html[lang="hi"] [data-lang-key] { font-family: var(--font-hindi), var(--font-body); }
-        html[lang="en"] body, html[lang="en"] [data-lang-key] { font-family: var(--font-body); }
-        html[lang="pa"] body, html[lang="pa"] [data-lang-key] { font-family: var(--font-punjabi), var(--font-body); }
-        
-        html[lang="hi"] h1, html[lang="hi"] h2, html[lang="hi"] h3, html[lang="hi"] h4, html[lang="hi"] h5, html[lang="hi"] h6 { font-family: var(--font-subheading), var(--font-hindi), var(--font-heading); }
-        html[lang="en"] h1, html[lang="en"] h2, html[lang="en"] h3, html[lang="en"] h4, html[lang="en"] h5, html[lang="en"] h6 { font-family: var(--font-heading); }
-        html[lang="pa"] h1, html[lang="pa"] h2, html[lang="pa"] h3, html[lang="pa"] h4, html[lang="pa"] h5, html[lang="pa"] h6 { font-family: var(--font-subheading), var(--font-punjabi), var(--font-heading); }
-
 
         /* --- Global Styles & Resets --- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -96,7 +83,7 @@
         @keyframes spin { to { transform: rotate(360deg); } }
 
         /* Typography */
-        h1, h2, h3, h4, h5, h6 { font-weight: 700; margin-bottom: 1.2rem; color: var(--cyber-primary); text-shadow: 0 0 5px rgba(0, 240, 255, 0.5); letter-spacing: 1px;}
+        h1, h2, h3, h4, h5, h6 { font-family: var(--font-heading); font-weight: 700; margin-bottom: 1.2rem; color: var(--cyber-primary); text-shadow: 0 0 5px rgba(0, 240, 255, 0.5); letter-spacing: 1px;}
         h1 { font-size: 3rem; line-height: 1.2; }
         h2 { font-size: 2.5rem; }
         h3 { font-size: 1.8rem; color: var(--cyber-secondary); text-shadow: 0 0 5px rgba(240, 0, 255, 0.5); }
@@ -173,7 +160,6 @@
         /* Section Title - Cyber Style */
         .section-title { text-align: center; margin-bottom: 70px; position: relative; }
         .section-title h2 { font-size: 2.8rem; margin-bottom: 15px; }
-        html[lang="hi"] .section-title h2, html[lang="pa"] .section-title h2 { font-size: 3rem; }
         .section-title p { font-size: 1.1rem; color: var(--cyber-text-dim); max-width: 750px; margin: 0 auto; }
         .section-title::after { /* Animated underline */
             content: ''; display: block; width: 80px; height: 4px;
@@ -209,7 +195,7 @@
         @keyframes rotateIcon { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
         #main-nav ul { list-style: none; display: flex; align-items: center; }
-        #main-nav ul li { margin-left: 25px; }
+        #main-nav ul li { margin-left: 35px; }
         #main-nav ul li a {
             color: var(--cyber-text); font-weight: 500; font-size: 0.9rem;
             padding-bottom: 8px; position: relative; text-transform: uppercase;
@@ -225,18 +211,6 @@
         #main-nav ul li a:hover, #main-nav ul li a.active { color: var(--cyber-primary); text-shadow: var(--cyber-glow-primary); }
         #main-nav ul li a:hover::after, #main-nav ul li a.active::after { width: 100%; }
         
-        /* Language Switcher */
-        .language-switcher { margin-left: 30px; display: flex; gap: 8px;}
-        .language-switcher button {
-            background: transparent; border: 1px solid var(--cyber-border); color: var(--cyber-text-dim);
-            padding: 6px 10px; border-radius: 4px; cursor: pointer; font-size: 0.8rem;
-            transition: all var(--transition-speed) ease; font-family: var(--font-subheading);
-        }
-        .language-switcher button:hover, .language-switcher button.active-lang {
-            background-color: var(--cyber-primary); color: var(--cyber-bg);
-            border-color: var(--cyber-primary); box-shadow: var(--cyber-glow-primary);
-        }
-
         #mobile-menu-toggle { display: none; font-size: 1.8rem; color: var(--cyber-primary); cursor: pointer; background: none; border: none; z-index: 1001; padding: 10px; }
         #mobile-menu-toggle i { text-shadow: var(--cyber-glow-primary); }
 
@@ -244,10 +218,9 @@
         /* --- Hero Section - Cyber Style --- */
         #hero {
             background: linear-gradient(rgba(10, 12, 20, 0.8), rgba(18, 24, 40, 0.9)), url('https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8dGVjaG5vbG9neXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=1000&q=80') no-repeat center center/cover;
-            /* Replace placeholder with a more cyber/tech image if available */
             color: var(--cyber-text); min-height: 100vh; display: flex; align-items: center; justify-content: center;
             text-align: center; position: relative; padding-top: var(--navbar-height);
-            overflow: visible; /* For potential 3D effects or elements extending out */
+            overflow: visible;
         }
         #hero::before { /* Overlay for glitch or scan lines */
             content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
@@ -256,7 +229,7 @@
                 rgba(0, 240, 255, 0.05),
                 rgba(0, 240, 255, 0.05) 1px,
                 transparent 1px,
-                transparent 5px /* Adjust for scanline density */
+                transparent 5px
             );
             animation: scanlines 20s linear infinite;
             opacity: 0.5;
@@ -265,7 +238,7 @@
         }
         @keyframes scanlines {
             0% { background-position: 0 0; }
-            100% { background-position: 0 100px; } /* Adjust for speed */
+            100% { background-position: 0 100px; }
         }
         #hero .hero-content { max-width: 900px; z-index: 2; animation: heroFadeInUp 1.2s ease-out forwards; }
         @keyframes heroFadeInUp {
@@ -277,15 +250,77 @@
             text-shadow: 0 0 10px var(--cyber-primary), 0 0 20px var(--cyber-primary), 0 0 5px #fff;
             animation: textGlow 2s infinite alternate;
         }
-        html[lang="hi"] #hero h1, html[lang="pa"] #hero h1 { font-size: 4rem; }
         @keyframes textGlow {
             from { text-shadow: 0 0 8px var(--cyber-primary), 0 0 15px var(--cyber-primary), 0 0 3px #fff; }
             to { text-shadow: 0 0 15px var(--cyber-primary), 0 0 25px var(--cyber-primary), 0 0 8px #fff; }
         }
         #hero h1 .highlight { color: var(--cyber-accent); text-shadow: 0 0 10px var(--cyber-accent); }
-        #hero p { font-size: 1.25rem; margin-bottom: 2.8rem; color: var(--cyber-text-dim); font-weight: 400; line-height: 1.8; }
+        #hero p { font-size: 1.25rem; margin-bottom: 2.8rem; color: var(--cyber-text); font-weight: 400; line-height: 1.8; }
         #hero .cta-buttons .btn { margin: 0 12px; padding: 16px 40px; font-size: 1.05rem; }
 
+
+        /* --- Registration Popup Modal --- */
+        #registration-popup {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background-color: rgba(10, 12, 20, 0.85);
+            backdrop-filter: blur(8px);
+            z-index: 1001;
+            display: none; /* Initially hidden */
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        #registration-popup.active {
+            display: flex;
+            opacity: 1;
+        }
+        .popup-content {
+            background: var(--cyber-bg-secondary);
+            padding: 40px;
+            border-radius: var(--card-border-radius);
+            border: 1px solid var(--cyber-border);
+            box-shadow: 0 0 30px rgba(0, 240, 255, 0.25);
+            text-align: center;
+            position: relative;
+            width: 90%;
+            max-width: 550px;
+            transform: scale(0.95);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        #registration-popup.active .popup-content {
+            transform: scale(1);
+        }
+        .popup-content h3 {
+            margin-bottom: 30px;
+            color: var(--cyber-primary);
+            font-size: 1.8rem;
+        }
+        .popup-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .popup-buttons .btn {
+            width: 100%;
+        }
+        .popup-close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 2rem;
+            color: var(--cyber-text-dim);
+            background: none;
+            border: none;
+            cursor: pointer;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+        .popup-close-btn:hover {
+            color: var(--cyber-primary);
+            transform: rotate(90deg);
+        }
 
         /* --- Cyber Card Base Style & Animations --- */
         .cyber-card {
@@ -318,24 +353,14 @@
         .cyber-card:hover::before { width: calc(100% + 4px); height: calc(100% + 4px); opacity: 1; border-color: var(--cyber-secondary);}
         .cyber-card:hover::after { width: calc(100% + 4px); height: calc(100% + 4px); opacity: 1; border-color: var(--cyber-accent); }
         
+        .card-content-wrapper { position: relative; z-index: 2; }
+        .scanline, .grid-overlay, .data-stream { z-index: 1; }
+
         /* Animation Style 1: Scanline Glow */
-        .cyber-card.scanline-glow .card-content-wrapper{ position:relative; z-index: 2;}
-        .cyber-card.scanline-glow::after { /* Primary after is for corner */
-            content: ""; position: absolute; top: -2px; right: -2px; width: 15px; height: 15px;
-            border-color: var(--cyber-primary); border-style: solid; border-width: 0 2px 2px 0;
-             opacity: 0.7;
-        }
-         .cyber-card.scanline-glow .scanline {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: var(--cyber-primary);
-            box-shadow: 0 0 10px var(--cyber-primary);
-            opacity: 0;
-            animation: scan 4s linear infinite paused; /* Paused initially */
-            z-index: 1;
+        .cyber-card.scanline-glow .scanline {
+            position: absolute; top: 0; left: 0; width: 100%; height: 3px;
+            background: var(--cyber-primary); box-shadow: 0 0 10px var(--cyber-primary);
+            opacity: 0; animation: scan 4s linear infinite paused; /* Paused initially */
         }
         .cyber-card.scanline-glow:hover .scanline { opacity: 0.8; animation-play-state: running; }
         @keyframes scan {
@@ -346,13 +371,6 @@
         }
 
         /* Animation Style 2: Pulsing Grid */
-        .cyber-card.pulsing-grid { background-size: 30px 30px; }
-        .cyber-card.pulsing-grid .card-content-wrapper{ position:relative; z-index: 2;}
-        .cyber-card.pulsing-grid::before { /* Primary before is for corner */
-            content: ""; position: absolute; top: -2px; left: -2px; width: 15px; height: 15px;
-            border-color: var(--cyber-primary); border-style: solid; border-width: 2px 0 0 2px;
-             opacity: 0.7;
-        }
         .cyber-card.pulsing-grid .grid-overlay {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             background-image:
@@ -362,7 +380,6 @@
             opacity: 0;
             transition: opacity var(--transition-speed) ease;
             animation: pulseGrid 3s infinite alternate;
-            z-index: 0;
         }
         .cyber-card.pulsing-grid:hover .grid-overlay { opacity: 0.15; }
         @keyframes pulseGrid {
@@ -370,22 +387,12 @@
             to { opacity: 0.15; background-size: 32px 32px; }
         }
 
-        /* Animation Style 3: Data Flow (Subtle background lines) */
-        .cyber-card.data-flow { overflow: hidden; }
-        .cyber-card.data-flow .card-content-wrapper{ position:relative; z-index: 2;}
+        /* Animation Style 3: Data Flow */
         .cyber-card.data-flow .data-stream {
             position: absolute; top: 0; left: 0; width: 200%; height: 100%; /* Wider for movement */
-            background: repeating-linear-gradient(
-                -45deg,
-                transparent,
-                transparent 10px,
-                rgba(0, 255, 127, 0.05) 10px, /* --cyber-accent with low alpha */
-                rgba(0, 255, 127, 0.05) 12px
-            );
-            opacity: 0;
-            transition: opacity var(--transition-speed);
+            background: repeating-linear-gradient(-45deg, transparent, transparent 10px, rgba(0, 255, 127, 0.05) 10px, rgba(0, 255, 127, 0.05) 12px);
+            opacity: 0; transition: opacity var(--transition-speed);
             animation: flow 10s linear infinite;
-            z-index: 0;
         }
         .cyber-card.data-flow:hover .data-stream { opacity: 1; }
         @keyframes flow {
@@ -394,7 +401,7 @@
         }
 
         /* Applying card styles to sections */
-        /* About / Mission Section - Minimal Cyber */
+        #about .about-content { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
         #about .about-image img {
             box-shadow: 0 0 25px rgba(0, 240, 255, 0.2);
             border: 2px solid var(--cyber-primary);
@@ -407,9 +414,7 @@
 
         /* How It Works Section */
         #how-it-works .process-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px; margin-top: 50px; }
-        .step-card { /* Uses .cyber-card.scanline-glow */
-            text-align: center;
-        }
+        .step-card { text-align: center; }
         .step-card .step-number {
             display: inline-block; width: 60px; height: 60px; line-height: 60px;
             border-radius: 50%;
@@ -424,9 +429,7 @@
 
         /* Features Section */
         #features .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 35px; }
-        .feature-card { /* Uses .cyber-card.pulsing-grid */
-            text-align: center;
-        }
+        .feature-card { text-align: center; }
         .feature-card .icon {
             font-size: 3.5rem; margin-bottom: 25px; display: inline-block;
             color: var(--cyber-primary);
@@ -435,122 +438,46 @@
         }
         .feature-card:hover .icon { transform: scale(1.1) rotateY(360deg); }
         .feature-card h3 { font-size: 1.6rem; margin-bottom: 15px; color: var(--cyber-accent); }
-        .feature-card p { font-size: 0.95rem; color: var(--cyber-text-dim); }
 
         /* Statistics Section */
         #stats {
              background: linear-gradient(rgba(10,12,20,0.9), rgba(18,24,40,0.95)), 
                         url('https://images.unsplash.com/photo-1550745165-9bc0b252726c?auto=format&fit=crop&w=1000&q=80') no-repeat center center/cover;
-            color: var(--cyber-text); padding: 80px 0; text-align: center;
+            padding: 80px 0;
         }
         #stats h2 { color: var(--cyber-text); text-shadow: 0 0 10px var(--cyber-secondary); }
-        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 35px; }
-        .stat-item { /* Uses .cyber-card (base) */
-            padding: 35px 25px;
-            transition-delay: calc(var(--item-index, 0) * 0.1s) !important; /* For staggered animation if applied */
-        }
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 35px; margin-top: 50px; }
+        .stat-item { padding: 35px 25px; text-align: center; transition-delay: calc(var(--item-index, 0) * 0.1s) !important; }
         .stat-item .stat-icon { font-size: 3rem; color: var(--cyber-accent); margin-bottom: 18px; text-shadow: 0 0 8px var(--cyber-accent); }
         .stat-item .stat-number { font-family: var(--font-heading); font-size: 3rem; font-weight: 700; color: var(--cyber-text); display: block; margin-bottom: 8px; text-shadow: 0 0 5px #fff; }
         .stat-item .stat-label { font-size: 1rem; color: var(--cyber-text-dim); text-transform: uppercase; letter-spacing: 1.5px; }
 
         /* Services Section */
-        .service-item { /* Uses .cyber-card.data-flow */
-            display: flex; align-items: flex-start; gap: 30px; margin-bottom: 40px;
-        }
+        #services .services-container { display: grid; grid-template-columns: 1fr; gap: 40px; margin-top: 50px; }
+        .service-item { display: flex; align-items: flex-start; gap: 30px; }
         .service-icon { font-size: 2.8rem; color: var(--cyber-secondary); flex-shrink: 0; width: 70px; text-align: center; margin-top: 5px; text-shadow: var(--cyber-glow-secondary); transition: transform var(--transition-speed) ease;}
         .service-item:hover .service-icon {transform: rotate(15deg) scale(1.1);}
         .service-content h3 { margin-top: 0; margin-bottom: 10px; color: var(--cyber-accent); font-size: 1.6rem;}
-        .service-content p { margin-bottom: 0; color: var(--cyber-text-dim); font-size: 0.95rem;}
-
-        /* Testimonials Section */
-        .testimonial-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 35px; }
-        .testimonial-card { /* Custom cyber card style */
-            background: transparent;
-            border: 1px solid var(--cyber-border);
-            padding: 35px; border-radius: var(--card-border-radius);
-            box-shadow: 0 0 20px rgba(240, 0, 255, 0.1); /* Magenta glow */
-            position: relative;
-            border-top: 3px solid var(--cyber-secondary);
-            transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
-        }
-        .testimonial-card:hover {
-            transform: translateY(-8px) perspective(800px) rotateX(3deg);
-            box-shadow: 0 0 30px rgba(240, 0, 255, 0.3);
-        }
-        .testimonial-card .quote-icon {
-            position: absolute; top: 15px; left: 20px; font-size: 3rem;
-            color: var(--cyber-secondary); opacity: 0.2;
-            text-shadow: none;
-        }
-        .testimonial-card p.testimonial-text { font-style: italic; color: var(--cyber-text-dim); margin-bottom: 25px; padding-top: 20px; font-size: 1.05rem; }
-        .testimonial-author { display: flex; align-items: center; }
-        .testimonial-author img { width: 55px; height: 55px; border-radius: 50%; margin-right: 18px; object-fit: cover; border: 2px solid var(--cyber-secondary); }
-        .testimonial-author h4 { font-size: 1.2rem; margin-bottom: 3px; color: var(--cyber-primary); text-shadow: none;}
-        .testimonial-author span { font-size: 0.9rem; color: var(--cyber-text-dim); }
-
-        /* Community Section */
-         #community .community-image img {
-            border-radius: var(--card-border-radius);
-            box-shadow: 0 0 35px rgba(0, 255, 127, 0.3); /* Accent color glow */
-            border: 2px solid var(--cyber-accent);
-            transition: transform 0.5s ease, filter 0.5s ease;
-        }
-        #community .community-image:hover img { transform: scale(1.05); filter: saturate(1.5); }
-        #community .community-text ul li { margin-bottom: 18px; position: relative; padding-left: 40px; color: var(--cyber-text-dim); font-size: 1rem; }
-        #community .community-text ul li::before {
-            content: '\f0c1'; /* Link icon, or futuristic bullet */ font-family: 'Font Awesome 6 Free'; font-weight: 900;
-            position: absolute; left: 0; top: 2px; color: var(--cyber-accent); font-size: 1.3rem;
-            transition: transform var(--transition-speed) ease;
-        }
-        #community .community-text ul li:hover::before { transform: rotate(45deg) scale(1.2); color: var(--cyber-primary);}
-
-        /* FAQ Section */
-        .faq-item { /* Base .cyber-card style can be applied or a custom one */
-            background: var(--cyber-bg-secondary); margin-bottom: 18px;
-            border-radius: var(--card-border-radius);
-            border: 1px solid var(--cyber-border);
-            overflow: hidden;
-            box-shadow: 0 0 10px rgba(0,240,255,0.05);
-        }
-        .faq-question {
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 20px 28px; cursor: pointer;
-            border-bottom: 1px solid transparent; /* Transition border */
-            transition: background-color var(--transition-speed) ease;
-        }
-        .faq-item.active .faq-question, .faq-question:hover { background-color: rgba(0, 240, 255, 0.05); border-bottom-color: var(--cyber-border); }
-        .faq-question h4 { margin-bottom: 0; font-size: 1.2rem; font-weight: 600; color: var(--cyber-text); text-shadow: none;}
-        html[lang="hi"] .faq-question h4, html[lang="pa"] .faq-question h4 {font-size: 1.3rem;}
-        .faq-question .icon { font-size: 1.3rem; color: var(--cyber-primary); transition: transform var(--transition-speed) ease; }
-        .faq-item.active .faq-question .icon { transform: rotate(180deg); color: var(--cyber-accent); }
-        .faq-answer { padding: 0 28px; max-height: 0; overflow: hidden; transition: max-height 0.6s ease-out, padding 0.6s ease-out; }
-        .faq-item.active .faq-answer { max-height: 400px; padding: 25px 28px; }
-        .faq-answer p { color: var(--cyber-text-dim); font-size: 0.95rem; margin-bottom: 0; }
-
-        /* CTA Section */
-        #cta {
-            background: linear-gradient(135deg, var(--cyber-secondary), var(--cyber-primary), var(--cyber-bg) 90%);
-            color: var(--cyber-text); text-align: center; padding: 80px 0;
-        }
-        #cta h2 { color: var(--cyber-text); font-size: 2.8rem; margin-bottom: 20px; text-shadow: 0 0 10px #fff; }
-        #cta p { font-size: 1.25rem; margin-bottom: 35px; max-width: 750px; margin-left: auto; margin-right: auto; color: var(--cyber-text-dim); }
-
+        
         /* Contact Section */
-        #contact .contact-info .info-item i { font-size: 1.5rem; color: var(--cyber-accent); margin-right: 18px; width: 35px; text-align: center; text-shadow: 0 0 8px var(--cyber-accent);}
-        #contact .contact-info .social-links a { color: var(--cyber-text-dim); font-size: 1.8rem; margin-right: 18px; transition: color var(--transition-speed) ease, transform var(--transition-speed) ease; }
-        #contact .contact-info .social-links a:hover { color: var(--cyber-primary); transform: translateY(-4px) scale(1.1); text-shadow: var(--cyber-glow-primary); }
+        #contact .contact-container { display: grid; grid-template-columns: 1fr 1.2fr; gap: 60px; align-items: start; margin-top: 50px;}
+        #contact .info-item { display: flex; align-items: center; margin-bottom: 20px; color: var(--cyber-text); }
+        #contact .info-item i { font-size: 1.5rem; color: var(--cyber-accent); margin-right: 18px; width: 35px; text-align: center; text-shadow: 0 0 8px var(--cyber-accent);}
+        #contact .social-links a { color: var(--cyber-text-dim); font-size: 1.8rem; margin-right: 18px; transition: color var(--transition-speed) ease, transform var(--transition-speed) ease; }
+        #contact .social-links a:hover { color: var(--cyber-primary); transform: translateY(-4px) scale(1.1); text-shadow: var(--cyber-glow-primary); }
 
-        #registration-form .form-group label { color: var(--cyber-text-dim); font-weight: 500; font-size: 0.95rem; }
-        #registration-form .form-group input, #registration-form .form-group textarea {
-            background-color: rgba(18, 24, 40, 0.6); /* Darker input bg */
-            border: 1px solid var(--cyber-border);
-            color: var(--cyber-text);
-            padding: 14px 18px;
-            border-radius: 6px;
-            font-size: 1rem;
+        #registration-form { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .form-group { display: flex; flex-direction: column; gap: 8px; }
+        .form-group.full-width { grid-column: 1 / -1; }
+        #registration-form label { color: var(--cyber-text-dim); font-weight: 500; font-size: 0.95rem; }
+        #registration-form input, #registration-form textarea {
+            width: 100%; background-color: rgba(18, 24, 40, 0.6);
+            border: 1px solid var(--cyber-border); color: var(--cyber-text);
+            padding: 14px 18px; border-radius: 6px; font-size: 1rem;
+            font-family: var(--font-body);
         }
-        #registration-form .form-group input::placeholder, #registration-form .form-group textarea::placeholder { color: rgba(128, 138, 154, 0.6); }
-        #registration-form .form-group input:focus, #registration-form .form-group textarea:focus {
+        #registration-form input::placeholder, #registration-form textarea::placeholder { color: rgba(128, 138, 154, 0.6); }
+        #registration-form input:focus, #registration-form textarea:focus {
             outline: none; border-color: var(--cyber-primary);
             box-shadow: 0 0 0 3px rgba(0, 240, 255, 0.2), inset 0 0 8px rgba(0, 240, 255, 0.1);
             background-color: rgba(18, 24, 40, 0.8);
@@ -559,8 +486,7 @@
         #form-feedback.success { background-color: rgba(0, 255, 127, 0.1); color: var(--cyber-accent); border-color: var(--cyber-accent); box-shadow: 0 0 10px var(--cyber-accent); }
         #form-feedback.error { background-color: rgba(240, 0, 255, 0.1); color: var(--cyber-secondary); border-color: var(--cyber-secondary); box-shadow: 0 0 10px var(--cyber-secondary); }
 
-
-        /* --- Footer - Cyber Style --- */
+        /* --- Footer --- */
         #main-footer {
             background-color: var(--cyber-bg-secondary);
             color: var(--cyber-text-dim);
@@ -568,23 +494,22 @@
             border-top: 2px solid var(--cyber-primary);
             box-shadow: 0 -5px 20px rgba(0, 240, 255, 0.1);
         }
-        #main-footer .footer-content .logo { font-family: var(--font-heading); font-size: 2.2rem; color: var(--cyber-primary); margin-bottom: 18px; text-shadow: var(--cyber-glow-primary); }
+        #main-footer .footer-content .logo { font-family: var(--font-heading); font-size: 2.2rem; color: var(--cyber-primary); margin-bottom: 18px; text-shadow: var(--cyber-glow-primary); display: inline-block;}
         #main-footer .footer-content .logo i { animation: rotateIcon 6s linear infinite reverse; }
         #main-footer .footer-content p { max-width: 650px; margin: 0 auto 28px; font-size: 0.95rem; }
         #main-footer .footer-social-links a { color: var(--cyber-text-dim); font-size: 1.8rem; margin: 0 14px; transition: color var(--transition-speed) ease, transform var(--transition-speed) ease, text-shadow var(--transition-speed) ease; display: inline-block; }
         #main-footer .footer-social-links a:hover { color: var(--cyber-primary); transform: translateY(-5px) scale(1.15); text-shadow: var(--cyber-glow-primary); }
         #main-footer .footer-bottom { border-top: 1px solid var(--cyber-border); padding-top: 28px; margin-top: 35px; font-size: 0.9rem; }
         #main-footer .footer-bottom a { color: var(--cyber-accent); }
-        #main-footer .footer-bottom a:hover { color: var(--cyber-primary); }
 
-        /* Responsive Adjustments for Cyber Theme */
+        /* Responsive Adjustments */
         @media (max-width: 992px) {
             h1 { font-size: 2.6rem; }
-            html[lang="hi"] h1, html[lang="pa"] h1 { font-size: 2.8rem; }
             h2 { font-size: 2.2rem; }
             #hero h1 { font-size: 3.2rem; }
-            html[lang="hi"] #hero h1, html[lang="pa"] #hero h1 { font-size: 3.4rem; }
-             .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            #about .about-content { grid-template-columns: 1fr; }
+            #contact .contact-container { grid-template-columns: 1fr; }
         }
 
         @media (max-width: 768px) {
@@ -592,7 +517,7 @@
             #main-nav ul {
                 display: none; flex-direction: column; position: absolute;
                 top: var(--navbar-height); left: 0; width: 100%;
-                background-color: rgba(10, 12, 20, 0.98); /* Solid dark for mobile menu */
+                background-color: rgba(10, 12, 20, 0.98);
                 backdrop-filter: blur(5px);
                 box-shadow: 0 10px 20px rgba(0,0,0,0.2);
                 padding: 20px 0;
@@ -600,145 +525,119 @@
                 border-top: 1px solid var(--cyber-border);
             }
             #main-nav ul.active { display: flex; }
-            #main-nav ul li { margin: 12px 25px; text-align: left; }
+            #main-nav ul li { margin: 12px 25px; text-align: left; width: calc(100% - 50px); }
             #main-nav ul li a { padding: 12px 15px; display: block; font-size: 1rem;}
-            .language-switcher { margin-left: 0; margin-top: 15px; justify-content: center; padding: 0 25px; }
-
+            
             #mobile-menu-toggle { display: block; }
             @keyframes slideDownMobileMenu { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
 
             #hero { min-height: 90vh; }
             #hero h1 { font-size: 2.8rem; }
-             html[lang="hi"] #hero h1, html[lang="pa"] #hero h1 { font-size: 3rem; }
             .section-title h2 { font-size: 2.3rem; }
-             html[lang="hi"] .section-title h2, html[lang="pa"] .section-title h2 { font-size: 2.5rem; }
-
-            #how-it-works .process-steps, #features .features-grid, .testimonial-grid, .stats-grid { grid-template-columns: 1fr; }
+            #how-it-works .process-steps, #features .features-grid, .stats-grid { grid-template-columns: 1fr; }
+            #registration-form { grid-template-columns: 1fr; }
         }
          @media (max-width: 576px) {
             #hero h1 { font-size: 2.4rem; }
-            html[lang="hi"] #hero h1, html[lang="pa"] #hero h1 { font-size: 2.6rem; }
             #main-header .logo { font-size: 1.4rem; }
             .btn { padding: 12px 28px; font-size: 0.95rem; }
             .section-title h2 { font-size: 2rem;}
-            html[lang="hi"] .section-title h2, html[lang="pa"] .section-title h2 { font-size: 2.2rem;}
          }
-
     </style>
 </head>
 <body style="visibility: hidden; opacity: 0;"> <!-- Initially hidden for preloader -->
 
-    <!-- Preloader -->
     <div id="preloader">
         <div class="preloader-logo-container">
-            <div class="preloader-logo" data-lang-key="brand_name_short">School1129</div>
+            <div class="preloader-logo">Digital ERP</div>
             <div class="spinner"></div>
         </div>
     </div>
 
-    <!-- Header -->
     <header id="main-header">
         <div class="container">
             <a href="#hero" class="logo">
-                <i class="fas fa-atom"></i> <span data-lang-key="brand_name">School1129 ERP</span>
+                <i class="fas fa-atom"></i> <span>Digital ERP</span>
             </a>
             <nav id="main-nav">
                 <button id="mobile-menu-toggle" aria-label="Menu">
                     <i class="fas fa-bars"></i>
                 </button>
                 <ul>
-                    <li><a href="#hero" class="active" data-lang-key="nav_home">होम</a></li>
-                    <li><a href="#about" data-lang-key="nav_mission">मिशन</a></li>
-                    <li><a href="#how-it-works" data-lang-key="nav_how_it_works">कैसे काम करता है</a></li>
-                    <li><a href="/job.html" data-lang-key="nav_job_info">नौकरी की जानकारी</a></li>
-                    <li><a href="#services" data-lang-key="nav_services">सेवाएं</a></li>
-                    <li><a href="#contact" data-lang-key="nav_contact">संपर्क</a></li>
-                     <!-- Language Switcher for Desktop -->
-                    <li class="language-switcher-desktop">
-                        <div class="language-switcher">
-                            <button type="button" data-lang="en">EN</button>
-                            <button type="button" data-lang="hi" class="active-lang">HI</button>
-                            <button type="button" data-lang="pa">PA</button>
-                        </div>
-                    </li>
+                    <li><a href="#hero" class="active">Home</a></li>
+                    <li><a href="#about">Mission</a></li>
+                    <li><a href="#how-it-works">How it Works</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
-        </div>
-         <!-- Language Switcher for Mobile (outside ul for better positioning if needed) -->
-        <div id="mobile-language-switcher-container" class="language-switcher" style="display:none; padding: 10px 25px; border-top: 1px solid var(--cyber-border); background-color: rgba(10, 12, 20, 0.98);">
-            <button type="button" data-lang="en">EN</button>
-            <button type="button" data-lang="hi">HI</button>
-            <button type="button" data-lang="pa">PA</button>
         </div>
     </header>
 
     <main>
-        <!-- Hero Section -->
         <section id="hero">
             <div class="hero-content">
-                <h1 data-lang-key="hero_title"><span class="highlight" data-lang-key="hero_highlight_bihar">बिहार के स्कूलों</span> को बनाएं आधुनिक - हमारे <span class="highlight" data-lang-key="hero_highlight_erp">निःशुल्क एवं शक्तिशाली ERP</span> सॉफ्टवेयर के साथ!</h1>
-                <p data-lang-key="hero_subtitle">एक संपूर्ण स्कूल मैनेजमेंट समाधान: एडवांस्ड फीचर्स, AI कस्टमर सपोर्ट, स्किल कॉम्पिटिशन, कम्युनिटी बिल्डिंग और भी बहुत कुछ।</p>
+                <h1>Modernize Your Institution With Our <span class="highlight">Powerful Digital ERP</span> Software!</h1>
+                <p>A complete school management solution: Advanced features, AI customer support, community building, and much more, all designed for the future of education.</p>
                 <div class="cta-buttons">
-                    <a href="https://admin1129.vercel.app/" class="btn btn-accent" data-lang-key="hero_cta_register">निःशुल्क पंजीकरण करें</a>
-                    <a href="#features" class="btn btn-secondary" data-lang-key="hero_cta_features">फीचर्स देखें</a>
+                    <a href="#" id="open-popup-btn" class="btn btn-accent">Register for Free</a>
+                    <a href="#features" class="btn btn-secondary">View Features</a>
                 </div>
             </div>
         </section>
 
-        <!-- About / Mission Section -->
         <section id="about" class="animate-on-scroll">
             <div class="container">
                  <div class="section-title">
-                     <h2 data-lang-key="mission_title">हमारा मिशन: हर स्कूल डिजिटल, हर छात्र सफल</h2>
-                     <p data-lang-key="mission_subtitle">हमारा दृढ़ विश्वास है कि टेक्नोलॉजी बिहार के हर कोने में शिक्षा की गुणवत्ता को बेहतर बना सकती है। हम स्कूलों को सशक्त बनाने और भविष्य के लिए तैयार करने हेतु प्रतिबद्ध हैं।</p>
+                     <h2>Our Mission: Every School Digital, Every Student Successful</h2>
+                     <p>We are committed to empowering educational institutions and preparing them for a digital-first future with powerful, intuitive, and accessible technology.</p>
                  </div>
                 <div class="about-content">
                     <div class="about-text">
-                        <h3 data-lang-key="mission_heading1">सिर्फ एक सॉफ्टवेयर नहीं, एक सम्पूर्ण समाधान</h3>
-                        <p data-lang-key="mission_p1">
-                            School ERP Bihar केवल एक निःशुल्क सॉफ्टवेयर नहीं है, यह बिहार की शिक्षा प्रणाली में सकारात्मक बदलाव लाने का एक आंदोलन है। हम स्कूलों को प्रशासनिक कार्यों से मुक्त करके शिक्षकों को शिक्षण पर अधिक ध्यान केंद्रित करने में मदद करते हैं, जिससे छात्रों का समग्र विकास हो सके।
+                        <h3>Not Just Software, A Complete Ecosystem</h3>
+                        <p>
+                           Digital ERP is more than just a tool; it's a movement to bring positive change to the education system. We help institutions streamline administrative tasks, enabling educators to focus more on teaching and fostering holistic student development.
                         </p>
-                         <p data-lang-key="mission_p2">
-                            हमारा यूजर-फ्रेंडली इंटरफ़ेस, व्यापक फीचर्स और समर्पित सपोर्ट सिस्टम यह सुनिश्चित करता है कि कोई भी स्कूल, चाहे वह कितना भी छोटा या दूर क्यों न हो, आसानी से डिजिटल बन सके।
+                         <p>
+                            Our user-friendly interface, comprehensive features, and dedicated support system ensure that any institution, regardless of size, can easily embrace digital transformation.
                         </p>
-                        <a href="#how-it-works" class="btn btn-primary" style="margin-top: 15px;" data-lang-key="mission_cta_learn_more">जानें कैसे शुरू करें</a>
+                        <a href="#how-it-works" class="btn btn-primary" style="margin-top: 15px;">Learn How to Start</a>
                     </div>
                     <div class="about-image">
-                        <img src="https://images.unsplash.com/photo-1576267423445-b2e0074d68a4?auto=format&fit=crop&w=480&q=80" alt="Digital Education in Bihar - Empowering Schools">
+                        <img src="https://images.unsplash.com/photo-1576267423445-b2e0074d68a4?auto=format&fit=crop&w=480&q=80" alt="Team collaborating on a digital project">
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- How It Works Section -->
         <section id="how-it-works" class="animate-on-scroll">
             <div class="container">
                 <div class="section-title">
-                    <h2 data-lang-key="howitworks_title">शुरू करना है बेहद आसान!</h2>
-                    <p data-lang-key="howitworks_subtitle">केवल 3 सरल चरणों में अपने स्कूल को हमारे निःशुल्क ERP से जोड़ें।</p>
+                    <h2>Getting Started is Extremely Easy!</h2>
+                    <p>Onboard your institution with our powerful ERP in just 3 simple steps.</p>
                 </div>
                 <div class="process-steps">
                     <div class="cyber-card scanline-glow step-card animate-on-scroll" style="transition-delay: 0.1s;">
                         <div class="card-content-wrapper">
                             <div class="step-number">1</div>
-                            <h4 data-lang-key="howitworks_step1_title">पंजीकरण करें</h4>
-                            <p data-lang-key="howitworks_step1_desc">नीचे दिए गए संपर्क फ़ॉर्म को भरें या हमसे सीधे संपर्क करें। यह बिल्कुल मुफ़्त है!</p>
+                            <h4>Register</h4>
+                            <p>Fill out the contact form below or get in touch with our team. Registration is fast, simple, and absolutely free!</p>
                         </div>
                         <div class="scanline"></div>
                     </div>
                     <div class="cyber-card scanline-glow step-card animate-on-scroll" style="transition-delay: 0.2s;">
                          <div class="card-content-wrapper">
                             <div class="step-number">2</div>
-                            <h4 data-lang-key="howitworks_step2_title">सेटअप और ट्रेनिंग</h4>
-                            <p data-lang-key="howitworks_step2_desc">हमारी टीम आपके स्कूल के लिए ERP सेटअप करेगी और आपके स्टाफ को पूरी ट्रेनिंग देगी।</p>
+                            <h4>Setup & Training</h4>
+                            <p>Our dedicated team will configure the ERP for your school and provide comprehensive training for your staff.</p>
                         </div>
                         <div class="scanline"></div>
                     </div>
                     <div class="cyber-card scanline-glow step-card animate-on-scroll" style="transition-delay: 0.3s;">
                         <div class="card-content-wrapper">
                             <div class="step-number">3</div>
-                            <h4 data-lang-key="howitworks_step3_title">डिजिटल बनें</h4>
-                            <p data-lang-key="howitworks_step3_desc">अब आप तैयार हैं! अपने स्कूल के कार्यों को डिजिटल रूप से प्रबंधित करें और अंतर देखें।</p>
+                            <h4>Go Digital</h4>
+                            <p>You're all set! Start managing your school's operations digitally and experience a new level of efficiency.</p>
                         </div>
                          <div class="scanline"></div>
                     </div>
@@ -746,60 +645,56 @@
             </div>
         </section>
 
-        <!-- ERP Features Section -->
         <section id="features">
             <div class="container">
                 <div class="section-title">
-                    <h2 data-lang-key="features_title">ERP सॉफ्टवेयर की मुख्य विशेषताएं</h2>
-                    <p data-lang-key="features_subtitle">आपके स्कूल प्रबंधन को आसान, कुशल और प्रभावी बनाने के लिए डिज़ाइन किए गए शक्तिशाली मॉड्यूल्स।</p>
+                    <h2>Key Features of the ERP Software</h2>
+                    <p>Powerful modules designed to make your school management easy, efficient, and effective.</p>
                 </div>
                 <div class="features-grid">
-                    <!-- Feature cards will use .cyber-card.pulsing-grid -->
-                    <div class="cyber-card pulsing-grid feature-card animate-on-scroll"><div class="grid-overlay"></div><div class="card-content-wrapper"><div class="icon"><i class="fas fa-user-graduate"></i></div><h3 data-lang-key="feature_student_mgmt_title">छात्र प्रबंधन</h3><p data-lang-key="feature_student_mgmt_desc">एडमिशन से लेकर एलुमनी तक, छात्र रिकॉर्ड, प्रोफाइल, और प्रगति ट्रैक करें।</p></div></div>
-                    <div class="cyber-card pulsing-grid feature-card animate-on-scroll" style="transition-delay: 0.1s;"><div class="grid-overlay"></div><div class="card-content-wrapper"><div class="icon"><i class="fas fa-chalkboard-teacher"></i></div><h3 data-lang-key="feature_staff_mgmt_title">शिक्षक एवं स्टाफ</h3><p data-lang-key="feature_staff_mgmt_desc">स्टाफ प्रोफाइल, सैलरी, लीव मैनेजमेंट और परफॉरमेंस ट्रैकिंग।</p></div></div>
-                    <div class="cyber-card pulsing-grid feature-card animate-on-scroll" style="transition-delay: 0.2s;"><div class="grid-overlay"></div><div class="card-content-wrapper"><div class="icon"><i class="fas fa-calendar-alt"></i></div><h3 data-lang-key="feature_academic_mgmt_title">एकेडमिक मैनेजमेंट</h3><p data-lang-key="feature_academic_mgmt_desc">क्लासेस, सेक्शंस, सब्जेक्ट्स, टाइमटेबल और सिलेबस प्रबंधन।</p></div></div>
-                    <div class="cyber-card pulsing-grid feature-card animate-on-scroll" style="transition-delay: 0.3s;"><div class="grid-overlay"></div><div class="card-content-wrapper"><div class="icon"><i class="fas fa-money-check-alt"></i></div><h3 data-lang-key="feature_fees_mgmt_title">फीस प्रबंधन</h3><p data-lang-key="feature_fees_mgmt_desc">ऑनलाइन/ऑफलाइन फीस कलेक्शन, ड्यू रिमाइंडर, डिस्काउंट और रिपोर्टिंग।</p></div></div>
-                    <div class="cyber-card pulsing-grid feature-card animate-on-scroll" style="transition-delay: 0.4s;"><div class="grid-overlay"></div><div class="card-content-wrapper"><div class="icon"><i class="fas fa-clipboard-list"></i></div><h3 data-lang-key="feature_exam_result_title">परीक्षा एवं परिणाम</h3><p data-lang-key="feature_exam_result_desc">एग्जाम शेड्यूल, मार्क्स एंट्री, ग्रेडिंग सिस्टम और ऑनलाइन रिपोर्ट कार्ड।</p></div></div>
-                    <div class="cyber-card pulsing-grid feature-card animate-on-scroll" style="transition-delay: 0.5s;"><div class="grid-overlay"></div><div class="card-content-wrapper"><div class="icon"><i class="fas fa-user-check"></i></div><h3 data-lang-key="feature_attendance_title">उपस्थिति (Attendance)</h3><p data-lang-key="feature_attendance_desc">डिजिटल अटेंडेंस (मैनुअल/बायोमेट्रिक), SMS अलर्ट्स और रिपोर्ट्स।</p></div></div>
+                    <div class="cyber-card pulsing-grid feature-card animate-on-scroll"><div class="grid-overlay"></div><div class="card-content-wrapper"><div class="icon"><i class="fas fa-user-graduate"></i></div><h3>Student Management</h3><p>Track student records, profiles, and progress from admission to alumni.</p></div></div>
+                    <div class="cyber-card pulsing-grid feature-card animate-on-scroll" style="transition-delay: 0.1s;"><div class="grid-overlay"></div><div class="card-content-wrapper"><div class="icon"><i class="fas fa-chalkboard-teacher"></i></div><h3>Staff Management</h3><p>Manage staff profiles, payroll, leave requests, and performance tracking.</p></div></div>
+                    <div class="cyber-card pulsing-grid feature-card animate-on-scroll" style="transition-delay: 0.2s;"><div class="grid-overlay"></div><div class="card-content-wrapper"><div class="icon"><i class="fas fa-calendar-alt"></i></div><h3>Academic Management</h3><p>Oversee classes, sections, subjects, timetables, and syllabus with ease.</p></div></div>
+                    <div class="cyber-card pulsing-grid feature-card animate-on-scroll" style="transition-delay: 0.3s;"><div class="grid-overlay"></div><div class="card-content-wrapper"><div class="icon"><i class="fas fa-money-check-alt"></i></div><h3>Fee Management</h3><p>Online/offline fee collection, due reminders, discounts, and reporting.</p></div></div>
+                    <div class="cyber-card pulsing-grid feature-card animate-on-scroll" style="transition-delay: 0.4s;"><div class="grid-overlay"></div><div class="card-content-wrapper"><div class="icon"><i class="fas fa-clipboard-list"></i></div><h3>Exams & Results</h3><p>Exam schedules, marks entry, grading systems, and online report cards.</p></div></div>
+                    <div class="cyber-card pulsing-grid feature-card animate-on-scroll" style="transition-delay: 0.5s;"><div class="grid-overlay"></div><div class="card-content-wrapper"><div class="icon"><i class="fas fa-user-check"></i></div><h3>Attendance</h3><p>Digital attendance (manual/biometric), with automated SMS alerts and reports.</p></div></div>
                 </div>
             </div>
         </section>
 
-        <!-- Statistics/Impact Section -->
         <section id="stats" class="animate-on-scroll">
             <div class="container">
-                <h2 data-lang-key="stats_title">बिहार में हमारा प्रभाव (जल्द आ रहा है!)</h2>
+                <h2 class="section-title">Our Impact (Coming Soon!)</h2>
                 <div class="stats-grid">
                     <div class="cyber-card stat-item animate-on-scroll" style="--item-index: 1;">
                         <div class="stat-icon"><i class="fas fa-school"></i></div>
-                        <span class="stat-number" data-target="46">0</span>
-                        <span class="stat-label" data-lang-key="stats_schools_joined">स्कूल जुड़े</span>
+                        <span class="stat-number" data-target="150">0</span>
+                        <span class="stat-label">Schools Joined</span>
                     </div>
                     <div class="cyber-card stat-item animate-on-scroll" style="--item-index: 2;">
                          <div class="stat-icon"><i class="fas fa-users"></i></div>
-                        <span class="stat-number" data-target="8947">0</span>
-                        <span class="stat-label" data-lang-key="stats_students_benefited">छात्र लाभान्वित</span>
+                        <span class="stat-number" data-target="25000">0</span>
+                        <span class="stat-label">Students Benefited</span>
                     </div>
                     <div class="cyber-card stat-item animate-on-scroll" style="--item-index: 3;">
                          <div class="stat-icon"><i class="fas fa-hourglass-half"></i></div>
-                        <span class="stat-number" data-target="2100">0</span>
-                        <span class="stat-label" data-lang-key="stats_hours_saved">घंटों की बचत</span>
+                        <span class="stat-number" data-target="10000">0</span>
+                        <span class="stat-label">Admin Hours Saved</span>
                     </div>
                      <div class="cyber-card stat-item animate-on-scroll" style="--item-index: 4;">
-                         <div class="stat-icon"><i class="fas fa-trophy"></i></div>
-                        <span class="stat-number" data-target="13">0</span>
-                        <span class="stat-label" data-lang-key="stats_competitions_held">कॉम्पिटिशन आयोजित</span>
+                         <div class="stat-icon"><i class="fas fa-check-circle"></i></div>
+                        <span class="stat-number" data-target="99">0</span>
+                        <span class="stat-label">% Uptime</span>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Additional Services Section -->
         <section id="services" class="animate-on-scroll">
             <div class="container">
                  <div class="section-title">
-                     <h2 data-lang-key="services_title">हमारी अतिरिक्त सेवाएं</h2>
-                     <p data-lang-key="services_subtitle">हम सिर्फ ERP सॉफ्टवेयर ही नहीं, बल्कि आपकी डिजिटल यात्रा को सफल बनाने के लिए और भी बहुत कुछ प्रदान करते हैं।</p>
+                     <h2>Our Additional Services</h2>
+                     <p>We offer more than just ERP software to ensure your digital journey is a complete success.</p>
                  </div>
                  <div class="services-container">
                     <div class="cyber-card data-flow service-item animate-on-scroll" style="transition-delay: 0.1s;">
@@ -807,8 +702,8 @@
                          <div class="card-content-wrapper">
                             <div class="service-icon"><i class="fas fa-drafting-compass"></i></div>
                             <div class="service-content">
-                                <h3 data-lang-key="service_custom_dev_title">कस्टम ऐप और वेबसाइट डेवलपमेंट</h3>
-                                <p data-lang-key="service_custom_dev_desc">स्कूल की विशेष ज़रूरतों और ब्रांडिंग के अनुरूप कस्टम-निर्मित मोबाइल ऐप्स और आकर्षक वेबसाइट्स।</p>
+                                <h3>Custom App & Website Development</h3>
+                                <p>Custom-built mobile apps and attractive websites tailored to your school's specific needs and branding.</p>
                             </div>
                         </div>
                     </div>
@@ -817,8 +712,8 @@
                          <div class="card-content-wrapper">
                             <div class="service-icon"><i class="fas fa-robot"></i> <i class="fas fa-headset" style="margin-left:-5px;"></i></div>
                             <div class="service-content">
-                                 <h3 data-lang-key="service_ai_support_title">AI पावर्ड + मानव सपोर्ट</h3>
-                                 <p data-lang-key="service_ai_support_desc">त्वरित समाधान के लिए AI चैटबॉट और जटिल समस्याओं के लिए हमारी विशेषज्ञ सपोर्ट टीम - हमेशा आपकी सेवा में।</p>
+                                 <h3>AI Powered + Human Support</h3>
+                                 <p>An AI chatbot for instant solutions and our expert support team for complex issues — always at your service.</p>
                             </div>
                         </div>
                     </div>
@@ -826,24 +721,23 @@
             </div>
         </section>
         
-        <!-- Contact Section needs to be completed with data-lang-key -->
         <section id="contact">
             <div class="container">
                 <div class="section-title">
-                    <h2 data-lang-key="contact_title">संपर्क करें और रजिस्टर करें</h2>
-                    <p data-lang-key="contact_subtitle">हमारे निःशुल्क ERP में रुचि दिखाने या कोई प्रश्न पूछने के लिए नीचे दिया गया फ़ॉर्म भरें। हमारी टीम जल्द ही आपसे संपर्क करेगी।</p>
+                    <h2>Contact Us & Register</h2>
+                    <p>Fill out the form below to express interest in our free ERP or to ask any questions. Our team will contact you shortly.</p>
                 </div>
                 <div class="contact-container">
                     <div class="contact-info animate-on-scroll">
-                        <h3 data-lang-key="contact_info_title">संपर्क सूत्र</h3>
-                        <p data-lang-key="contact_info_desc">हम आपकी सहायता के लिए तत्पर हैं। आप हमसे इन माध्यमों से भी जुड़ सकते हैं:</p>
+                        <h3>Contact Information</h3>
+                        <p>We are ready to assist you. You can also connect with us through these channels:</p>
                         <div class="info-item">
                             <i class="fas fa-map-marker-alt"></i>
-                            <span data-lang-key="contact_address">पटना गांधी मैदान, बिहार, भारत</span> 
+                            <span>Patna, Bihar, India</span> 
                         </div>
                         <div class="info-item">
                             <i class="fas fa-phone-alt"></i>
-                            <a href="tel:+917520863034">+91 7520863034</a>
+                            <a href="tel:+917520863034">+91 75208 63034</a>
                         </div>
                         <div class="info-item">
                             <i class="fas fa-envelope"></i>
@@ -851,9 +745,9 @@
                         </div>
                          <div class="info-item">
                             <i class="fas fa-headset"></i>
-                            <span data-lang-key="contact_ai_support">AI सपोर्ट चैट (वेबसाइट पर जल्द उपलब्ध)</span>
+                            <span>AI Support Chat (Coming Soon)</span>
                         </div>
-                        <h4 style="margin-top: 30px; margin-bottom: 15px; color: var(--cyber-primary);" data-lang-key="contact_social_title">हमसे जुड़ें:</h4>
+                        <h4 style="margin-top: 30px; margin-bottom: 15px; color: var(--cyber-primary);">Connect with Us:</h4>
                         <div class="social-links">
                             <a href="#" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
                             <a href="#" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
@@ -863,32 +757,32 @@
                         </div>
                     </div>
                     <div class="contact-form-section animate-on-scroll">
-                        <h3 data-lang-key="contact_form_title">निःशुल्क पंजीकरण फ़ॉर्म</h3>
+                        <h3>Free Registration Form</h3>
                         <div id="form-feedback"></div>
-                        <form id="registration-form" class="two-columns">
+                        <form id="registration-form">
                              <div class="form-group">
-                                <label for="schoolName" data-lang-key="form_school_name">स्कूल का नाम <span style="color: var(--cyber-secondary);">*</span></label>
+                                <label for="schoolName">School Name <span style="color: var(--cyber-secondary);">*</span></label>
                                 <input type="text" id="schoolName" name="schoolName" required>
                             </div>
                             <div class="form-group">
-                                <label for="contactPerson" data-lang-key="form_contact_person">संपर्क व्यक्ति का नाम <span style="color: var(--cyber-secondary);">*</span></label>
+                                <label for="contactPerson">Contact Person Name <span style="color: var(--cyber-secondary);">*</span></label>
                                 <input type="text" id="contactPerson" name="contactPerson" required>
                             </div>
                              <div class="form-group">
-                                <label for="email" data-lang-key="form_email">ईमेल एड्रेस <span style="color: var(--cyber-secondary);">*</span></label>
+                                <label for="email">Email Address <span style="color: var(--cyber-secondary);">*</span></label>
                                 <input type="email" id="email" name="email" required>
                             </div>
                              <div class="form-group">
-                                <label for="phone" data-lang-key="form_phone">फ़ोन नंबर <span style="color: var(--cyber-secondary);">*</span></label>
+                                <label for="phone">Phone Number <span style="color: var(--cyber-secondary);">*</span></label>
                                 <input type="tel" id="phone" name="phone" required pattern="[6-9][0-9]{9}" title="Please enter a valid 10-digit Indian mobile number">
                             </div>
                             <div class="form-group full-width">
-                                <label for="message" data-lang-key="form_message">आपका संदेश या प्रश्न (वैकल्पिक)</label>
+                                <label for="message">Your Message or Query (Optional)</label>
                                 <textarea id="message" name="message" rows="4"></textarea>
                             </div>
                             <div class="form-group full-width">
                                 <button type="submit" id="submit-button" class="btn btn-primary">
-                                    <span class="btn-text" data-lang-key="form_submit_button">रजिस्टर करें</span>
+                                    <span class="btn-text">Register</span>
                                     <i class="fas fa-spinner spinner-icon"></i>
                                 </button>
                             </div>
@@ -897,18 +791,16 @@
                 </div>
             </div>
         </section>
-        <!-- Other sections (Testimonials, Community, FAQ, CTA) would follow a similar pattern of applying cyber-card styles and data-lang-key attributes -->
 
     </main>
 
-    <!-- Footer -->
     <footer id="main-footer">
         <div class="container">
             <div class="footer-content">
                 <a href="#hero" class="logo">
-                     <i class="fas fa-atom"></i> <span data-lang-key="brand_name_footer">School ERP Bihar</span>
+                     <i class="fas fa-atom"></i> <span>Digital ERP</span>
                  </a>
-                 <p data-lang-key="footer_tagline">बिहार के स्कूलों को आधुनिक तकनीक से जोड़कर शिक्षा को बेहतर बनाने के लिए हमारा समर्पण।</p>
+                 <p>Dedicated to improving education by connecting institutions with modern technology.</p>
                 <div class="footer-social-links">
                      <a href="#" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
                      <a href="#" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
@@ -918,544 +810,193 @@
                  </div>
             </div>
             <div class="footer-bottom">
-                © <span id="currentYear"></span> <span data-lang-key="footer_brand_copyright">School ERP Bihar</span>. <span data-lang-key="footer_rights_reserved">सर्वाधिकार सुरक्षित</span> | <span data-lang-key="footer_developed_by">डिज़ाइन एवं विकसित</span> <a href="#" target="_blank">DEGITAL EDUCATION SYSTEM</a> 
-                 | <a href="#privacy" data-lang-key="footer_privacy_policy">गोपनीयता नीति</a> | <a href="#terms" data-lang-key="footer_terms_of_service">सेवा की शर्तें</a>
+                © <span id="currentYear"></span> Digital ERP. All rights reserved | Designed & Developed by <a href="#" target="_blank">Digital Education System</a> 
+                 | <a href="#privacy">Privacy Policy</a> | <a href="#terms">Terms of Service</a>
             </div>
         </div>
     </footer>
+    
+    <!-- Registration Popup Modal HTML -->
+    <div id="registration-popup">
+        <div class="popup-content">
+            <button class="popup-close-btn" id="popup-close-btn" aria-label="Close">&times;</button>
+            <h3>Choose Registration Type</h3>
+            <div class="popup-buttons">
+                <a href="/register/student" class="btn btn-primary">Students</a>
+                <a href="/register/teacher" class="btn btn-secondary">Teachers</a>
+                <a href="https://sameer1129.vercel.app" class="btn btn-accent">Principal</a>
+                <a href="https://premium-alpha.vercel.app" class="btn btn-primary" style="background: linear-gradient(90deg, var(--cyber-secondary), var(--cyber-primary)); border: none;">Premium</a>
+            </div>
+        </div>
+    </div>
+
 
     <script>
-        // --- Translations Object ---
-        const translations = {
-            en: {
-                page_title: "Sameer Website Developer - Cyber Edition",
-                meta_description: "Digitize Bihar's schools with our advanced, free School Management ERP software. Get AI support, skill competitions, community, and custom development.",
-                meta_keywords: "school, Free School ERP Bihar, School Management System Bihar, Digital School Bihar, School Software Free, Bihar Education, School Community Bihar, AI School Support, Custom School App, Online Fees Payment, Student Management",
-                brand_name_short: "School1129",
-                brand_name: "School1129 ERP",
-                nav_home: "Home",
-                nav_mission: "Mission",
-                nav_how_it_works: "How it Works",
-                nav_job_info: "Job Info",
-                nav_services: "Services",
-                nav_testimonials: "Testimonials",
-                nav_community: "Community",
-                nav_faq: "FAQ",
-                nav_contact: "Contact",
-                hero_title: "Modernize <span class='highlight'>Bihar's Schools</span> - With Our <span class='highlight'>Free & Powerful ERP</span> Software!",
-                hero_highlight_bihar: "Bihar's Schools",
-                hero_highlight_erp: "Free & Powerful ERP",
-                hero_subtitle: "A complete school management solution: Advanced features, AI customer support, skill competitions, community building, and much more.",
-                hero_cta_register: "Register for Free",
-                hero_cta_features: "View Features",
-                mission_title: "Our Mission: Every School Digital, Every Student Successful",
-                mission_subtitle: "We firmly believe that technology can improve the quality of education in every corner of Bihar. We are committed to empowering schools and preparing them for the future.",
-                mission_heading1: "Not Just Software, A Complete Solution",
-                mission_p1: "School ERP Bihar is not just free software; it's a movement to bring positive change to Bihar's education system. We help schools free themselves from administrative tasks, enabling teachers to focus more on teaching, leading to the holistic development of students.",
-                mission_p2: "Our user-friendly interface, comprehensive features, and dedicated support system ensure that any school, no matter how small or remote, can easily go digital.",
-                mission_cta_learn_more: "Learn How to Start",
-                howitworks_title: "Getting Started is Extremely Easy!",
-                howitworks_subtitle: "Connect your school to our free ERP in just 3 simple steps.",
-                howitworks_step1_title: "Register",
-                howitworks_step1_desc: "Fill out the contact form below or contact us directly. It's absolutely free!",
-                howitworks_step2_title: "Setup & Training",
-                howitworks_step2_desc: "Our team will set up the ERP for your school and provide complete training to your staff.",
-                howitworks_step3_title: "Go Digital",
-                howitworks_step3_desc: "Now you're ready! Manage your school operations digitally and see the difference.",
-                features_title: "Key Features of the ERP Software",
-                features_subtitle: "Powerful modules designed to make your school management easy, efficient, and effective.",
-                feature_student_mgmt_title: "Student Management",
-                feature_student_mgmt_desc: "Track student records, profiles, and progress from admission to alumni.",
-                feature_staff_mgmt_title: "Teacher & Staff",
-                feature_staff_mgmt_desc: "Staff profiles, salary, leave management, and performance tracking.",
-                feature_academic_mgmt_title: "Academic Management",
-                feature_academic_mgmt_desc: "Manage classes, sections, subjects, timetable, and syllabus.",
-                feature_fees_mgmt_title: "Fee Management",
-                feature_fees_mgmt_desc: "Online/offline fee collection, due reminders, discounts, and reporting.",
-                feature_exam_result_title: "Exams & Results",
-                feature_exam_result_desc: "Exam schedules, marks entry, grading system, and online report cards.",
-                feature_attendance_title: "Attendance",
-                feature_attendance_desc: "Digital attendance (manual/biometric), SMS alerts, and reports.",
-                stats_title: "Our Impact in Bihar (Coming Soon!)",
-                stats_schools_joined: "Schools Joined",
-                stats_students_benefited: "Students Benefited",
-                stats_hours_saved: "Hours Saved",
-                stats_competitions_held: "Competitions Held",
-                services_title: "Our Additional Services",
-                services_subtitle: "We offer more than just ERP software to make your digital journey successful.",
-                service_custom_dev_title: "Custom App & Website Development",
-                service_custom_dev_desc: "Custom-built mobile apps and attractive websites tailored to your school's specific needs and branding.",
-                service_ai_support_title: "AI Powered + Human Support",
-                service_ai_support_desc: "AI chatbot for quick solutions and our expert support team for complex issues - always at your service.",
-                contact_title: "Contact Us & Register",
-                contact_subtitle: "Fill the form below to show interest in our free ERP or ask any questions. Our team will contact you soon.",
-                contact_info_title: "Contact Information",
-                contact_info_desc: "We are ready to assist you. You can also connect with us through these channels:",
-                contact_address: "Patna Gandhi Maidan, Bihar, India",
-                contact_ai_support: "AI Support Chat (Coming soon on website)",
-                contact_social_title: "Connect with Us:",
-                contact_form_title: "Free Registration Form",
-                form_school_name: "School Name *",
-                form_contact_person: "Contact Person Name *",
-                form_email: "Email Address *",
-                form_phone: "Phone Number *",
-                form_message: "Your Message or Query (Optional)",
-                form_submit_button: "Register",
-                brand_name_footer: "School ERP Bihar",
-                footer_tagline: "Our dedication to improving education by connecting Bihar's schools with modern technology.",
-                footer_brand_copyright: "School ERP Bihar",
-                footer_rights_reserved: "All rights reserved",
-                footer_developed_by: "Designed & Developed by",
-                footer_privacy_policy: "Privacy Policy",
-                footer_terms_of_service: "Terms of Service",
-            },
-            hi: { // Already in HTML, but good to have here for consistency
-                page_title: "समीर वेबसाइट डेवलपर - साइबर संस्करण",
-                meta_description: "school1129, बिहार के स्कूलों को डिजिटल बनाएं हमारे एडवांस्ड, निःशुल्क स्कूल मैनेजमेंट ERP सॉफ्टवेयर से। पाएं AI सपोर्ट, स्किल कॉम्पिटिशन, कम्युनिटी और कस्टम डेवलपमेंट।",
-                meta_keywords: "स्कूल, निःशुल्क स्कूल ERP बिहार, स्कूल मैनेजमेंट सिस्टम बिहार, डिजिटल स्कूल बिहार, स्कूल सॉफ्टवेयर निःशुल्क, बिहार शिक्षा, स्कूल कम्युनिटी बिहार, AI स्कूल सपोर्ट, कस्टम स्कूल ऐप, ऑनलाइन फीस पेमेंट, छात्र प्रबंधन",
-                brand_name_short: "स्कूल1129",
-                brand_name: "स्कूल1129 ERP",
-                nav_home: "होम",
-                nav_mission: "मिशन",
-                nav_how_it_works: "कैसे काम करता है",
-                nav_job_info: "नौकरी की जानकारी",
-                nav_services: "सेवाएं",
-                nav_testimonials: "प्रशंसापत्र",
-                nav_community: "कम्युनिटी",
-                nav_faq: "FAQ",
-                nav_contact: "संपर्क",
-                hero_title: "<span class='highlight'>बिहार के स्कूलों</span> को बनाएं आधुनिक - हमारे <span class='highlight'>निःशुल्क एवं शक्तिशाली ERP</span> सॉफ्टवेयर के साथ!",
-                hero_highlight_bihar: "बिहार के स्कूलों",
-                hero_highlight_erp: "निःशुल्क एवं शक्तिशाली ERP",
-                hero_subtitle: "एक संपूर्ण स्कूल मैनेजमेंट समाधान: एडवांस्ड फीचर्स, AI कस्टमर सपोर्ट, स्किल कॉम्पिटिशन, कम्युनिटी बिल्डिंग और भी बहुत कुछ।",
-                hero_cta_register: "निःशुल्क पंजीकरण करें",
-                hero_cta_features: "फीचर्स देखें",
-                mission_title: "हमारा मिशन: हर स्कूल डिजिटल, हर छात्र सफल",
-                mission_subtitle: "हमारा दृढ़ विश्वास है कि टेक्नोलॉजी बिहार के हर कोने में शिक्षा की गुणवत्ता को बेहतर बना सकती है। हम स्कूलों को सशक्त बनाने और भविष्य के लिए तैयार करने हेतु प्रतिबद्ध हैं।",
-                mission_heading1: "सिर्फ एक सॉफ्टवेयर नहीं, एक सम्पूर्ण समाधान",
-                mission_p1: "School ERP Bihar केवल एक निःशुल्क सॉफ्टवेयर नहीं है, यह बिहार की शिक्षा प्रणाली में सकारात्मक बदलाव लाने का एक आंदोलन है। हम स्कूलों को प्रशासनिक कार्यों से मुक्त करके शिक्षकों को शिक्षण पर अधिक ध्यान केंद्रित करने में मदद करते हैं, जिससे छात्रों का समग्र विकास हो सके।",
-                mission_p2: "हमारा यूजर-फ्रेंडली इंटरफ़ेस, व्यापक फीचर्स और समर्पित सपोर्ट सिस्टम यह सुनिश्चित करता है कि कोई भी स्कूल, चाहे वह कितना भी छोटा या दूर क्यों न हो, आसानी से डिजिटल बन सके।",
-                mission_cta_learn_more: "जानें कैसे शुरू करें",
-                howitworks_title: "शुरू करना है बेहद आसान!",
-                howitworks_subtitle: "केवल 3 सरल चरणों में अपने स्कूल को हमारे निःशुल्क ERP से जोड़ें।",
-                howitworks_step1_title: "पंजीकरण करें",
-                howitworks_step1_desc: "नीचे दिए गए संपर्क फ़ॉर्म को भरें या हमसे सीधे संपर्क करें। यह बिल्कुल मुफ़्त है!",
-                howitworks_step2_title: "सेटअप और ट्रेनिंग",
-                howitworks_step2_desc: "हमारी टीम आपके स्कूल के लिए ERP सेटअप करेगी और आपके स्टाफ को पूरी ट्रेनिंग देगी।",
-                howitworks_step3_title: "डिजिटल बनें",
-                howitworks_step3_desc: "अब आप तैयार हैं! अपने स्कूल के कार्यों को डिजिटल रूप से प्रबंधित करें और अंतर देखें।",
-                features_title: "ERP सॉफ्टवेयर की मुख्य विशेषताएं",
-                features_subtitle: "आपके स्कूल प्रबंधन को आसान, कुशल और प्रभावी बनाने के लिए डिज़ाइन किए गए शक्तिशाली मॉड्यूल्स।",
-                feature_student_mgmt_title: "छात्र प्रबंधन",
-                feature_student_mgmt_desc: "एडमिशन से लेकर एलुमनी तक, छात्र रिकॉर्ड, प्रोफाइल, और प्रगति ट्रैक करें।",
-                feature_staff_mgmt_title: "शिक्षक एवं स्टाफ",
-                feature_staff_mgmt_desc: "स्टाफ प्रोफाइल, सैलरी, लीव मैनेजमेंट और परफॉरमेंस ट्रैकिंग।",
-                feature_academic_mgmt_title: "एकेडमिक मैनेजमेंट",
-                feature_academic_mgmt_desc: "क्लासेस, सेक्शंस, सब्जेक्ट्स, टाइमटेबल और सिलेबस प्रबंधन।",
-                feature_fees_mgmt_title: "फीस प्रबंधन",
-                feature_fees_mgmt_desc: "ऑनलाइन/ऑफलाइन फीस कलेक्शन, ड्यू रिमाइंडर, डिस्काउंट और रिपोर्टिंग।",
-                feature_exam_result_title: "परीक्षा एवं परिणाम",
-                feature_exam_result_desc: "एग्जाम शेड्यूल, मार्क्स एंट्री, ग्रेडिंग सिस्टम और ऑनलाइन रिपोर्ट कार्ड।",
-                feature_attendance_title: "उपस्थिति (Attendance)",
-                feature_attendance_desc: "डिजिटल अटेंडेंस (मैनुअल/बायोमेट्रिक), SMS अलर्ट्स और रिपोर्ट्स।",
-                stats_title: "बिहार में हमारा प्रभाव (जल्द आ रहा है!)",
-                stats_schools_joined: "स्कूल जुड़े",
-                stats_students_benefited: "छात्र लाभान्वित",
-                stats_hours_saved: "घंटों की बचत",
-                stats_competitions_held: "कॉम्पिटिशन आयोजित",
-                services_title: "हमारी अतिरिक्त सेवाएं",
-                services_subtitle: "हम सिर्फ ERP सॉफ्टवेयर ही नहीं, बल्कि आपकी डिजिटल यात्रा को सफल बनाने के लिए और भी बहुत कुछ प्रदान करते हैं।",
-                service_custom_dev_title: "कस्टम ऐप और वेबसाइट डेवलपमेंट",
-                service_custom_dev_desc: "स्कूल की विशेष ज़रूरतों और ब्रांडिंग के अनुरूप कस्टम-निर्मित मोबाइल ऐप्स और आकर्षक वेबसाइट्स।",
-                service_ai_support_title: "AI पावर्ड + मानव सपोर्ट",
-                service_ai_support_desc: "त्वरित समाधान के लिए AI चैटबॉट और जटिल समस्याओं के लिए हमारी विशेषज्ञ सपोर्ट टीम - हमेशा आपकी सेवा में।",
-                contact_title: "संपर्क करें और रजिस्टर करें",
-                contact_subtitle: "हमारे निःशुल्क ERP में रुचि दिखाने या कोई प्रश्न पूछने के लिए नीचे दिया गया फ़ॉर्म भरें। हमारी टीम जल्द ही आपसे संपर्क करेगी।",
-                contact_info_title: "संपर्क सूत्र",
-                contact_info_desc: "हम आपकी सहायता के लिए तत्पर हैं। आप हमसे इन माध्यमों से भी जुड़ सकते हैं:",
-                contact_address: "पटना गांधी मैदान, बिहार, भारत",
-                contact_ai_support: "AI सपोर्ट चैट (वेबसाइट पर जल्द उपलब्ध)",
-                contact_social_title: "हमसे जुड़ें:",
-                contact_form_title: "निःशुल्क पंजीकरण फ़ॉर्म",
-                form_school_name: "स्कूल का नाम *",
-                form_contact_person: "संपर्क व्यक्ति का नाम *",
-                form_email: "ईमेल एड्रेस *",
-                form_phone: "फ़ोन नंबर *",
-                form_message: "आपका संदेश या प्रश्न (वैकल्पिक)",
-                form_submit_button: "रजिस्टर करें",
-                brand_name_footer: "स्कूल ERP बिहार",
-                footer_tagline: "बिहार के स्कूलों को आधुनिक तकनीक से जोड़कर शिक्षा को बेहतर बनाने के लिए हमारा समर्पण।",
-                footer_brand_copyright: "स्कूल ERP बिहार",
-                footer_rights_reserved: "सर्वाधिकार सुरक्षित",
-                footer_developed_by: "डिज़ाइन एवं विकसित",
-                footer_privacy_policy: "गोपनीयता नीति",
-                footer_terms_of_service: "सेवा की शर्तें",
-            },
-            pa: {
-                page_title: "ਸਮੀਰ ਵੈੱਬਸਾਈਟ ਡਿਵੈਲਪਰ - ਸਾਈਬਰ ਐਡੀਸ਼ਨ",
-                meta_description: "ਸਕੂਲ1129, ਬਿਹਾਰ ਦੇ ਸਕੂਲਾਂ ਨੂੰ ਸਾਡੇ ਐਡਵਾਂਸਡ, ਮੁਫ਼ਤ ਸਕੂਲ ਪ੍ਰਬੰਧਨ ERP ਸੌਫਟਵੇਅਰ ਨਾਲ ਡਿਜੀਟਲ ਬਣਾਓ। AI ਸਹਾਇਤਾ, ਹੁਨਰ ਮੁਕਾਬਲੇ, ਕਮਿਊਨਿਟੀ ਅਤੇ ਕਸਟਮ ਵਿਕਾਸ ਪ੍ਰਾਪਤ ਕਰੋ।",
-                meta_keywords: "ਸਕੂਲ, ਮੁਫ਼ਤ ਸਕੂਲ ERP ਬਿਹਾਰ, ਸਕੂਲ ਪ੍ਰਬੰਧਨ ਸਿਸਟਮ ਬਿਹਾਰ, ਡਿਜੀਟਲ ਸਕੂਲ ਬਿਹਾਰ, ਸਕੂਲ ਸੌਫਟਵੇਅਰ ਮੁਫ਼ਤ, ਬਿਹਾਰ ਸਿੱਖਿਆ, ਸਕੂਲ ਕਮਿਊਨਿਟੀ ਬਿਹਾਰ, AI ਸਕੂਲ ਸਹਾਇਤਾ, ਕਸਟਮ ਸਕੂਲ ਐਪ, ਆਨਲਾਈਨ ਫੀਸ ਭੁਗਤਾਨ, ਵਿਦਿਆਰਥੀ ਪ੍ਰਬੰਧਨ",
-                brand_name_short: "ਸਕੂਲ1129",
-                brand_name: "ਸਕੂਲ1129 ERP",
-                nav_home: "ਮੁੱਖ ਪੰਨਾ",
-                nav_mission: "ਮਿਸ਼ਨ",
-                nav_how_it_works: "ਕਿਵੇਂ ਕੰਮ ਕਰਦਾ ਹੈ",
-                nav_job_info: "ਨੌਕਰੀ ਦੀ ਜਾਣਕਾਰੀ",
-                nav_services: "ਸੇਵਾਵਾਂ",
-                nav_testimonials: "ਪ੍ਰਸੰਸਾ ਪੱਤਰ",
-                nav_community: "ਕਮਿਊਨਿਟੀ",
-                nav_faq: "FAQ",
-                nav_contact: "ਸੰਪਰਕ",
-                hero_title: "<span class='highlight'>ਬਿਹਾਰ ਦੇ ਸਕੂਲਾਂ</span> ਨੂੰ ਆਧੁਨਿਕ ਬਣਾਓ - ਸਾਡੇ <span class='highlight'>ਮੁਫ਼ਤ ਅਤੇ ਸ਼ਕਤੀਸ਼ਾਲੀ ERP</span> ਸੌਫਟਵੇਅਰ ਨਾਲ!",
-                hero_highlight_bihar: "ਬਿਹਾਰ ਦੇ ਸਕੂਲਾਂ",
-                hero_highlight_erp: "ਮੁਫ਼ਤ ਅਤੇ ਸ਼ਕਤੀਸ਼ਾਲੀ ERP",
-                hero_subtitle: "ਇੱਕ ਸੰਪੂਰਨ ਸਕੂਲ ਪ੍ਰਬੰਧਨ ਹੱਲ: ਐਡਵਾਂਸਡ ਵਿਸ਼ੇਸ਼ਤਾਵਾਂ, AI ਗਾਹਕ ਸਹਾਇਤਾ, ਹੁਨਰ ਮੁਕਾਬਲੇ, ਕਮਿਊਨਿਟੀ ਬਿਲਡਿੰਗ ਅਤੇ ਹੋਰ ਬਹੁਤ ਕੁਝ।",
-                hero_cta_register: "ਮੁਫ਼ਤ ਰਜਿਸਟਰ ਕਰੋ",
-                hero_cta_features: "ਵਿਸ਼ੇਸ਼ਤਾਵਾਂ ਵੇਖੋ",
-                mission_title: "ਸਾਡਾ ਮਿਸ਼ਨ: ਹਰ ਸਕੂਲ ਡਿਜੀਟਲ, ਹਰ ਵਿਦਿਆਰਥੀ ਸਫਲ",
-                mission_subtitle: "ਸਾਨੂੰ ਪੱਕਾ ਵਿਸ਼ਵਾਸ ਹੈ ਕਿ ਤਕਨਾਲੋਜੀ ਬਿਹਾਰ ਦੇ ਹਰ ਕੋਨੇ ਵਿੱਚ ਸਿੱਖਿਆ ਦੀ ਗੁਣਵੱਤਾ ਨੂੰ ਬਿਹਤਰ ਬਣਾ ਸਕਦੀ ਹੈ। ਅਸੀਂ ਸਕੂਲਾਂ ਨੂੰ ਸ਼ਕਤੀਸ਼ਾਲੀ ਬਣਾਉਣ ਅਤੇ ਭਵਿੱਖ ਲਈ ਤਿਆਰ ਕਰਨ ਲਈ ਵਚਨਬੱਧ ਹਾਂ।",
-                mission_heading1: "ਸਿਰਫ਼ ਇੱਕ ਸੌਫਟਵੇਅਰ ਨਹੀਂ, ਇੱਕ ਸੰਪੂਰਨ ਹੱਲ",
-                mission_p1: "ਸਕੂਲ ERP ਬਿਹਾਰ ਸਿਰਫ਼ ਇੱਕ ਮੁਫ਼ਤ ਸੌਫਟਵੇਅਰ ਨਹੀਂ ਹੈ, ਇਹ ਬਿਹਾਰ ਦੀ ਸਿੱਖਿਆ ਪ੍ਰਣਾਲੀ ਵਿੱਚ ਸਕਾਰਾਤਮਕ ਤਬਦੀਲੀ ਲਿਆਉਣ ਦਾ ਇੱਕ ਅੰਦੋਲਨ ਹੈ। ਅਸੀਂ ਸਕੂਲਾਂ ਨੂੰ ਪ੍ਰਸ਼ਾਸਨਿਕ ਕੰਮਾਂ ਤੋਂ ਮੁਕਤ ਕਰਕੇ ਅਧਿਆਪਕਾਂ ਨੂੰ ਪੜ੍ਹਾਉਣ 'ਤੇ ਵਧੇਰੇ ਧਿਆਨ ਕੇਂਦਰਿਤ ਕਰਨ ਵਿੱਚ ਮਦਦ ਕਰਦੇ ਹਾਂ, ਜਿਸ ਨਾਲ ਵਿਦਿਆਰਥੀਆਂ ਦਾ ਸਰਵਪੱਖੀ ਵਿਕਾਸ ਹੋ ਸਕੇ।",
-                mission_p2: "ਸਾਡਾ ਉਪਭੋਗਤਾ-ਅਨੁਕੂਲ ਇੰਟਰਫੇਸ, ਵਿਆਪਕ ਵਿਸ਼ੇਸ਼ਤਾਵਾਂ ਅਤੇ ਸਮਰਪਿਤ ਸਹਾਇਤਾ ਪ੍ਰਣਾਲੀ ਇਹ ਯਕੀਨੀ ਬਣਾਉਂਦੀ ਹੈ ਕਿ ਕੋਈ ਵੀ ਸਕੂਲ, ਭਾਵੇਂ ਉਹ ਕਿੰਨਾ ਵੀ ਛੋਟਾ ਜਾਂ ਦੂਰ ਕਿਉਂ ਨਾ ਹੋਵੇ, ਆਸਾਨੀ ਨਾਲ ਡਿਜੀਟਲ ਬਣ ਸਕੇ।",
-                mission_cta_learn_more: "ਜਾਣੋ ਕਿਵੇਂ ਸ਼ੁਰੂ ਕਰੀਏ",
-                howitworks_title: "ਸ਼ੁਰੂ ਕਰਨਾ ਬਹੁਤ ਆਸਾਨ ਹੈ!",
-                howitworks_subtitle: "ਸਿਰਫ਼ 3 ਸਧਾਰਨ ਕਦਮਾਂ ਵਿੱਚ ਆਪਣੇ ਸਕੂਲ ਨੂੰ ਸਾਡੇ ਮੁਫ਼ਤ ERP ਨਾਲ ਜੋੜੋ।",
-                howitworks_step1_title: "ਰਜਿਸਟਰ ਕਰੋ",
-                howitworks_step1_desc: "ਹੇਠਾਂ ਦਿੱਤਾ ਸੰਪਰਕ ਫਾਰਮ ਭਰੋ ਜਾਂ ਸਾਡੇ ਨਾਲ ਸਿੱਧਾ ਸੰਪਰਕ ਕਰੋ। ਇਹ ਬਿਲਕੁਲ ਮੁਫ਼ਤ ਹੈ!",
-                howitworks_step2_title: "ਸੈੱਟਅੱਪ ਅਤੇ ਸਿਖਲਾਈ",
-                howitworks_step2_desc: "ਸਾਡੀ ਟੀਮ ਤੁਹਾਡੇ ਸਕੂਲ ਲਈ ERP ਸੈੱਟਅੱਪ ਕਰੇਗੀ ਅਤੇ ਤੁਹਾਡੇ ਸਟਾਫ ਨੂੰ ਪੂਰੀ ਸਿਖਲਾਈ ਦੇਵੇਗੀ।",
-                howitworks_step3_title: "ਡਿਜੀਟਲ ਬਣੋ",
-                howitworks_step3_desc: "ਹੁਣ ਤੁਸੀਂ ਤਿਆਰ ਹੋ! ਆਪਣੇ ਸਕੂਲ ਦੇ ਕੰਮਾਂ ਨੂੰ ਡਿਜੀਟਲ ਰੂਪ ਵਿੱਚ ਪ੍ਰਬੰਧਿਤ ਕਰੋ ਅਤੇ ਅੰਤਰ ਵੇਖੋ।",
-                features_title: "ERP ਸੌਫਟਵੇਅਰ ਦੀਆਂ ਮੁੱਖ ਵਿਸ਼ੇਸ਼ਤਾਵਾਂ",
-                features_subtitle: "ਤੁਹਾਡੇ ਸਕੂਲ ਪ੍ਰਬੰਧਨ ਨੂੰ ਆਸਾਨ, ਕੁਸ਼ਲ ਅਤੇ ਪ੍ਰਭਾਵਸ਼ਾਲੀ ਬਣਾਉਣ ਲਈ ਡਿਜ਼ਾਈਨ ਕੀਤੇ ਗਏ ਸ਼ਕਤੀਸ਼ਾਲੀ ਮੌਡਿਊਲ।",
-                feature_student_mgmt_title: "ਵਿਦਿਆਰਥੀ ਪ੍ਰਬੰਧਨ",
-                feature_student_mgmt_desc: "ਦਾਖਲੇ ਤੋਂ ਲੈ ਕੇ ਸਾਬਕਾ ਵਿਦਿਆਰਥੀਆਂ ਤੱਕ, ਵਿਦਿਆਰਥੀ ਰਿਕਾਰਡ, ਪ੍ਰੋਫਾਈਲ, ਅਤੇ ਤਰੱਕੀ ਨੂੰ ਟਰੈਕ ਕਰੋ।",
-                feature_staff_mgmt_title: "ਅਧਿਆਪਕ ਅਤੇ ਸਟਾਫ",
-                feature_staff_mgmt_desc: "ਸਟਾਫ ਪ੍ਰੋਫਾਈਲ, ਤਨਖਾਹ, ਛੁੱਟੀ ਪ੍ਰਬੰਧਨ ਅਤੇ ਪ੍ਰਦਰਸ਼ਨ ਟਰੈਕਿੰਗ।",
-                feature_academic_mgmt_title: "ਅਕਾਦਮਿਕ ਪ੍ਰਬੰਧਨ",
-                feature_academic_mgmt_desc: "ਕਲਾਸਾਂ, ਸੈਕਸ਼ਨ, ਵਿਸ਼ੇ, ਟਾਈਮਟੇਬਲ ਅਤੇ ਸਿਲੇਬਸ ਪ੍ਰਬੰਧਨ।",
-                feature_fees_mgmt_title: "ਫੀਸ ਪ੍ਰਬੰਧਨ",
-                feature_fees_mgmt_desc: "ਆਨਲਾਈਨ/ਆਫਲਾਈਨ ਫੀਸ ਸੰਗ੍ਰਹਿ, ਬਕਾਇਆ ਰੀਮਾਈਂਡਰ, ਛੋਟਾਂ ਅਤੇ ਰਿਪੋਰਟਿੰਗ।",
-                feature_exam_result_title: "ਪ੍ਰੀਖਿਆਵਾਂ ਅਤੇ ਨਤੀਜੇ",
-                feature_exam_result_desc: "ਪ੍ਰੀਖਿਆ ਅਨੁਸੂਚੀ, ਅੰਕ ਦਾਖਲਾ, ਗ੍ਰੇਡਿੰਗ ਪ੍ਰਣਾਲੀ ਅਤੇ ਆਨਲਾਈਨ ਰਿਪੋਰਟ ਕਾਰਡ।",
-                feature_attendance_title: "ਹਾਜ਼ਰੀ",
-                feature_attendance_desc: "ਡਿਜੀਟਲ ਹਾਜ਼ਰੀ (ਮੈਨੂਅਲ/ਬਾਇਓਮੈਟ੍ਰਿਕ), SMS ਚੇਤਾਵਨੀਆਂ ਅਤੇ ਰਿਪੋਰਟਾਂ।",
-                stats_title: "ਬਿਹਾਰ ਵਿੱਚ ਸਾਡਾ ਪ੍ਰਭਾਵ (ਜਲਦੀ ਆ ਰਿਹਾ ਹੈ!)",
-                stats_schools_joined: "ਸ਼ਾਮਲ ਹੋਏ ਸਕੂਲ",
-                stats_students_benefited: "ਲਾਭ ਪ੍ਰਾਪਤ ਵਿਦਿਆਰਥੀ",
-                stats_hours_saved: "ਬਚਾਏ ਗਏ ਘੰਟੇ",
-                stats_competitions_held: "ਮੁਕਾਬਲੇ ਆਯੋਜਿਤ",
-                services_title: "ਸਾਡੀਆਂ ਵਾਧੂ ਸੇਵਾਵਾਂ",
-                services_subtitle: "ਅਸੀਂ ਸਿਰਫ਼ ERP ਸੌਫਟਵੇਅਰ ਹੀ ਨਹੀਂ, ਸਗੋਂ ਤੁਹਾਡੀ ਡਿਜੀਟਲ ਯਾਤਰਾ ਨੂੰ ਸਫਲ ਬਣਾਉਣ ਲਈ ਹੋਰ ਵੀ ਬਹੁਤ ਕੁਝ ਪੇਸ਼ ਕਰਦੇ ਹਾਂ।",
-                service_custom_dev_title: "ਕਸਟਮ ਐਪ ਅਤੇ ਵੈੱਬਸਾਈਟ ਵਿਕਾਸ",
-                service_custom_dev_desc: "ਸਕੂਲ ਦੀਆਂ ਵਿਸ਼ੇਸ਼ ਲੋੜਾਂ ਅਤੇ ਬ੍ਰਾਂਡਿੰਗ ਦੇ ਅਨੁਸਾਰ ਕਸਟਮ-ਬਣਾਈਆਂ ਮੋਬਾਈਲ ਐਪਾਂ ਅਤੇ ਆਕਰਸ਼ਕ ਵੈੱਬਸਾਈਟਾਂ।",
-                service_ai_support_title: "AI ਸੰਚਾਲਿਤ + ਮਨੁੱਖੀ ਸਹਾਇਤਾ",
-                service_ai_support_desc: "ਤੁਰੰਤ ਹੱਲ ਲਈ AI ਚੈਟਬੋਟ ਅਤੇ ਗੁੰਝਲਦਾਰ ਮਸਲਿਆਂ ਲਈ ਸਾਡੀ ਮਾਹਰ ਸਹਾਇਤਾ ਟੀਮ - ਹਮੇਸ਼ਾ ਤੁਹਾਡੀ ਸੇਵਾ ਵਿੱਚ।",
-                contact_title: "ਸਾਡੇ ਨਾਲ ਸੰਪਰਕ ਕਰੋ ਅਤੇ ਰਜਿਸਟਰ ਕਰੋ",
-                contact_subtitle: "ਸਾਡੇ ਮੁਫ਼ਤ ERP ਵਿੱਚ ਦਿਲਚਸਪੀ ਦਿਖਾਉਣ ਜਾਂ ਕੋਈ ਸਵਾਲ ਪੁੱਛਣ ਲਈ ਹੇਠਾਂ ਦਿੱਤਾ ਫਾਰਮ ਭਰੋ। ਸਾਡੀ ਟੀਮ ਜਲਦੀ ਹੀ ਤੁਹਾਡੇ ਨਾਲ ਸੰਪਰਕ ਕਰੇਗੀ।",
-                contact_info_title: "ਸੰਪਰਕ ਜਾਣਕਾਰੀ",
-                contact_info_desc: "ਅਸੀਂ ਤੁਹਾਡੀ ਸਹਾਇਤਾ ਲਈ ਤਿਆਰ ਹਾਂ। ਤੁਸੀਂ ਸਾਡੇ ਨਾਲ ਇਹਨਾਂ ਮਾਧਿਅਮਾਂ ਰਾਹੀਂ ਵੀ ਜੁੜ ਸਕਦੇ ਹੋ:",
-                contact_address: "ਪਟਨਾ ਗਾਂਧੀ ਮੈਦਾਨ, ਬਿਹਾਰ, ਭਾਰਤ",
-                contact_ai_support: "AI ਸਹਾਇਤਾ ਚੈਟ (ਵੈੱਬਸਾਈਟ 'ਤੇ ਜਲਦੀ ਉਪਲਬਧ)",
-                contact_social_title: "ਸਾਡੇ ਨਾਲ ਜੁੜੋ:",
-                contact_form_title: "ਮੁਫ਼ਤ ਰਜਿਸਟ੍ਰੇਸ਼ਨ ਫਾਰਮ",
-                form_school_name: "ਸਕੂਲ ਦਾ ਨਾਮ *",
-                form_contact_person: "ਸੰਪਰਕ ਵਿਅਕਤੀ ਦਾ ਨਾਮ *",
-                form_email: "ਈਮੇਲ ਪਤਾ *",
-                form_phone: "ਫ਼ੋਨ ਨੰਬਰ *",
-                form_message: "ਤੁਹਾਡਾ ਸੁਨੇਹਾ ਜਾਂ ਸਵਾਲ (ਵਿਕਲਪਿਕ)",
-                form_submit_button: "ਰਜਿਸਟਰ ਕਰੋ",
-                brand_name_footer: "ਸਕੂਲ ERP ਬਿਹਾਰ",
-                footer_tagline: "ਬਿਹਾਰ ਦੇ ਸਕੂਲਾਂ ਨੂੰ ਆਧੁਨਿਕ ਤਕਨਾਲੋਜੀ ਨਾਲ ਜੋੜ ਕੇ ਸਿੱਖਿਆ ਨੂੰ ਬਿਹਤਰ ਬਣਾਉਣ ਲਈ ਸਾਡੀ ਸਮਰਪਣ।",
-                footer_brand_copyright: "ਸਕੂਲ ERP ਬਿਹਾਰ",
-                footer_rights_reserved: "ਸਾਰੇ ਹੱਕ ਰਾਖਵੇਂ ਹਨ",
-                footer_developed_by: "ਡਿਜ਼ਾਈਨ ਅਤੇ ਵਿਕਸਤ",
-                footer_privacy_policy: "ਗੋਪਨੀਯਤਾ ਨੀਤੀ",
-                footer_terms_of_service: "ਸੇਵਾ ਦੀਆਂ ਸ਼ਰਤਾਂ",
-            }
-        };
+        document.addEventListener('DOMContentLoaded', () => {
 
-        // --- Configuration ---
-        const googleAppsScriptUrl = 'https://script.google.com/macros/s/AKfycby4H7pjWBrQLTI0VnSnIVLu-4g_XgA9F1nKE0-X0_SwDWW5SpXyTgykFYI0qIfOeP5PJg/exec'; // KEEP YOUR URL
+            // --- Configuration ---
+            const googleAppsScriptUrl = 'https://script.google.com/macros/s/AKfycby4H7pjWBrQLTI0VnSnIVLu-4g_XgA9F1nKE0-X0_SwDWW5SpXyTgykFYI0qIfOeP5PJg/exec';
 
-        // --- Language Handling ---
-        const langButtons = document.querySelectorAll('.language-switcher button, #mobile-language-switcher-container button');
-        const htmlTag = document.documentElement;
+            // --- Preloader ---
+            const preloader = document.getElementById('preloader');
+            window.addEventListener('load', () => {
+                setTimeout(() => {
+                    preloader.classList.add('hidden');
+                    document.body.style.visibility = 'visible';
+                    document.body.style.opacity = '1';
+                }, 500);
+            });
+            document.body.style.transition = 'opacity 0.5s ease-in-out';
 
-        function setLanguage(lang) {
-            if (!translations[lang]) {
-                console.warn(`Language ${lang} not found in translations.`);
-                return;
-            }
-            htmlTag.setAttribute('lang', lang);
-            localStorage.setItem('preferredLang', lang);
+            // --- Scroll Animations ---
+            const observerOptions = { root: null, rootMargin: '0px', threshold: 0.15 };
+            const observerCallback = (entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            };
+            const scrollObserver = new IntersectionObserver(observerCallback, observerOptions);
+            document.querySelectorAll('.animate-on-scroll').forEach(el => scrollObserver.observe(el));
 
-            document.querySelectorAll('[data-lang-key]').forEach(el => {
-                const key = el.getAttribute('data-lang-key');
-                if (translations[lang][key]) {
-                    el.innerHTML = translations[lang][key]; // Use innerHTML to support <span> in translations
-                } else if (translations.hi[key]) { // Fallback to Hindi if key not in selected lang
-                    el.innerHTML = translations.hi[key];
-                }
+            // --- Navbar Scroll & Active Link ---
+            const header = document.getElementById('main-header');
+            const navLinks = document.querySelectorAll('#main-nav ul a');
+            const sections = document.querySelectorAll('main section[id]');
+            const navbarHeight = header.offsetHeight;
+
+            window.addEventListener('scroll', () => {
+                header.classList.toggle('scrolled', window.scrollY > 80);
+
+                let currentSectionId = 'hero';
+                sections.forEach(section => {
+                    if (window.scrollY >= section.offsetTop - navbarHeight - 80) {
+                        currentSectionId = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${currentSectionId}`) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+
+            // --- Mobile Menu Toggle ---
+            const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+            const mainNavUl = document.querySelector('#main-nav ul');
+            const menuIcon = mobileMenuToggle.querySelector('i');
+
+            mobileMenuToggle.addEventListener('click', () => {
+                mainNavUl.classList.toggle('active');
+                menuIcon.classList.toggle('fa-bars');
+                menuIcon.classList.toggle('fa-times');
             });
             
-            // Update active button state
-            langButtons.forEach(btn => {
-                btn.classList.remove('active-lang');
-                if (btn.getAttribute('data-lang') === lang) {
-                    btn.classList.add('active-lang');
-                }
-            });
-
-            // Special case for meta tags
-            const pageTitleEl = document.querySelector('title[data-lang-key]');
-            if (pageTitleEl) pageTitleEl.textContent = translations[lang][pageTitleEl.dataset.langKey] || translations.hi[pageTitleEl.dataset.langKey];
-            
-            const metaDescEl = document.querySelector('meta[name="description"][data-lang-key]');
-            if (metaDescEl) metaDescEl.content = translations[lang][metaDescEl.dataset.langKey] || translations.hi[metaDescEl.dataset.langKey];
-
-            const metaKeywordsEl = document.querySelector('meta[name="keywords"][data-lang-key]');
-            if (metaKeywordsEl) metaKeywordsEl.content = translations[lang][metaKeywordsEl.dataset.langKey] || translations.hi[metaKeywordsEl.dataset.langKey];
-        }
-
-        langButtons.forEach(button => {
-            button.addEventListener('click', (e) => {
-                setLanguage(e.target.getAttribute('data-lang'));
-            });
-        });
-
-        // --- Preloader ---
-        const preloader = document.getElementById('preloader');
-        window.addEventListener('load', () => {
-            // Apply initial language from localStorage or default
-            const preferredLang = localStorage.getItem('preferredLang') || 'hi';
-            setLanguage(preferredLang);
-
-            // Delay preloader hiding slightly to ensure content is ready
-            setTimeout(() => {
-                preloader.classList.add('hidden');
-                document.body.style.visibility = 'visible';
-                document.body.style.opacity = '1';
-            }, 500); // Adjust delay as needed
-        });
-        document.body.style.transition = 'opacity 0.5s ease-in-out';
-
-
-        // --- Simple Scroll Animations ---
-        const observerOptions = { root: null, rootMargin: '0px', threshold: 0.15 }; // Adjusted threshold
-        const observerCallback = (entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    // observer.unobserve(entry.target); // Optional: unobserve after first animation
-                } else {
-                    // Optional: remove class to re-animate on scroll up/down
-                    // entry.target.classList.remove('visible'); 
-                }
-            });
-        };
-        const scrollObserver = new IntersectionObserver(observerCallback, observerOptions);
-        const elementsToAnimate = document.querySelectorAll('.animate-on-scroll');
-        elementsToAnimate.forEach(el => scrollObserver.observe(el));
-
-        // --- Navbar Scroll Effect & Active Link Highlighting ---
-        const header = document.getElementById('main-header');
-        const navLinks = document.querySelectorAll('#main-nav ul li a');
-        const sections = document.querySelectorAll('main section[id]'); // Target sections inside main
-        const navbarHeight = header.offsetHeight;
-
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 80) { // Increased threshold for cyber header
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-
-            let currentSectionId = 'hero'; // Default to hero
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop - navbarHeight - 80; // Adjusted offset
-                if (window.scrollY >= sectionTop) {
-                    currentSectionId = section.getAttribute('id');
-                }
-            });
-
             navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${currentSectionId}`) {
-                    link.classList.add('active');
-                }
+                link.addEventListener('click', () => {
+                    if (mainNavUl.classList.contains('active')) {
+                        mainNavUl.classList.remove('active');
+                        menuIcon.classList.add('fa-bars');
+                        menuIcon.classList.remove('fa-times');
+                    }
+                });
             });
-        });
 
-        // --- Mobile Menu Toggle ---
-        const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
-        const mainNavUl = document.querySelector('#main-nav ul');
-        const menuIcon = mobileMenuToggle.querySelector('i');
-        const mobileLangSwitcherContainer = document.getElementById('mobile-language-switcher-container');
-
-
-        mobileMenuToggle.addEventListener('click', () => {
-            mainNavUl.classList.toggle('active');
-             // Also toggle mobile language switcher visibility
-            if (mainNavUl.classList.contains('active')) {
-                menuIcon.classList.remove('fa-bars');
-                menuIcon.classList.add('fa-times');
-                mobileLangSwitcherContainer.style.display = 'flex'; // Show it
-            } else {
-                menuIcon.classList.remove('fa-times');
-                menuIcon.classList.add('fa-bars');
-                mobileLangSwitcherContainer.style.display = 'none'; // Hide it
-            }
-        });
-        
-        // Ensure desktop language switcher is not part of mobile dropdown list items
-        if (window.innerWidth > 768) {
-            const desktopLangLi = document.querySelector('.language-switcher-desktop');
-            if (desktopLangLi) desktopLangLi.style.display = 'list-item';
-             mobileLangSwitcherContainer.style.display = 'none';
-        } else {
-             const desktopLangLi = document.querySelector('.language-switcher-desktop');
-            if (desktopLangLi) desktopLangLi.style.display = 'none';
-        }
-        window.addEventListener('resize', () => {
-            if (window.innerWidth > 768) {
-                mainNavUl.classList.remove('active');
-                menuIcon.classList.remove('fa-times');
-                menuIcon.classList.add('fa-bars');
-                const desktopLangLi = document.querySelector('.language-switcher-desktop');
-                if (desktopLangLi) desktopLangLi.style.display = 'list-item';
-                mobileLangSwitcherContainer.style.display = 'none';
-
-            } else {
-                const desktopLangLi = document.querySelector('.language-switcher-desktop');
-                if (desktopLangLi) desktopLangLi.style.display = 'none';
-                 if (mainNavUl.classList.contains('active')) {
-                     mobileLangSwitcherContainer.style.display = 'flex';
-                 } else {
-                     mobileLangSwitcherContainer.style.display = 'none';
-                 }
-            }
-        });
-
-
-        // Close mobile menu when a link is clicked
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                if (mainNavUl.classList.contains('active')) {
-                    mainNavUl.classList.remove('active');
-                    menuIcon.classList.remove('fa-times');
-                    menuIcon.classList.add('fa-bars');
-                    mobileLangSwitcherContainer.style.display = 'none';
-                }
-            });
-        });
-
-
-        // --- FAQ Accordion --- (User's original JS is fine)
-        const faqItems = document.querySelectorAll('.faq-item');
-        faqItems.forEach(item => {
-            const question = item.querySelector('.faq-question');
-            question.addEventListener('click', () => {
-                const isActive = item.classList.contains('active');
-                faqItems.forEach(otherItem => {
-                     if (otherItem !== item) otherItem.classList.remove('active');
-                 });
-                if (!isActive) item.classList.add('active');
-                else item.classList.remove('active');
-            });
-        });
-
-        // --- Animated Number Counters --- (User's original JS is fine)
-        const statNumbers = document.querySelectorAll('.stat-number');
-        const counterObserverOptions = { threshold: 0.5 }; 
-        let countersAnimated = false; 
-
-        const counterObserverCallback = (entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting && !countersAnimated) {
-                    statNumbers.forEach(counter => {
-                        const target = +counter.getAttribute('data-target');
-                        counter.innerText = '0'; 
-                        const updateCounter = () => {
-                            const current = +counter.innerText;
-                            const increment = Math.max(1, Math.ceil(target / 100)); // Dynamic increment
-                            if (current < target) {
-                                counter.innerText = `${Math.min(target, current + increment)}`;
-                                setTimeout(updateCounter, 20); 
-                            } else {
-                                counter.innerText = target; 
-                            }
-                        };
-                        updateCounter();
+            // --- Animated Number Counters ---
+            const statsSection = document.getElementById('stats');
+            if(statsSection) {
+                const counterObserver = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const statNumbers = entry.target.querySelectorAll('.stat-number');
+                            statNumbers.forEach(counter => {
+                                const target = +counter.getAttribute('data-target');
+                                let current = 0;
+                                const increment = Math.ceil(target / 100);
+                                const updateCounter = () => {
+                                    if (current < target) {
+                                        current += increment;
+                                        counter.innerText = Math.min(current, target);
+                                        setTimeout(updateCounter, 20);
+                                    } else {
+                                        counter.innerText = target;
+                                    }
+                                };
+                                updateCounter();
+                            });
+                            observer.unobserve(entry.target);
+                        }
                     });
-                    countersAnimated = true; 
+                }, { threshold: 0.5 });
+                counterObserver.observe(statsSection);
+            }
+
+            // --- Contact Form Submission ---
+            const form = document.getElementById('registration-form');
+            const submitButton = document.getElementById('submit-button');
+            const formFeedback = document.getElementById('form-feedback');
+
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                submitButton.classList.add('loading');
+                submitButton.disabled = true;
+                formFeedback.style.display = 'none';
+                
+                try {
+                    const response = await fetch(googleAppsScriptUrl, { method: 'POST', body: new FormData(form) });
+                    if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+                    const result = await response.json();
+                    if (result.status === 'success') {
+                        showFeedback('success', 'Registration successful! We will contact you soon.');
+                        form.reset();
+                    } else {
+                        throw new Error(result.message || 'An unknown error occurred.');
+                    }
+                } catch (error) {
+                    showFeedback('error', `Submission failed: ${error.message}. Please try again.`);
+                } finally {
+                    submitButton.classList.remove('loading');
+                    submitButton.disabled = false;
                 }
             });
-        };
-        const counterObserver = new IntersectionObserver(counterObserverCallback, counterObserverOptions);
-        const statsSection = document.getElementById('stats');
-        if (statsSection) counterObserver.observe(statsSection);
 
-        // --- Contact Form Submission to Google Apps Script --- (User's original JS is fine)
-        const form = document.getElementById('registration-form');
-        const submitButton = document.getElementById('submit-button');
-        const formFeedback = document.getElementById('form-feedback');
+            function showFeedback(type, message) {
+                formFeedback.className = type;
+                formFeedback.textContent = message;
+                formFeedback.style.display = 'block';
+            }
+            
+            // --- Registration Popup Modal Logic ---
+            const popup = document.getElementById('registration-popup');
+            const openBtn = document.getElementById('open-popup-btn');
+            const closeBtn = document.getElementById('popup-close-btn');
 
-        form.addEventListener('submit', async (e) => {
-            e.preventDefault(); 
-            if (!googleAppsScriptUrl || googleAppsScriptUrl.includes('YOUR_WEB_APP_URL_HERE')) {
-                showFeedback('error', 'Configuration error: Google Apps Script URL is not set.');
-                return;
+            if (popup && openBtn && closeBtn) {
+                openBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    popup.classList.add('active');
+                });
+
+                const closePopup = () => {
+                    popup.classList.remove('active');
+                };
+                
+                closeBtn.addEventListener('click', closePopup);
+                
+                // Close popup when clicking on the overlay background
+                popup.addEventListener('click', (e) => {
+                    if (e.target === popup) {
+                        closePopup();
+                    }
+                });
             }
-            submitButton.classList.add('loading');
-            submitButton.disabled = true;
-            formFeedback.style.display = 'none'; 
-            const formData = new FormData(form);
-            try {
-                const response = await fetch(googleAppsScriptUrl, { method: 'POST', body: formData });
-                if (!response.ok) {
-                    let errorMsg = `HTTP error! Status: ${response.status}`;
-                    try { const errorData = await response.json(); errorMsg = errorData.message || JSON.stringify(errorData); } 
-                    catch (parseError) { errorMsg += ` - ${response.statusText}`; }
-                     throw new Error(errorMsg);
-                }
-                const result = await response.json(); 
-                if (result.status === 'success') {
-                    showFeedback('success', translations[htmlTag.lang || 'hi'].form_success_message || result.message || 'Registration successful!');
-                    form.reset(); 
-                } else {
-                    throw new Error(translations[htmlTag.lang || 'hi'].form_error_unknown || result.message || 'An unknown error occurred.');
-                }
-            } catch (error) {
-                console.error('Form Submission Error:', error);
-                showFeedback('error', `${translations[htmlTag.lang || 'hi'].form_error_failed || 'Submission failed:'} ${error.message}.`);
-            } finally {
-                submitButton.classList.remove('loading');
-                submitButton.disabled = false;
-            }
+
+            // --- Update Footer Year ---
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
         });
-
-        function showFeedback(type, message) {
-            formFeedback.className = ''; 
-            formFeedback.classList.add(type); 
-            formFeedback.textContent = message;
-            formFeedback.style.display = 'block'; 
-        }
-        // Add translated form messages to translations object
-        translations.en.form_success_message = 'Registration successful! We will contact you soon.';
-        translations.en.form_error_unknown = 'An unknown error occurred during submission.';
-        translations.en.form_error_failed = 'Submission failed:';
-        translations.hi.form_success_message = 'पंजीकरण सफल! हम जल्द ही आपसे संपर्क करेंगे।';
-        translations.hi.form_error_unknown = 'सबमिशन के दौरान एक अज्ञात त्रुटि हुई।';
-        translations.hi.form_error_failed = 'सबमिशन विफल रहा:';
-        translations.pa.form_success_message = 'ਰਜਿਸਟ੍ਰੇਸ਼ਨ ਸਫਲ! ਅਸੀਂ ਜਲਦੀ ਹੀ ਤੁਹਾਡੇ ਨਾਲ ਸੰਪਰਕ ਕਰਾਂਗੇ।';
-        translations.pa.form_error_unknown = 'ਸਬਮਿਸ਼ਨ ਦੌਰਾਨ ਇੱਕ ਅਣਜਾਣ ਤਰੁੱਟੀ ਆਈ।';
-        translations.pa.form_error_failed = 'ਸਬਮਿਸ਼ਨ ਅਸਫਲ:';
-
-
-        // --- Update Footer Year ---
-        document.getElementById('currentYear').textContent = new Date().getFullYear();
-
     </script>
 
 </body>
