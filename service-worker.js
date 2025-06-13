@@ -5,7 +5,7 @@ const CACHE_NAME = 'mera-app-cache-v2';
 const urlsToCache = [
   '/', // Yeh website ke root ko cache karta hai
   'index.html',
-  'icon/favicon.png' // Humara icon
+  'icon/favicon.jpg' // Humara icon
 ];
 
 // Install event: Service worker install hone par cache mein files daal do
