@@ -1003,6 +1003,20 @@
             document.getElementById('currentYear').textContent = new Date().getFullYear();
         });
     </script>
+    <script>
+        // Check karein ki browser Service Worker ko support karta hai ya nahi
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('service-worker.js')
+                    .then(function(registration) {
+                        console.log('Service Worker register ho gaya hai, scope: ', registration.scope);
+                    })
+                    .catch(function(err) {
+                        console.log('Service Worker register nahi hua: ', err);
+                    });
+            });
+        }
+    </script>
 
 </body>
 </html>
