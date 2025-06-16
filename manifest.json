@@ -1,7 +1,7 @@
 {
-  "name": "Simple PWA App",
-  "short_name": "PWA",
-  "description": "A simple Progressive Web App",
+  "name": "Digital EPR software",
+  "short_name": "Digital EPR",
+  "description": "Aadvanced professional school management erp software",
   "icons": [
     {
       "src": "icon.png",
