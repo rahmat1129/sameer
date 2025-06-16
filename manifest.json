@@ -1,18 +1,16 @@
 {
-  "name": "Mera Web App",
-  "short_name": "Mera App",
-  "description": "Yeh ek Progressive Web App hai jise install kiya ja sakta hai.",
-  "start_url": "/index.html",
-  "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#317EFB",
-  "orientation": "portrait-primary",
+  "name": "Simple PWA App",
+  "short_name": "PWA",
+  "description": "A simple Progressive Web App",
   "icons": [
     {
-      "src": "icon/favicon.jpg",
-      "type": "image/png",
+      "src": "icon.png",
       "sizes": "192x192",
-      "purpose": "any maskable"
+      "type": "image/png"
     }
-  ]
+  ],
+  "start_url": "./index.html",
+  "display": "standalone",
+  "theme_color": "#007BFF",
+  "background_color": "#FFFFFF"
 }
