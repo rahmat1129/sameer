@@ -1022,6 +1022,13 @@
             });
         }
     </script>
+  <script src="app.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js')
+        .then(reg => console.log('Service Worker registered:', reg))
+    }
+  </script>
 
 </body>
 </html>
